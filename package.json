@@ -1,0 +1,32 @@
+{
+  "name": "au3_sd_ngo-portal",
+  "version": "1.0.0",
+  "description": "Ngo portal",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js -e hbs,js,css,html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/attainu-nightingale/au3_sd_ngo-portal.git"
+  },
+  "keywords": [
+    "Node",
+    "Express",
+    "handlebars",
+    "css",
+    "js",
+    "html",
+    "bootstrap4"
+  ],
+  "author": "au3-group-13",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/attainu-nightingale/au3_sd_ngo-portal/issues"
+  },
+  "homepage": "https://github.com/attainu-nightingale/au3_sd_ngo-portal#readme",
+  "devDependencies": {
+    "nodemon": "^1.19.1"
+  }
+}
