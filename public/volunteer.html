@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>volunteer login</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <link
+      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+      rel="stylesheet"
+      integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="./css/volunteer.css" />
+  </head>
+  <body class="form-body">
+    <div class="container mt-5 mb-5">
+      <div class="row no-gutters">
+        <!--left side picture-->
+        <div class="col-md-5 left-img">
+          <h2 class="slogan-text">
+            Be Educated Be empowered ..
+          </h2>
+
+          <!--  slogan -->
+          <p class="slogan-details">
+            Volunteering is an incredibly valuable use of time, both for the
+            organization and the volunteer.
+          </p>
+
+          <div class="btn-box">
+            <button class="btn btn-submit" type="submit">Sign in</button>
+          </div>
+        </div>
+
+        <!--right side form-->
+        <div class="col-md-7 ">
+          <div class="form-wrapper">
+            <h2 class=" text-center ">Sign <span class="pinks">Up</span></h2>
+            <form>
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group position-relative my-4">
+                    <input
+                      type="string"
+                      class="input inline-input"
+                      name="activity_name"
+                      required="required"
+                    />
+
+                    <span class="highlight"></span>
+                    <span class="bar"></span>
+                    <label class="label"
+                      >User name <sup class="text-danger">*</sup></label
+                    >
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group position-relative my-4">
+                    <input
+                      type="string"
+                      class="input inline-input"
+                      name="activity_link"
+                      required
+                    />
+                    <span class="highlight"></span>
+                    <span class="bar"></span>
+                    <label class="label"
+                      >Name <sup class="text-danger">*</sup></label
+                    >
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group position-relative my-4">
+                    <input
+                      type="string"
+                      class="input inline-input"
+                      required
+                    /><span class="highlight"></span><span class="bar"></span>
+                    <label class="label"
+                      >E-mail <sup class="text-danger">*</sup></label
+                    >
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group position-relative my-4">
+                    <input
+                      type="numeric"
+                      class="input inline-input"
+                      required
+                    /><span class="highlight"></span><span class="bar"></span>
+                    <label class="label"
+                      >Password <sup class="text-danger">*</sup></label
+                    >
+                  </div>
+                </div>
+              </div>
+              <div class="row align-items-end">
+                <div class="col-md-6">
+                  <div
+                    class="form-group position-relative my-4 d-flex justify-content-between align-items-start"
+                  >
+                    <label class="dob-label" for="dob"
+                      >Date of Birth
+                      <sub class="text-danger float-right">*</sub></label
+                    >
+
+                    <input type="date" class="dob-input" id="dob" required />
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group position-relative my-4 omb-2">
+                    <input
+                      type="string"
+                      class="input inline-input"
+                      rows="1"
+                      required
+                    /><span class="highlight"></span><span class="bar"></span>
+                    <label class="label"
+                      >Number<sup class="text-danger">*</sup></label
+                    >
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group position-relative my-4">
+                    <input
+                      type="string"
+                      class="input inline-input"
+                      rows="1"
+                    /><span class="highlight"></span><span class="bar"></span>
+                    <label class="label">Occupation</label>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group position-relative my-4">
+                    <input
+                      type="string"
+                      class="input inline-input"
+                      rows="1"
+                      required
+                    /><span class="highlight"></span><span class="bar"></span>
+                    <label class="label"
+                      >Location <sup class="text-danger">*</sup></label
+                    >
+                  </div>
+                </div>
+              </div>
+
+              <div class="row align-items-center">
+                <div class="col-md-6">
+                  <div class="form-group position-relative my-4 mb-2r">
+                    <div class="custom-file">
+                      <input
+                        type="file"
+                        class="custom-file-input"
+                        id="activity_img"
+                      />
+                      <label class="custom-file-label label" for="activity_img"
+                        >Profile Picture <sup class="text-danger">*</sup></label
+                      >
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-md-6">
+                  <div class="row ">
+                    <group class="inline-radio">
+                      <div>
+                        <input type="radio" name="gender" checked /><label
+                          >Female</label
+                        >
+                      </div>
+                      <div>
+                        <input type="radio" name="gender" /><label>Male</label>
+                      </div>
+                      <div>
+                        <input type="radio" name="gender" /><label
+                          >Others</label
+                        >
+                      </div>
+                    </group>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-12">
+                  <div class="form-group position-relative my-4">
+                    <textarea
+                      type="textarea"
+                      class="textarea"
+                      rows="3"
+                      required
+                    ></textarea
+                    ><span class="highlight"></span><span class="bar"></span>
+                    <label class="label"
+                      >Previous experience
+                      <sup class="text-danger">*</sup></label
+                    >
+                  </div>
+                </div>
+              </div>
+
+              <div class="btn-box">
+                <button class="btn btn-submit" type="submit">submit</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <!-- Custom JS -->
+  </body>
+</html>
