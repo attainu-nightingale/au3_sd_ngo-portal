@@ -1,8 +1,11 @@
 const path = require("path");
+const http = require("http");
+
 const express = require("express");
 const hbs = require("hbs");
+const reload = require("reload");
 
-const { port } = require("./config");
+const { port, envt } = require("./config");
 
 // Paths
 const STATIC_PATH = path.join(__dirname, "./public");
@@ -22,12 +25,21 @@ app.use(express.static(STATIC_PATH));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+app.locals.env = envt === "development";
+
 // Home route
 app.get("/", (req, res) => {
   res.render("home");
 });
 
 // Start Server
-app.listen(port, () => {
-  console.log(`Server Running at ${port}`);
-});
+
+if (envt === "development") {
+  const server = http.createServer(app);
+  server.listen(port, () => console.log(`Server Running at ${port}`));
+  reload(app);
+} else {
+  app.listen(port, () => {
+    console.log(`Heroku Server Running at ${port}`);
+  });
+}
