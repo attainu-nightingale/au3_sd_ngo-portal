@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "dev": "nodemon index.js -e hbs,js,css,html"
+    "dev": "nodemon -r dotenv/config index.js -e hbs,js,css,html"
   },
   "repository": {
     "type": "git",
@@ -27,6 +27,7 @@
   },
   "homepage": "https://github.com/attainu-nightingale/au3_sd_ngo-portal#readme",
   "devDependencies": {
+    "dotenv": "^8.1.0",
     "nodemon": "^1.19.1"
   }
 }
