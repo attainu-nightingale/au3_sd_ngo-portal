@@ -13,6 +13,16 @@ router.get("/", (req, res) => {
 });
 
 /* 
+@type     GET
+@route    /student/:id
+@desc     Get One student
+@access   PRIVATE(for volunteers)
+*/
+router.get("/:id", (req, res) => {
+  res.send("Single Student Route");
+});
+
+/* 
 @type     POST
 @route    /student
 @desc     Create a Student

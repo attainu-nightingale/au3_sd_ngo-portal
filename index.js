@@ -31,6 +31,7 @@ app.use(express.static(STATIC_PATH));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+// set locals for using reload js inside of layout file
 app.locals.env = envt === "development";
 
 // Home route
