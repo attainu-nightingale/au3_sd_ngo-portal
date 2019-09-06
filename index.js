@@ -5,7 +5,13 @@ const express = require("express");
 const hbs = require("hbs");
 const reload = require("reload");
 
+// Config
 const { port, envt } = require("./config");
+
+// Router
+const authRouter = require("./routes/authRoute");
+const studentRouter = require("./routes/studentRoute");
+const storiesRouter = require("./routes/storiesRoute");
 
 // Paths
 const STATIC_PATH = path.join(__dirname, "./public");
@@ -32,8 +38,12 @@ app.get("/", (req, res) => {
   res.render("home");
 });
 
-// Start Server
+// Routes
+app.use("/auth", authRouter);
+app.use("/student", studentRouter);
+app.use("/stories", storiesRouter);
 
+// Start Server
 if (envt === "development") {
   const server = http.createServer(app);
   server.listen(port, () => console.log(`Server Running at ${port}`));
