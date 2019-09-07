@@ -5,6 +5,9 @@ const express = require("express");
 const hbs = require("hbs");
 const reload = require("reload");
 
+// DB
+const db = require("./db/db");
+
 // Config
 const { port, envt } = require("./config");
 
@@ -43,6 +46,15 @@ app.get("/", (req, res) => {
 app.use("/auth", authRouter);
 app.use("/student", studentRouter);
 app.use("/stories", storiesRouter);
+
+// Initialize Database
+db.initDB((err, db) => {
+  if (err) {
+    console.log(err);
+  } else {
+    console.log("DB connected");
+  }
+});
 
 // Start Server
 if (envt === "development") {
