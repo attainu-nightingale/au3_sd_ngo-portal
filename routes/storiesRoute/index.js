@@ -1,4 +1,7 @@
 const Router = require("express").Router;
+const ObjectID = require("mongodb").ObjectID;
+
+const Stories = require("../../models/Stories");
 
 const router = Router();
 
@@ -18,10 +21,29 @@ router.get("/", (req, res) => {
 @desc     Get Single Stories stories
 @access   PUBLIC
 */
-router.get("/:id", (req, res) => {
-  res.json({
-    single: req.params.id
-  });
+router.get("/:id", async (req, res) => {
+  const id = req.params.id;
+  try {
+    const data = await Stories();
+
+    data
+      .getDB()
+      .db()
+      .collection("stories")
+      .findOne({ _id: ObjectID(id) })
+      .then(result => {
+        res.json(result);
+      })
+      .catch(err => {
+        res.status(400).json({
+          error: err.errmsg
+        });
+      });
+  } catch (error) {
+    res.status(500).json({
+      error: "Server Error"
+    });
+  }
 });
 
 /* 
@@ -30,8 +52,33 @@ router.get("/:id", (req, res) => {
 @desc     Create a Story
 @access   Private (for volunteer)
 */
-router.post("/", (req, res) => {
-  res.send("Crate Story Route");
+router.post("/", async (req, res) => {
+  try {
+    const data = await Stories();
+
+    data
+      .getDB()
+      .db()
+      .collection("stories")
+      .insertOne({
+        title: "Johny Doe",
+        image: "http://image.com",
+        details: "Some random details",
+        createdBy: "John"
+      })
+      .then(result => {
+        res.json(result.ops);
+      })
+      .catch(err => {
+        res.status(400).json({
+          error: err.errmsg
+        });
+      });
+  } catch (error) {
+    res.status(500).json({
+      error: "Server Error"
+    });
+  }
 });
 
 /* 

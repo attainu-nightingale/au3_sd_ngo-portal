@@ -1,4 +1,7 @@
 const Router = require("express").Router;
+const ObjectID = require("mongodb").ObjectID;
+
+const Student = require("../../models/Student");
 
 const router = Router();
 
@@ -8,8 +11,29 @@ const router = Router();
 @desc     Get all students
 @access   PRIVATE(for volunteers)
 */
-router.get("/", (req, res) => {
-  res.send("All Students Route");
+router.get("/", async (req, res) => {
+  try {
+    const data = await Student();
+
+    data
+      .getDB()
+      .db()
+      .collection("students")
+      .find()
+      .toArray()
+      .then(result => {
+        res.json(result);
+      })
+      .catch(err => {
+        res.status(400).json({
+          error: err.errmsg
+        });
+      });
+  } catch (error) {
+    res.status(500).json({
+      error: "Server Error"
+    });
+  }
 });
 
 /* 
@@ -18,8 +42,29 @@ router.get("/", (req, res) => {
 @desc     Get One student
 @access   PRIVATE(for volunteers)
 */
-router.get("/:id", (req, res) => {
-  res.send("Single Student Route");
+router.get("/:id", async (req, res) => {
+  const id = req.params.id;
+  try {
+    const data = await Student();
+
+    data
+      .getDB()
+      .db()
+      .collection("students")
+      .findOne({ _id: ObjectID(id) })
+      .then(result => {
+        res.json(result);
+      })
+      .catch(err => {
+        res.status(400).json({
+          error: err.errmsg
+        });
+      });
+  } catch (error) {
+    res.status(500).json({
+      error: "Server Error"
+    });
+  }
 });
 
 /* 
@@ -28,8 +73,33 @@ router.get("/:id", (req, res) => {
 @desc     Create a Student
 @access   Private (for volunteer)
 */
-router.post("/", (req, res) => {
-  res.send("Crate Student Route");
+router.post("/", async (req, res) => {
+  try {
+    const data = await Student();
+
+    data
+      .getDB()
+      .db()
+      .collection("students")
+      .insertOne({
+        gurdianName: "Johny Michel Doe",
+        name: "John Doe",
+        location: "Delhi, India",
+        dob: "25-05-1995"
+      })
+      .then(result => {
+        res.json(result);
+      })
+      .catch(err => {
+        res.status(400).json({
+          error: err.errmsg
+        });
+      });
+  } catch (error) {
+    res.status(500).json({
+      error: "Server Error"
+    });
+  }
 });
 
 /* 

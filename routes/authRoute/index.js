@@ -1,5 +1,7 @@
 const Router = require("express").Router;
 
+const User = require("../../models/User");
+
 const router = Router();
 
 // For User ===============>
@@ -20,8 +22,36 @@ router.get("/user/login", (req, res) => {
 @desc     Just for testing
 @access   PUBLIC
 */
-router.post("/user/registration", (req, res) => {
-  res.send("This is user Registration route");
+router.post("/user/registration", async (req, res) => {
+  try {
+    const data = await User();
+
+    data
+      .getDB()
+      .db()
+      .collection("users")
+      .insertOne({
+        name: "Ruhan",
+        email: "ruhan@gmail.com",
+        username: "RuhanRK",
+        dob: "25-05-1995",
+        password: "1234"
+      })
+      .then(result => {
+        res.json(result);
+      })
+      .catch(err => {
+        console.log(err);
+        res.status(400).json({
+          error: err.errmsg
+        });
+      });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({
+      error: "Server Error"
+    });
+  }
 });
 
 // For Volunteer ===============>
