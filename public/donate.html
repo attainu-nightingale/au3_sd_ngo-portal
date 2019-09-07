@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="./css/donate.css" />
+    <title>Donate now</title>
+  </head>
+  <body>
+    <div class="container mb-3 mt-3">
+      <div class="col-md-7 ">
+        <div class="form-wrapper">
+          <h2 class=" text-center ">
+            My <span class="pinks">Personal information</span>
+          </h2>
+          <form>
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group position-relative my-4">
+                  <input
+                    type="string"
+                    class="input inline-input"
+                    name="activity_name"
+                    required="required"
+                  />
+
+                  <span class="highlight"></span>
+                  <span class="bar"></span>
+                  <label class="label"
+                    >First name <sup class="text-danger">*</sup></label
+                  >
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group position-relative my-4">
+                  <input
+                    type="string"
+                    class="input inline-input"
+                    name="activity_link"
+                    required
+                  />
+                  <span class="highlight"></span>
+                  <span class="bar"></span>
+                  <label class="label"
+                    >Last name <sup class="text-danger">*</sup></label
+                  >
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group position-relative my-4">
+                  <input
+                    type="string"
+                    class="input inline-input"
+                    required
+                  /><span class="highlight"></span><span class="bar"></span>
+                  <label class="label"
+                    >Username <sup class="text-danger">*</sup></label
+                  >
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group position-relative my-4">
+                  <input
+                    type="string"
+                    class="input inline-input"
+                    required
+                  /><span class="highlight"></span><span class="bar"></span>
+                  <label class="label"
+                    >E-mail<sup class="text-danger">*</sup></label
+                  >
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-3">
+                <div class="form-group position-relative my-4">
+                  <input
+                    type="string"
+                    class="input inline-input"
+                    required
+                  /><span class="highlight"></span><span class="bar"></span>
+                  <label class="label"
+                    >Country<sup class="text-danger">*</sup></label
+                  >
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="form-group position-relative my-4">
+                  <input
+                    type="string"
+                    class="input inline-input"
+                    required
+                  /><span class="highlight"></span><span class="bar"></span>
+                  <label class="label"
+                    >State<sup class="text-danger">*</sup></label
+                  >
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="form-group position-relative my-4">
+                  <input
+                    type="numeric"
+                    class="input inline-input"
+                    required
+                  /><span class="highlight"></span><span class="bar"></span>
+                  <label class="label"
+                    >Zip<sup class="text-danger">*</sup></label
+                  >
+                </div>
+              </div>
+            </div>
+
+            <h4 class="mb-3">Payment</h4>
+
+            <div class="radio my-3">
+              <div class="custom-control custom-radio">
+                <input
+                  id="credit"
+                  name="paymentMethod"
+                  type="radio"
+                  class="custom-control-input"
+                  checked
+                  required
+                />
+                <label class="custom-control-label" for="credit"
+                  >Credit card</label
+                >
+              </div>
+              <div class="custom-control custom-radio">
+                <input
+                  id="debit"
+                  name="paymentMethod"
+                  type="radio"
+                  class="custom-control-input"
+                  required
+                />
+                <label class="custom-control-label" for="debit"
+                  >Debit card</label
+                >
+              </div>
+              <div class="custom-control custom-radio">
+                <input
+                  id="paypal"
+                  name="paymentMethod"
+                  type="radio"
+                  class="custom-control-input"
+                  required
+                />
+                <label class="custom-control-label" for="paypal">PayPal</label>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group position-relative my-4">
+                  <input
+                    type="string"
+                    class="input inline-input"
+                    required
+                  /><span class="highlight"></span><span class="bar"></span>
+                  <label class="label"
+                    >Name on card<sup class="text-danger">*</sup></label
+                  >
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group position-relative my-4">
+                  <input
+                    type="string"
+                    class="input inline-input"
+                    required
+                  /><span class="highlight"></span><span class="bar"></span>
+                  <label class="label"
+                    >Credit card number<sup class="text-danger">*</sup></label
+                  >
+                </div>
+              </div>
+            </div>
+
+            <div class="btn-box">
+              <button class="btn btn-submit " type="submit">
+                pay now
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.min.js"
+      integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
