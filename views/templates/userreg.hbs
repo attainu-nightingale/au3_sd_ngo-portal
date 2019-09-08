@@ -1,0 +1,98 @@
+<div class="container-fluid form-body">
+    <div class="container mt-5 mb-5">
+        <div class="row no-gutters">
+            <!--left side  -->
+            <div class="col-md-5 left-img">
+                <h4 class="slogan-text">
+                    A <b>Great</b> place for <b>Great</b> Future
+                </h4>
+
+                <!--  slogan -->
+                <p class="slogan-details">
+                    the capacity to learn is a gift.the ability to learn is a skill,the willingness to learn is a
+                    choice...
+                </p>
+
+                <div class="btn-box">
+                    <a class="btn btn-submit" href="/user/login">Sign in</a>
+                </div>
+            </div>
+
+            <!--right side -->
+            <div class="col-md-7 ">
+                <div class="form-wrapper">
+                    <h2 class=" text-center "><b class="pinks">Users Sign Up</b></h2>
+                    <form>
+                        <div class="row">
+                            <div class="col-md-6">
+                                {{> requiredInput type="text" className="input inline-input" name="username" label="User name"}}
+                            </div>
+                            <div class="col-md-6">
+                                {{> requiredInput type="text" className="input inline-input" name="name" label="Full name"}}
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                {{> requiredInput type="email" className="input inline-input" name="email" label="Email"}}
+                            </div>
+                            <div class="col-md-6">
+                                {{> requiredInput type="password" className="input inline-input" name="password" label="Password"}}
+                            </div>
+                        </div>
+
+
+                        <div class="row align-items-end">
+                            <div class="col-md-6">
+                                <div
+                                    class="form-group position-relative my-4 d-flex justify-content-between align-items-start">
+                                    <label class="dob-label" for="dob">Date of Birth
+                                        <sub class="text-danger float-right">*</sub></label>
+
+                                    <input type="date" class="dob-input" id="dob" required />
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                {{> requiredInput type="text" className="input inline-input" name="location" label="Location"}}
+                            </div>
+                        </div>
+
+
+
+                        <div class="row align-items-center">
+                            <div class="col-md-6">
+                                <div class="form-group position-relative my-4 mb-2r">
+                                    <div class="custom-file">
+                                        <input type="file" class="custom-file-input" id="activity_img" />
+                                        <label class="custom-file-label label" for="activity_img">Profile Picture <sup
+                                                class="text-danger">*</sup></label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="row ">
+                                    <group class="inline-radio">
+                                        <div>
+                                            <input type="radio" name="gender" checked /><label>Female</label>
+                                        </div>
+                                        <div>
+                                            <input type="radio" name="gender" /><label>Male</label>
+                                        </div>
+                                        <div>
+                                            <input type="radio" name="gender" /><label>Others</label>
+                                        </div>
+                                    </group>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="btn-box">
+                            <button class="btn btn-submit" type="submit">submit</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,21 +1,10 @@
-
-
-*,
-:before,
-:after {
-  box-sizing: border-box;
-}
-
-body {
-  font-family: "Roboto Slab", serif;
-  font-size: 9px;
-}
-
 .form-body {
-  background: rgb(255, 255, 255);
   background-color: #fc9d9a;
   background: url("../images/users/signup_bg8.png") center center / cover;
   background-attachment: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .mb-2r {
   margin-bottom: 3.2rem !important;
@@ -128,7 +117,7 @@ datalist option {
 }
 .custom-file-input:lang(en) ~ .custom-file-label::after {
   content: "\f1c5";
-  font-family: FontAwesome;
+  font-family: "Font Awesome\ 5 Free";
   font-weight: normal;
   font-style: normal;
   margin: 0px 0px 0px 10px;
@@ -151,9 +140,11 @@ datalist option {
   left: 0%;
 }
 
-.btn {
-  background: #fff;
-  color: #000;
+.btn.btn-submit {
+  background: #6b0073;
+  background: -webkit-linear-gradient(to right bottom, #ec6ead, #6b0073);
+  background: linear-gradient(to right bottom, #ec6ead, #6b0073);
+  color: #fff;
   border: none;
   padding: 0.8rem 3rem;
   border-radius: 2rem;
@@ -165,40 +156,19 @@ datalist option {
     0 1px 2px rgba(236, 110, 173, 0.575);
   transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
-.btn:hover {
-  color: #8b8b8b;
-  box-shadow: 0 7px 14px rgba(0, 0, 0, 0.18), 0 5px 5px rgba(0, 0, 0, 0.12);
-}
-.btn.btn-submit {
-  background: #6b0073;
-  background: -webkit-linear-gradient(to right bottom, #ec6ead, #6b0073);
-  background: linear-gradient(
-    to right bottom,
-    #ec6ead,
-    #6b0073
-  ); 
-  color: #fff;
-}
 .btn.btn-submit:hover {
   background: #6b0073;
-  background: -webkit-linear-gradient(
-    to left top,
-    #ec6ead,
-    #6b0073
-  );  
-  background: linear-gradient(
-    to left top,
-    #ec6ead,
-    #6b0073
-  );  
+  background: -webkit-linear-gradient(to left top, #ec6ead, #6b0073);
+  background: linear-gradient(to left top, #ec6ead, #6b0073);
 
   color: #deeffd;
+  box-shadow: 0 7px 14px rgba(0, 0, 0, 0.18), 0 5px 5px rgba(0, 0, 0, 0.12);
 }
 .btn-box {
   text-align: center;
   margin: 1rem 0;
 }
-.img { 
+.img {
   display: flex;
 }
 /* inline input style*/
@@ -253,16 +223,8 @@ datalist option {
 }
 .inline-radio input:checked + label {
   background: #6b0073;
-  background: -webkit-linear-gradient(
-    45deg,
-    #ec6ead,
-    #6b0073
-  ); 
-  background: linear-gradient(
-    45deg,
-    #ec6ead,
-    #6b0073
-  );  
+  background: -webkit-linear-gradient(45deg, #ec6ead, #6b0073);
+  background: linear-gradient(45deg, #ec6ead, #6b0073);
   font-weight: 500;
   color: #fff;
   border-top-left-radius: 0.5rem;
@@ -295,4 +257,6 @@ datalist option {
   padding-bottom: 2px;
 }
 
-@import url("https://fonts.googleapis.com/css?family=Ubuntu|Roboto+Slab&display=swap");
+.main-wrapper {
+  height: 100%;
+}

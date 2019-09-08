@@ -37,7 +37,11 @@ router.post("/login", (req, res) => {
 @access   PUBLIC
 */
 router.get("/registration", (req, res) => {
-  res.send("This is user Registration route");
+  res.render("userreg", {
+    title: "eGurukul | User Registration",
+    cssFile: "/css/users_signup.css",
+    logoLink: "../images/e.png"
+  });
 });
 
 /* 
