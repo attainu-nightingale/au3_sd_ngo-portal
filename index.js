@@ -17,7 +17,7 @@ const studentRouter = require("./routes/studentRoute");
 const storiesRouter = require("./routes/storiesRoute");
 
 // Paths
-const STATIC_PATH = path.join(__dirname, "./public");
+const STATIC_PATH = path.join(__dirname, "/public");
 const VIEWS_PATH = path.join(__dirname, "/views/templates");
 const PARTIALS_PATH = path.join(__dirname, "/views/partials");
 
@@ -39,7 +39,9 @@ app.locals.env = envt === "development";
 
 // Home route
 app.get("/", (req, res) => {
-  res.render("home");
+  res.render("home", {
+    home: true
+  });
 });
 
 // Routes
