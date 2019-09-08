@@ -4,6 +4,7 @@ const http = require("http");
 const express = require("express");
 const hbs = require("hbs");
 const reload = require("reload");
+const helmet = require("helmet");
 
 // DB
 const db = require("./db/db");
@@ -23,6 +24,9 @@ const PARTIALS_PATH = path.join(__dirname, "/views/partials");
 
 // Initialize express
 const app = express();
+
+// Secure all routes
+app.use(helmet());
 
 // hbs setup
 app.set("view engine", "hbs");
@@ -51,6 +55,11 @@ app.get("/donate", (req, res) => {
     title: "eGurukul | Donate to poor students",
     cssFile: "css/donate.css"
   });
+});
+
+// About us page
+app.get("/aboutus", (req, res) => {
+  res.send("About us page");
 });
 
 // Routes
