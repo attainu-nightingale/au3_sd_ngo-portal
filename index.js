@@ -44,6 +44,11 @@ app.get("/", (req, res) => {
   });
 });
 
+// Donate Page
+app.get("/donate", (req, res) => {
+  res.render("donate");
+});
+
 // Routes
 app.use("/auth", authRouter);
 app.use("/student", studentRouter);

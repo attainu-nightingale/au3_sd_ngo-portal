@@ -23,9 +23,6 @@ a:hover {
 }
 
 /* Header */
-.home-header {
-  margin-top: 3rem;
-}
 .carousel-item {
   height: 100vh;
   background-color: #333;
@@ -542,5 +539,6 @@ a:hover {
   padding: 2rem 0;
   background: -webkit-linear-gradient(to left, #ec5c83, #cc2e78);
   background: linear-gradient(to left, #ec5c83, #cc2e78);
-  margin-bottom: 2rem;
+  margin-bottom: 4rem;
+  margin-top: 4rem;
 }

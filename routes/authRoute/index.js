@@ -9,11 +9,31 @@ const router = Router();
 /* 
 @type     GET
 @route    /auth/user/login
-@desc     Just for testing
+@desc     For User  Login page
 @access   PUBLIC
 */
 router.get("/user/login", (req, res) => {
   res.send("This is user Login route");
+});
+
+/* 
+@type     POST
+@route    /auth/user/login
+@desc     For User  Login page
+@access   PUBLIC
+*/
+router.get("/user/login", (req, res) => {
+  res.send("This is user Login post route");
+});
+
+/* 
+@type     GET
+@route    /auth/user/registration
+@desc     For User Registration page
+@access   PUBLIC
+*/
+router.get("/user/registration", (req, res) => {
+  res.send("This is user Registration route");
 });
 
 /* 
@@ -59,7 +79,7 @@ router.post("/user/registration", async (req, res) => {
 /* 
 @type     GET
 @route    /auth/vol/login
-@desc     Just for testing
+@desc     Login For Volunteers page
 @access   PUBLIC
 */
 router.get("/vol/login", (req, res) => {
@@ -68,12 +88,32 @@ router.get("/vol/login", (req, res) => {
 
 /* 
 @type     POST
+@route    /auth/vol/login
+@desc     Login For Volunteers
+@access   PUBLIC
+*/
+router.post("/vol/login", (req, res) => {
+  res.json("This is Volunteer Login post route");
+});
+
+/* 
+@type     GET
 @route    /auth/vol/registration
-@desc     Just for testing
+@desc     For volunteers registration page
+@access   PUBLIC
+*/
+router.get("/vol/registration", (req, res) => {
+  res.send("This is Volunteer registration route");
+});
+
+/* 
+@type     POST
+@route    /auth/vol/registration
+@desc     Create volunteers
 @access   PUBLIC
 */
 router.post("/vol/registration", (req, res) => {
-  res.send("This is Volunteer Registration route");
+  res.send("This is Volunteer Registration post route");
 });
 
 module.exports = router;

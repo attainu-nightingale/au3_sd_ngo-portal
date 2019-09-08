@@ -29,7 +29,7 @@
 <body>
     {{!-- Header Start --}}
     <nav class="navbar navbar-expand-lg">
-        <a class="navbar-brand">
+        <a class="navbar-brand" href="/">
             <img class="mb-1" src="./images/e.png" alt="eGurukul" width="200" />
         </a>
         <div class="container">
@@ -41,19 +41,16 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav  ml-auto">
                     <li class="nav-item">
-                        <a class="nav-link h-a" href="#">Home </a>
+                        <a class="nav-link h-a" href="/">Home </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link h-a" href="#">About Us</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link h-a" href="#">Events</a>
+                        <a class="nav-link h-a" href="/aboutus">About Us</a>
                     </li>
                 </ul>
 
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link h-a" href="#">Stories</a>
+                        <a class="nav-link h-a" href="/stories">Stories</a>
                     </li>
                     <li class="nav-item dropdown">
                         <div class="dropdown">
@@ -62,8 +59,8 @@
                                 User
                             </button>
                             <div class="dropdown-menu" aria-labelledby="userDropDown">
-                                <a class="dropdown-item" href="/">Log In</a>
-                                <a class="dropdown-item" href="/">Registration</a>
+                                <a class="dropdown-item" href="/auth/user/login">Log In</a>
+                                <a class="dropdown-item" href="/auth/user/registration">Registration</a>
                             </div>
                         </div>
                     </li>
@@ -74,16 +71,16 @@
                                 Volunteer
                             </button>
                             <div class="dropdown-menu" aria-labelledby="userDropDown">
-                                <a class="dropdown-item" href="/">Log In</a>
-                                <a class="dropdown-item" href="/">Registration</a>
+                                <a class="dropdown-item" href="/auth/vol/login">Log In</a>
+                                <a class="dropdown-item" href="/auth/vol/login">Registration</a>
                             </div>
                         </div>
                     </li>
                     <li class="nav-item active">
-                        <a class="nav-link h-a" href="#">Contact Us </a>
+                        <a class="nav-link h-a" href="/contactus">Contact Us </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link h-a h-donate-btn" href="#">Donate</a>
+                        <a class="nav-link h-a h-donate-btn" href="/donate">Donate</a>
                     </li>
                 </ul>
             </div>
@@ -103,7 +100,7 @@
             </div>
             <ul class="footer-ul d-flex align-items-center m-0">
                 <li class="footer-item pr-3">
-                    <a class="h-a" href="#"> Donate </a>
+                    <a class="h-a" href="/donate"> Donate </a>
                 </li>
                 <li class="footer-item pr-3">
                     <a class="h-a" href="#"> Terms and condition </a>
@@ -112,7 +109,7 @@
                     <a class="h-a" href="#"> Policy </a>
                 </li>
                 <li class="footer-item">
-                    <a class="h-a" href="#"> Contact us </a>
+                    <a class="h-a" href="/contactus"> Contact us </a>
                 </li>
             </ul>
         </footer>
