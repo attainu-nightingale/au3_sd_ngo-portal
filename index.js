@@ -13,7 +13,8 @@ const db = require("./db/db");
 const { port, envt } = require("./config");
 
 // Router
-const authRouter = require("./routes/authRoute");
+const userRouter = require("./routes/userRoute");
+const volRouter = require("./routes/volRoute");
 const studentRouter = require("./routes/studentRoute");
 const storiesRouter = require("./routes/storiesRoute");
 
@@ -45,7 +46,8 @@ app.locals.env = envt === "development";
 app.get("/", (req, res) => {
   res.render("home", {
     home: true,
-    title: "eGurukul | Made for Students and Helped by you"
+    title: "eGurukul | Made for Students and Helped by you",
+    logoLink: "./images/e.png"
   });
 });
 
@@ -53,7 +55,8 @@ app.get("/", (req, res) => {
 app.get("/donate", (req, res) => {
   res.render("donate", {
     title: "eGurukul | Donate to poor students",
-    cssFile: "css/donate.css"
+    cssFile: "css/donate.css",
+    logoLink: "./images/e.png"
   });
 });
 
@@ -63,7 +66,8 @@ app.get("/aboutus", (req, res) => {
 });
 
 // Routes
-app.use("/auth", authRouter);
+app.use("/user", userRouter);
+app.use("/vol", volRouter);
 app.use("/student", studentRouter);
 app.use("/stories", storiesRouter);
 

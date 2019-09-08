@@ -30,7 +30,7 @@
     {{!-- Header Start --}}
     <nav class="navbar navbar-expand-lg">
         <a class="navbar-brand" href="/">
-            <img class="mb-1" src="./images/e.png" alt="eGurukul" width="200" />
+            <img class="mb-1" src="{{logoLink}}" alt="eGurukul" width="200" />
         </a>
         <div class="container">
             <!--<a class="navbar-brand" href="#">Navbar</a>-->
@@ -59,8 +59,8 @@
                                 User
                             </button>
                             <div class="dropdown-menu" aria-labelledby="userDropDown">
-                                <a class="dropdown-item" href="/auth/user/login">Log In</a>
-                                <a class="dropdown-item" href="/auth/user/registration">Registration</a>
+                                <a class="dropdown-item" href="/user/login">Log In</a>
+                                <a class="dropdown-item" href="/user/registration">Registration</a>
                             </div>
                         </div>
                     </li>
@@ -71,8 +71,8 @@
                                 Volunteer
                             </button>
                             <div class="dropdown-menu" aria-labelledby="userDropDown">
-                                <a class="dropdown-item" href="/auth/vol/login">Log In</a>
-                                <a class="dropdown-item" href="/auth/vol/login">Registration</a>
+                                <a class="dropdown-item" href="/vol/login">Log In</a>
+                                <a class="dropdown-item" href="/vol/login">Registration</a>
                             </div>
                         </div>
                     </li>
@@ -88,7 +88,7 @@
     </nav>
     {{!-- Header End --}}
 
-    <div class="main-wrapper">
+    <div class="main-wrapper h-100">
         {{{body}}}
     </div>
 
@@ -96,7 +96,7 @@
     <div class="footer mr-auto">
         <footer class="footer d-flex align-items-center justify-content-between">
             <div class="logo">
-                <img src="./images/e.png" alt="eGurukul" class="img-fluid" />
+                <img src="{{logoLink}}" alt="eGurukul" class="img-fluid" />
             </div>
             <ul class="footer-ul d-flex align-items-center m-0">
                 <li class="footer-item pr-3">
