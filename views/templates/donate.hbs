@@ -7,37 +7,19 @@
             <form>
                 <div class="row">
                     <div class="col-md-6">
-                        <div class="form-group position-relative my-4">
-                            <input type="string" class="input inline-input" name="activity_name" required="required" />
-
-                            <span class="highlight"></span>
-                            <span class="bar"></span>
-                            <label class="label">First name <sup class="text-danger">*</sup></label>
-                        </div>
+                        {{> requiredInput name="firstname" type="text" label="First Name"}}
                     </div>
                     <div class="col-md-6">
                         <div class="form-group position-relative my-4">
-                            <input type="string" class="input inline-input" name="activity_link" required />
-                            <span class="highlight"></span>
-                            <span class="bar"></span>
-                            <label class="label">Last name <sup class="text-danger">*</sup></label>
+                            {{> requiredInput name="lastname" type="text" label="Last Name"}}
                         </div>
                     </div>
                 </div>
 
                 <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-12">
                         <div class="form-group position-relative my-4">
-                            <input type="string" class="input inline-input" required /><span
-                                class="highlight"></span><span class="bar"></span>
-                            <label class="label">Username <sup class="text-danger">*</sup></label>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-group position-relative my-4">
-                            <input type="string" class="input inline-input" required /><span
-                                class="highlight"></span><span class="bar"></span>
-                            <label class="label">E-mail<sup class="text-danger">*</sup></label>
+                            {{> requiredInput name="email" type="email" label="Email"}}
                         </div>
                     </div>
                 </div>
@@ -45,23 +27,17 @@
                 <div class="row">
                     <div class="col-md-3">
                         <div class="form-group position-relative my-4">
-                            <input type="string" class="input inline-input" required /><span
-                                class="highlight"></span><span class="bar"></span>
-                            <label class="label">Country<sup class="text-danger">*</sup></label>
+                            {{> requiredInput name="country" type="text" label="Country"}}
                         </div>
                     </div>
                     <div class="col-md-3">
                         <div class="form-group position-relative my-4">
-                            <input type="string" class="input inline-input" required /><span
-                                class="highlight"></span><span class="bar"></span>
-                            <label class="label">State<sup class="text-danger">*</sup></label>
+                            {{> requiredInput name="state" type="text" label="State"}}
                         </div>
                     </div>
                     <div class="col-md-3">
                         <div class="form-group position-relative my-4">
-                            <input type="numeric" class="input inline-input" required /><span
-                                class="highlight"></span><span class="bar"></span>
-                            <label class="label">Zip<sup class="text-danger">*</sup></label>
+                            {{> requiredInput name="zip" type="text" label="Zip"}}
                         </div>
                     </div>
                 </div>
@@ -87,22 +63,18 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group position-relative my-4">
-                            <input type="string" class="input inline-input" required /><span
-                                class="highlight"></span><span class="bar"></span>
-                            <label class="label">Name on card<sup class="text-danger">*</sup></label>
+                            {{> requiredInput name="nameoncard" type="text" label="Name on card"}}
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group position-relative my-4">
-                            <input type="string" class="input inline-input" required /><span
-                                class="highlight"></span><span class="bar"></span>
-                            <label class="label">Credit card number<sup class="text-danger">*</sup></label>
+                            {{> requiredInput name="cardnum" type="text" label="Credit card number"}}
                         </div>
                     </div>
                 </div>
 
                 <div class="btn-box">
-                    <button class="btn btn-submit " type="submit">
+                    <button class="btn btn-submit" type="submit">
                         pay now
                     </button>
                 </div>

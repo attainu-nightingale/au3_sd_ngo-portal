@@ -1,5 +1,5 @@
 .donate-container {
-  background: radial-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+  background: radial-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
     url("../images/banner-1.jpg") no-repeat center center / cover;
   background-attachment: fixed;
 }
