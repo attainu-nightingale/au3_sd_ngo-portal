@@ -33,7 +33,11 @@ router.post("/login", (req, res) => {
 @access   PUBLIC
 */
 router.get("/registration", (req, res) => {
-  res.send("This is Volunteer registration route");
+  res.render("volreg", {
+    title: "eGurukul | Volunteer Registration",
+    cssFile: "/css/volunteer.css",
+    logoLink: "../images/e.png"
+  });
 });
 
 /* 
