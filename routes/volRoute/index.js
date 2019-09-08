@@ -2,8 +2,6 @@ const Router = require("express").Router;
 
 const router = Router();
 
-// For Volunteer ===============>
-
 /* 
 @type     GET
 @route    /vol/login
@@ -11,7 +9,11 @@ const router = Router();
 @access   PUBLIC
 */
 router.get("/login", (req, res) => {
-  res.send("This is Volunteer Login route");
+  res.render("vollogin", {
+    title: "eGurukul | Volunteer Login",
+    cssFile: "/css/vol.css",
+    logoLink: "../images/e.png"
+  });
 });
 
 /* 
