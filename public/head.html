@@ -14,13 +14,7 @@
     <!--Navbar-->
     <nav class="navbar navbar-expand-lg">
       <a class="navbar-brand">
-        <img
-          class="mb-1"
-          src="./images/e.png"
-          alt=""
-          width="150"
-          
-        />
+        <img class="mb-1" src="./images/e.png" alt="eGurukul" width="200" />
       </a>
       <div class="container">
         <!--<a class="navbar-brand" href="#">Navbar</a>-->
@@ -38,97 +32,96 @@
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav  ml-auto">
             <li class="nav-item">
-              <a class="nav-link" href="#">Home </a>
+              <a class="nav-link h-a" href="#">Home </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">About Us</a>
+              <a class="nav-link h-a" href="#">About Us</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Events</a>
+              <a class="nav-link h-a" href="#">Events</a>
             </li>
           </ul>
 
           <ul class="navbar-nav">
-            <li class="nav-item active">
-              <a class="nav-link" href="#">Contact Us </a>
-            </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Donate</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Stories</a>
+              <a class="nav-link h-a" href="#">Stories</a>
             </li>
             <li class="nav-item dropdown">
-              <a
-                class="nav-link dropdown-toggle"
-                href="#"
-                id="navbarDropdownMenuLink"
-                role="button"
-                data-toggle="dropdown"
-                aria-haspopup="true"
-                aria-expanded="true"
-              >
-                Connect with Us
-              </a>
-              <div
-                class="dropdown-menu"
-                aria-labelledby="navbarDropdownMenuLink"
-              >
-                <a class="dropdown-item" href="#">Sign in</a>
-                <a class="dropdown-item" href="#">Sign up</a>
+              <div class="dropdown">
+                <button
+                  class="btn dropdown-toggle"
+                  type="button"
+                  id="userDropDown"
+                  data-toggle="dropdown"
+                  aria-haspopup="true"
+                  aria-expanded="false"
+                >
+                  User
+                </button>
+                <div class="dropdown-menu" aria-labelledby="userDropDown">
+                  <a class="dropdown-item" href="/">Log In</a>
+                  <a class="dropdown-item" href="/">Registration</a>
+                </div>
               </div>
+            </li>
+            <li class="nav-item dropdown">
+              <div class="dropdown">
+                <button
+                  class="btn dropdown-toggle"
+                  type="button"
+                  id="userDropDown"
+                  data-toggle="dropdown"
+                  aria-haspopup="true"
+                  aria-expanded="false"
+                >
+                  Volunteer
+                </button>
+                <div class="dropdown-menu" aria-labelledby="userDropDown">
+                  <a class="dropdown-item" href="/">Log In</a>
+                  <a class="dropdown-item" href="/">Registration</a>
+                </div>
+              </div>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link h-a" href="#">Contact Us </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link h-a h-donate-btn" href="#">Donate</a>
             </li>
           </ul>
         </div>
       </div>
     </nav>
     <!--./Navbar-->
-
+    <div class="main-wrapper">
+      <div></div>
+    </div>
     <!--FOOTER-->
     <div class="footer mr-auto">
-      <footer id="footer" class="footer">
-        <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-bottom">
-         
-            <span class="navbar">
-              <img
-                class="mb-1"
-                src="./images/e.png"
-                alt=""
-                width="150"
-                height="100"
-              />
-            </span>
-
-            <button
-              class="navbar-toggler"
-              type="button"
-              data-toggle="collapse"
-              data-target="#navbarText"
-              aria-controls="navbarText"
-              aria-expanded="false"
-              aria-label="Toggle navigation"
-            >
-              <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarText">
-              <ul class="navbar-nav mr-auto">
-                <li class="nav-item ">
-                  <a class="nav-link" href="#">Terms and conditions</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">Privacy policy</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">contact us</a>
-                </li>
-              </ul>
-            </div>
-          </nav>
-        </nav>
+      <footer class="footer d-flex align-items-center justify-content-between">
+        <div class="logo">
+          <img src="./images/e.png" alt="eGurukul" class="img-fluid" />
+        </div>
+        <ul class="footer-ul d-flex align-items-center m-0">
+          <li class="footer-item pr-3">
+            <a class="h-a" href="#"> Donate </a>
+          </li>
+          <li class="footer-item pr-3">
+            <a class="h-a" href="#"> Terms and condition </a>
+          </li>
+          <li class="footer-item pr-3">
+            <a class="h-a" href="#"> Policy </a>
+          </li>
+          <li class="footer-item">
+            <a class="h-a" href="#"> Contact us </a>
+          </li>
+        </ul>
       </footer>
     </div>
 
     <!--jquery-cdn-->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
   </body>
 </html>

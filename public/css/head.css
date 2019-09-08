@@ -5,18 +5,31 @@
 :after {
   box-sizing: border-box;
 }
-.body {
+html,
+body {
+  width: 100%;
+  height: 100%;
+}
+body {
   width: 100%;
   height: 100%;
   font-family: "Roboto Slab", serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+ul,
+li {
+  list-style: none;
 }
 
 nav.navbar {
   background: #bc4e9c;
-  background: -webkit-linear-gradient(to right bottom, #ec5c83, #cc2e78);
-  background: linear-gradient(to right bottom, #ec5c83, #cc2e78);
+  background: -webkit-linear-gradient(to right bottom, #e43765, #cc2e78);
+  background: linear-gradient(to right bottom, #e73666, #cc2e78);
   box-shadow: 0 2px 6px #dd467e;
   height: 80px;
+  padding: 0 1rem;
 }
 
 nav.navbar .nav-item .nav-link {
@@ -32,19 +45,100 @@ nav.navbar .nav-item .nav-link {
 }
 
 .footer {
-  position: fixed;
-  left: 0;
-  bottom: 0;
   width: 100%;
-  color: white;
-  text-align: right;
 }
 .mb-2 {
   margin-left: auto;
   margin-right: auto;
 }
 
-a:hover {
-  color: #6b0073;
-  box-shadow: 0 7px 14px rgba(0, 0, 0, 0.18), 0 5px 5px rgba(204, 3, 161, 0.829);
+/* Footer */
+.footer {
+  background: #bc4e9c;
+  background: -webkit-linear-gradient(to right bottom, #ec5c83, #cc2e78);
+  background: linear-gradient(to right bottom, #ec5c83, #cc2e78);
+  padding: 0 1rem;
+}
+
+.footer .logo {
+  width: 200px;
+}
+
+a.h-a {
+  color: #fff;
+  text-decoration: none;
+}
+
+a.h-a:hover {
+  color: #2c0315 !important;
+}
+
+.dropdown button.btn {
+  outline: 0;
+  color: #fff;
+}
+.dropdown button.btn:hover {
+  color: #2c0315 !important;
+}
+.dropdown button:active {
+  outline: none;
+  border: none;
+  box-shadow: none;
+}
+.dropdown button.btn:focus {
+  outline: 0 !important;
+  box-shadow: none;
+}
+
+.dropdown .dropdown-menu {
+  background: #bc4e9c;
+  background: -webkit-linear-gradient(to right bottom, #ec5c83, #cc2e78);
+  background: linear-gradient(to right bottom, #ec5c83, #cc2e78);
+}
+
+.dropdown .dropdown-item {
+  color: #fff;
+}
+
+.dropdown .dropdown-item:hover {
+  color: #2c0315;
+  background-color: transparent;
+}
+
+.h-donate-btn {
+  background: #bc4e9c; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #ec5c83,
+    #bc3da4
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #ec5c83,
+    #bc3da4
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  width: 5rem;
+  padding: 0.1rem 2rem;
+  color: #fff;
+  transition: all 0.54s ease;
+  font-size: 1.1rem;
+  line-height: 2rem;
+  border-radius: 10px;
+  border: none;
+  text-align: center;
+}
+
+a.h-donate-btn:hover {
+  color: #fff !important;
+  background: #bc4e9c; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to left,
+    #ec5c83,
+    #bc3da4
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to left,
+    #ec5c83,
+    #bc3da4
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
