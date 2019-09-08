@@ -11,8 +11,34 @@ const router = Router();
 @desc     Get all stories
 @access   PUBLIC
 */
-router.get("/", (req, res) => {
-  res.send("All Stories Route");
+router.get("/", async (req, res) => {
+  try {
+    const data = await Stories();
+
+    // TODO:- Do with same way
+    // data
+    //   .getDB()
+    //   .db()
+    //   .collection("stories")
+    //   .insertOne({
+    //     title: "Johny Doe",
+    //     image: "http://image.com",
+    //     details: "Some random details",
+    //     createdBy: "John"
+    //   })
+    //   .then(result => {
+    //     res.json(result.ops);
+    //   })
+    //   .catch(err => {
+    //     res.status(400).json({
+    //       error: err.errmsg
+    //     });
+    //   });
+  } catch (error) {
+    res.status(500).json({
+      error: "Server Error"
+    });
+  }
 });
 
 /* 
@@ -87,10 +113,34 @@ router.post("/", async (req, res) => {
 @desc     Update a story
 @access   Private (for volunteer)
 */
-router.put("/:id", (req, res) => {
-  res.json({
-    update: req.params.id
-  });
+router.put("/:id", async (req, res) => {
+  try {
+    const data = await Stories();
+
+    // TODO:- Do with same way
+    // data
+    //   .getDB()
+    //   .db()
+    //   .collection("stories")
+    //   .insertOne({
+    //     title: "Johny Doe",
+    //     image: "http://image.com",
+    //     details: "Some random details",
+    //     createdBy: "John"
+    //   })
+    //   .then(result => {
+    //     res.json(result.ops);
+    //   })
+    //   .catch(err => {
+    //     res.status(400).json({
+    //       error: err.errmsg
+    //     });
+    //   });
+  } catch (error) {
+    res.status(500).json({
+      error: "Server Error"
+    });
+  }
 });
 
 /* 
@@ -99,10 +149,34 @@ router.put("/:id", (req, res) => {
 @desc     Delete a story
 @access   Private (for volunteer)
 */
-router.delete("/:id", (req, res) => {
-  res.json({
-    delete: req.params.id
-  });
+router.delete("/:id", async (req, res) => {
+  try {
+    const data = await Stories();
+
+    // TODO:- Do with same way
+    // data
+    //   .getDB()
+    //   .db()
+    //   .collection("stories")
+    //   .insertOne({
+    //     title: "Johny Doe",
+    //     image: "http://image.com",
+    //     details: "Some random details",
+    //     createdBy: "John"
+    //   })
+    //   .then(result => {
+    //     res.json(result.ops);
+    //   })
+    //   .catch(err => {
+    //     res.status(400).json({
+    //       error: err.errmsg
+    //     });
+    //   });
+  } catch (error) {
+    res.status(500).json({
+      error: "Server Error"
+    });
+  }
 });
 
 module.exports = router;

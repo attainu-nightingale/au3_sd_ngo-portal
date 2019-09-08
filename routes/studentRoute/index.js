@@ -108,10 +108,34 @@ router.post("/", async (req, res) => {
 @desc     Update a student
 @access   Private (for volunteer)
 */
-router.put("/:id", (req, res) => {
-  res.json({
-    update: req.params.id
-  });
+router.put("/:id", async (req, res) => {
+  try {
+    const data = await Student();
+
+    //TODO:- Do with same way
+    // data
+    //   .getDB()
+    //   .db()
+    //   .collection("students")
+    //   .insertOne({
+    //     gurdianName: "Johny Michel Doe",
+    //     name: "John Doe",
+    //     location: "Delhi, India",
+    //     dob: "25-05-1995"
+    //   })
+    //   .then(result => {
+    //     res.json(result);
+    //   })
+    //   .catch(err => {
+    //     res.status(400).json({
+    //       error: err.errmsg
+    //     });
+    //   });
+  } catch (error) {
+    res.status(500).json({
+      error: "Server Error"
+    });
+  }
 });
 
 /* 
@@ -120,10 +144,34 @@ router.put("/:id", (req, res) => {
 @desc     Delete a student
 @access   Private (for volunteer)
 */
-router.delete("/:id", (req, res) => {
-  res.json({
-    delete: req.params.id
-  });
+router.delete("/:id", async (req, res) => {
+  try {
+    const data = await Student();
+
+    //TODO:- Do with same way
+    // data
+    //   .getDB()
+    //   .db()
+    //   .collection("students")
+    //   .insertOne({
+    //     gurdianName: "Johny Michel Doe",
+    //     name: "John Doe",
+    //     location: "Delhi, India",
+    //     dob: "25-05-1995"
+    //   })
+    //   .then(result => {
+    //     res.json(result);
+    //   })
+    //   .catch(err => {
+    //     res.status(400).json({
+    //       error: err.errmsg
+    //     });
+    //   });
+  } catch (error) {
+    res.status(500).json({
+      error: "Server Error"
+    });
+  }
 });
 
 module.exports = router;
