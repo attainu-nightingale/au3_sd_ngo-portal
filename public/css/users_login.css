@@ -202,5 +202,6 @@ datalist option {
 [type="date"]::-webkit-calendar-picker-indicator {
   opacity: 0;
 }
-
-@import url("https://fonts.googleapis.com/css?family=Ubuntu|Roboto+Slab&display=swap");
+.main-wrapper {
+  height: 100%;
+}
