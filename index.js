@@ -40,13 +40,17 @@ app.locals.env = envt === "development";
 // Home route
 app.get("/", (req, res) => {
   res.render("home", {
-    home: true
+    home: true,
+    title: "eGurukul | Made for Students and Helped by you"
   });
 });
 
 // Donate Page
 app.get("/donate", (req, res) => {
-  res.render("donate");
+  res.render("donate", {
+    title: "eGurukul | Donate to poor students",
+    cssFile: "css/donate.css"
+  });
 });
 
 // Routes
