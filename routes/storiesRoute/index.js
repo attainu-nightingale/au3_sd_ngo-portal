@@ -52,19 +52,20 @@ router.get("/:id", async (req, res) => {
   try {
     const data = await Stories();
 
-    data
-      .getDB()
-      .db()
-      .collection("stories")
-      .findOne({ _id: ObjectID(id) })
-      .then(result => {
-        res.json(result);
-      })
-      .catch(err => {
-        res.status(400).json({
-          error: err.errmsg
-        });
-      });
+    // TODO:- do with same way
+    // data
+    //   .getDB()
+    //   .db()
+    //   .collection("stories")
+    //   .findOne({ _id: ObjectID(id) })
+    //   .then(result => {
+    //     res.json(result);
+    //   })
+    //   .catch(err => {
+    //     res.status(400).json({
+    //       error: err.errmsg
+    //     });
+    //   });
   } catch (error) {
     res.status(500).json({
       error: "Server Error"
@@ -82,24 +83,25 @@ router.post("/", async (req, res) => {
   try {
     const data = await Stories();
 
-    data
-      .getDB()
-      .db()
-      .collection("stories")
-      .insertOne({
-        title: "Johny Doe",
-        image: "http://image.com",
-        details: "Some random details",
-        createdBy: "John"
-      })
-      .then(result => {
-        res.json(result.ops);
-      })
-      .catch(err => {
-        res.status(400).json({
-          error: err.errmsg
-        });
-      });
+    //TODO:- Do with same way
+    // data
+    //   .getDB()
+    //   .db()
+    //   .collection("stories")
+    //   .insertOne({
+    //     title: "Johny Doe",
+    //     image: "http://image.com",
+    //     details: "Some random details",
+    //     createdBy: "John"
+    //   })
+    //   .then(result => {
+    //     res.json(result.ops);
+    //   })
+    //   .catch(err => {
+    //     res.status(400).json({
+    //       error: err.errmsg
+    //     });
+    //   });
   } catch (error) {
     res.status(500).json({
       error: "Server Error"

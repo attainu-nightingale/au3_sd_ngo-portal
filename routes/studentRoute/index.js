@@ -15,20 +15,21 @@ router.get("/", async (req, res) => {
   try {
     const data = await Student();
 
-    data
-      .getDB()
-      .db()
-      .collection("students")
-      .find()
-      .toArray()
-      .then(result => {
-        res.json(result);
-      })
-      .catch(err => {
-        res.status(400).json({
-          error: err.errmsg
-        });
-      });
+    // TODO:- like this
+    // data
+    //   .getDB()
+    //   .db()
+    //   .collection("students")
+    //   .find()
+    //   .toArray()
+    //   .then(result => {
+    //     res.json(result);
+    //   })
+    //   .catch(err => {
+    //     res.status(400).json({
+    //       error: err.errmsg
+    //     });
+    //   });
   } catch (error) {
     res.status(500).json({
       error: "Server Error"
@@ -47,19 +48,20 @@ router.get("/:id", async (req, res) => {
   try {
     const data = await Student();
 
-    data
-      .getDB()
-      .db()
-      .collection("students")
-      .findOne({ _id: ObjectID(id) })
-      .then(result => {
-        res.json(result);
-      })
-      .catch(err => {
-        res.status(400).json({
-          error: err.errmsg
-        });
-      });
+    // TODO:- like this
+    // data
+    //   .getDB()
+    //   .db()
+    //   .collection("students")
+    //   .findOne({ _id: ObjectID(id) })
+    //   .then(result => {
+    //     res.json(result);
+    //   })
+    //   .catch(err => {
+    //     res.status(400).json({
+    //       error: err.errmsg
+    //     });
+    //   });
   } catch (error) {
     res.status(500).json({
       error: "Server Error"
@@ -77,24 +79,25 @@ router.post("/", async (req, res) => {
   try {
     const data = await Student();
 
-    data
-      .getDB()
-      .db()
-      .collection("students")
-      .insertOne({
-        gurdianName: "Johny Michel Doe",
-        name: "John Doe",
-        location: "Delhi, India",
-        dob: "25-05-1995"
-      })
-      .then(result => {
-        res.json(result);
-      })
-      .catch(err => {
-        res.status(400).json({
-          error: err.errmsg
-        });
-      });
+    //TODO:- like this
+    // data
+    //   .getDB()
+    //   .db()
+    //   .collection("students")
+    //   .insertOne({
+    //     gurdianName: "Johny Michel Doe",
+    //     name: "John Doe",
+    //     location: "Delhi, India",
+    //     dob: "25-05-1995"
+    //   })
+    //   .then(result => {
+    //     res.json(result);
+    //   })
+    //   .catch(err => {
+    //     res.status(400).json({
+    //       error: err.errmsg
+    //     });
+    //   });
   } catch (error) {
     res.status(500).json({
       error: "Server Error"
