@@ -1,8 +1,52 @@
 const Router = require("express").Router;
+const Joi = require("@hapi/joi");
+const bcrypt = require("bcrypt");
 
 const User = require("../../models/User");
 
 const router = Router();
+
+const loginSchema = Joi.object().keys({
+  username: Joi.string()
+    .trim()
+    .alphanum()
+    .min(3)
+    .max(20)
+    .required(),
+  password: Joi.string()
+    .trim()
+    .regex(/^[a-zA-Z0-9]{3,30}$/)
+    .min(6)
+    .max(30)
+    .required()
+});
+
+const regSchema = Joi.object().keys({
+  username: Joi.string()
+    .trim()
+    .alphanum()
+    .min(3)
+    .max(20)
+    .required(),
+  name: Joi.string()
+    .min(3)
+    .max(40)
+    .required(),
+  email: Joi.string()
+    .email({ minDomainSegments: 2 })
+    .required(),
+  password: Joi.string()
+    .trim()
+    .regex(/^[a-zA-Z0-9]{3,30}$/)
+    .min(6)
+    .max(30)
+    .required(),
+  dob: Joi.date()
+    .greater("1-1-1961")
+    .required()
+    .raw(),
+  location: Joi.string().required()
+});
 
 // For User ===============>
 
@@ -27,7 +71,15 @@ router.get("/login", (req, res) => {
 @access   PUBLIC
 */
 router.post("/login", (req, res) => {
-  res.send("This is user Login post route");
+  const { error, value } = Joi.validate(req.body, loginSchema);
+  if (error) {
+    res.status(403).json({
+      error: error.details[0].message
+    });
+    return;
+  }
+  console.log(value);
+  res.send("Validate successfully");
 });
 
 /* 
@@ -50,8 +102,27 @@ router.get("/registration", (req, res) => {
 @desc     Just for testing
 @access   PUBLIC
 */
-router.post("/registration", async (req, res) => {
-  try {
+router.post(
+  "/registration",
+  /*async*/ (req, res) => {
+    const { error, value } = Joi.validate(req.body, regSchema);
+    if (error) {
+      console.log(error.details[0].message);
+      return res.send("An error occured");
+    }
+    // Encrypt password using bcrypt
+    const saltRounds = 10;
+
+    bcrypt.hash(value.password, saltRounds, (err, hash) => {
+      // error
+      if (err) {
+        throw err;
+      }
+      value.password = hash;
+      console.log(value);
+    });
+    res.json(req.body);
+    /* try {
     const data = await User();
 
     data
@@ -79,7 +150,8 @@ router.post("/registration", async (req, res) => {
     res.status(500).json({
       error: "Server Error"
     });
+  } */
   }
-});
+);
 
 module.exports = router;

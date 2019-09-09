@@ -22,7 +22,7 @@
             <div class="col-md-7 ">
                 <div class="form-wrapper">
                     <h2 class=" text-center "><b class="pinks">Users Sign Up</b></h2>
-                    <form>
+                    <form action="/user/registration" method="POST">
                         <div class="row">
                             <div class="col-md-6">
                                 {{> requiredInput type="text" className="input inline-input" name="username" label="User name"}}
@@ -49,7 +49,7 @@
                                     <label class="dob-label" for="dob">Date of Birth
                                         <sub class="text-danger float-right">*</sub></label>
 
-                                    <input type="date" class="dob-input" id="dob" required />
+                                    <input type="date" class="dob-input" name="dob" required />
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -74,13 +74,14 @@
                                 <div class="row ">
                                     <group class="inline-radio">
                                         <div>
-                                            <input type="radio" name="gender" checked /><label>Female</label>
+                                            <input type="radio" name="gender" value="female"
+                                                checked /><label>Female</label>
                                         </div>
                                         <div>
-                                            <input type="radio" name="gender" /><label>Male</label>
+                                            <input type="radio" name="gender" value="male" /><label>Male</label>
                                         </div>
                                         <div>
-                                            <input type="radio" name="gender" /><label>Others</label>
+                                            <input type="radio" name="gender" value="others" /><label>Others</label>
                                         </div>
                                     </group>
                                 </div>
