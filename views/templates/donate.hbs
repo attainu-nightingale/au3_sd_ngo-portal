@@ -1,0 +1,84 @@
+<div class="container-fluid donate-container">
+    <div class="col-md-7 m-auto">
+        <div class="form-wrapper">
+            <h2 class=" text-center ">
+                Donate Your Valuable <span class="pinks">Money</span>
+            </h2>
+            <form>
+                <div class="row">
+                    <div class="col-md-6">
+                        {{> requiredInput name="firstname" type="text" label="First Name" className="input inline-input"}}
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group position-relative my-4">
+                            {{> requiredInput name="lastname" type="text" label="Last Name" className="input inline-input"}}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group position-relative my-4">
+                            {{> requiredInput name="email" type="email" label="Email" className="input inline-input"}}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-group position-relative my-4">
+                            {{> requiredInput name="country" type="text" label="Country" className="input inline-input"}}
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group position-relative my-4">
+                            {{> requiredInput name="state" type="text" label="State" className="input inline-input"}}
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group position-relative my-4">
+                            {{> requiredInput name="zip" type="text" label="Zip" className="input inline-input"}}
+                        </div>
+                    </div>
+                </div>
+
+                <h4 class="mb-3">Payment</h4>
+
+                <div class="radio my-3">
+                    <div class="custom-control custom-radio">
+                        <input id="credit" name="paymentMethod" type="radio" class="custom-control-input" checked
+                            required />
+                        <label class="custom-control-label" for="credit">Credit card</label>
+                    </div>
+                    <div class="custom-control custom-radio">
+                        <input id="debit" name="paymentMethod" type="radio" class="custom-control-input" required />
+                        <label class="custom-control-label" for="debit">Debit card</label>
+                    </div>
+                    <div class="custom-control custom-radio">
+                        <input id="paypal" name="paymentMethod" type="radio" class="custom-control-input" required />
+                        <label class="custom-control-label" for="paypal">PayPal</label>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group position-relative my-4">
+                            {{> requiredInput name="nameoncard" type="text" label="Name on card" className="input inline-input"}}
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group position-relative my-4">
+                            {{> requiredInput name="cardnum" type="text" label="Credit card number" className="input inline-input"}}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="btn-box">
+                    <button class="btn btn-submit" type="submit">
+                        pay now
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
