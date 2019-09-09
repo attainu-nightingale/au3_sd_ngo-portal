@@ -9,8 +9,6 @@ const { Joi, loginSchema, regSchema } = require("../../config/joiSchema");
 
 const router = Router();
 
-// For User ===============>
-
 /* 
 @type     GET
 @route    /user
