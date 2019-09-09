@@ -33,6 +33,7 @@
   },
   "dependencies": {
     "@hapi/joi": "^15.1.1",
+    "@sendgrid/mail": "^6.4.0",
     "bcrypt": "^3.0.6",
     "express": "^4.17.1",
     "express-session": "^1.16.2",

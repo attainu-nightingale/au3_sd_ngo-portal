@@ -1,53 +1,13 @@
 const Router = require("express").Router;
-const Joi = require("@hapi/joi");
 const bcrypt = require("bcrypt");
 const shortid = require("shortid");
 
 const User = require("../../models/User");
 
+const { verifyEmail } = require("../../util/mailer");
+const { Joi, loginSchema, regSchema } = require("../../config/joiSchema");
+
 const router = Router();
-
-const loginSchema = Joi.object().keys({
-  username: Joi.string()
-    .trim()
-    .alphanum()
-    .min(3)
-    .max(20)
-    .required(),
-  password: Joi.string()
-    .trim()
-    .regex(/^[a-zA-Z0-9]{3,30}$/)
-    .min(6)
-    .max(30)
-    .required()
-});
-
-const regSchema = Joi.object().keys({
-  username: Joi.string()
-    .trim()
-    .alphanum()
-    .min(3)
-    .max(20)
-    .required(),
-  name: Joi.string()
-    .min(3)
-    .max(40)
-    .required(),
-  email: Joi.string()
-    .email({ minDomainSegments: 2 })
-    .required(),
-  password: Joi.string()
-    .trim()
-    .regex(/^[a-zA-Z0-9]{3,30}$/)
-    .min(6)
-    .max(30)
-    .required(),
-  dob: Joi.date()
-    .greater("1-1-1961")
-    .required()
-    .raw(),
-  location: Joi.string().required()
-});
 
 // For User ===============>
 
@@ -75,7 +35,7 @@ router.post("/login", async (req, res) => {
   const { error, value } = Joi.validate(req.body, loginSchema);
   if (error) {
     res.status(403).json({
-      error: error.details[0].message
+      error: "an error occured"
     });
     return;
   }
@@ -142,8 +102,9 @@ router.get("/registration", (req, res) => {
 router.post("/registration", async (req, res) => {
   const { error, value } = Joi.validate(req.body, regSchema);
   if (error) {
-    console.log(error.details[0].message);
-    return res.send("An error occured");
+    return res.status(403).json({
+      error: error.message
+    });
   }
   // Encrypt password using bcrypt
   const saltRounds = 10;
@@ -167,7 +128,12 @@ router.post("/registration", async (req, res) => {
       .collection("users")
       .insertOne(value)
       .then(result => {
-        res.json(result.ops);
+        const token = result.ops[0].secretToken;
+        // send verification code to user's mail
+        verifyEmail("ruhankhandaker@gmail.com", token);
+        res.json({
+          success: "Registerd. Now verify your account"
+        });
       })
       .catch(err => {
         console.log(err);
