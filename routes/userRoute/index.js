@@ -1,6 +1,7 @@
 const Router = require("express").Router;
 const Joi = require("@hapi/joi");
 const bcrypt = require("bcrypt");
+const shortid = require("shortid");
 
 const User = require("../../models/User");
 
@@ -70,7 +71,7 @@ router.get("/login", (req, res) => {
 @desc     For User  Login page
 @access   PUBLIC
 */
-router.post("/login", (req, res) => {
+router.post("/login", async (req, res) => {
   const { error, value } = Joi.validate(req.body, loginSchema);
   if (error) {
     res.status(403).json({
@@ -78,8 +79,44 @@ router.post("/login", (req, res) => {
     });
     return;
   }
-  console.log(value);
-  res.send("Validate successfully");
+  try {
+    const data = await User();
+
+    data
+      .getDB()
+      .db()
+      .collection("users")
+      .findOne({ username: value.username })
+      .then(async result => {
+        // If username doesn't matched
+        if (!result) {
+          return res.status(404).json({ error: "Authentication Failed" });
+        }
+        // if user not verified
+        if (!result.active) {
+          return res.status(403).json({ error: "Email not verified" });
+        }
+
+        const isMatched = await bcrypt.compare(value.password, result.password);
+
+        if (!isMatched) {
+          return res.status(404).json({
+            error: "Authentication Failed"
+          });
+        }
+        res.json(result);
+      })
+      .catch(err => {
+        console.log(err);
+        res.status(400).json({
+          error: err.errmsg
+        });
+      });
+  } catch (error) {
+    res.status(500).json({
+      error: "Server Error"
+    });
+  }
 });
 
 /* 
@@ -98,46 +135,39 @@ router.get("/registration", (req, res) => {
 
 /* 
 @type     POST
-@route    /auth/user/registration
+@route    /user/registration
 @desc     Just for testing
 @access   PUBLIC
 */
-router.post(
-  "/registration",
-  /*async*/ (req, res) => {
-    const { error, value } = Joi.validate(req.body, regSchema);
-    if (error) {
-      console.log(error.details[0].message);
-      return res.send("An error occured");
-    }
-    // Encrypt password using bcrypt
-    const saltRounds = 10;
-
-    bcrypt.hash(value.password, saltRounds, (err, hash) => {
-      // error
-      if (err) {
-        throw err;
-      }
-      value.password = hash;
-      console.log(value);
-    });
-    res.json(req.body);
-    /* try {
+router.post("/registration", async (req, res) => {
+  const { error, value } = Joi.validate(req.body, regSchema);
+  if (error) {
+    console.log(error.details[0].message);
+    return res.send("An error occured");
+  }
+  // Encrypt password using bcrypt
+  const saltRounds = 10;
+  try {
     const data = await User();
+
+    const hash = await bcrypt.hash(value.password, saltRounds);
+
+    // change plain text password to hash password
+    value.password = hash;
+
+    // set secret token for email verification
+    value.secretToken = shortid.generate();
+
+    // flag for inactive
+    value.active = false;
 
     data
       .getDB()
       .db()
       .collection("users")
-      .insertOne({
-        name: "Ruhan",
-        email: "ruhan@gmail.com",
-        username: "RuhanRK",
-        dob: "25-05-1995",
-        password: "1234"
-      })
+      .insertOne(value)
       .then(result => {
-        res.json(result);
+        res.json(result.ops);
       })
       .catch(err => {
         console.log(err);
@@ -150,8 +180,44 @@ router.post(
     res.status(500).json({
       error: "Server Error"
     });
-  } */
   }
-);
+});
+
+/*
+@type     POST
+@route    /user/verify
+@desc     Verufy user
+@access   PUBLIC
+*/
+router.post("/verify", async (req, res) => {
+  const { secretToken } = req.body;
+  try {
+    const data = await User();
+
+    data
+      .getDB()
+      .db()
+      .collection("users")
+      .updateOne({ secretToken }, { $set: { active: true, secretToken: "" } })
+      .then(result => {
+        // If secretToken doesn't matched
+        if (!result) {
+          return res.status(404).json({ error: "Can't be verified" });
+          // res.redirect("/user/login")
+        }
+        res.json(result);
+        // res.redirect("/user")
+      })
+      .catch(err => {
+        res.status(400).json({
+          error: err.errmsg
+        });
+      });
+  } catch (error) {
+    res.status(500).json({
+      error: "Server Error"
+    });
+  }
+});
 
 module.exports = router;

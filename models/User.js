@@ -37,6 +37,12 @@ const schema = {
       password: {
         bsonType: "string",
         minLength: 6
+      },
+      secretToken: {
+        bsonType: "string"
+      },
+      active: {
+        bsonType: "bool"
       }
     }
   }
