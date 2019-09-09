@@ -13,7 +13,6 @@ ody {
 .form-body {
   background: rgb(255, 255, 255);
   background-color: #fc9d9a;
-  background: url("../images/trianglify-lowres.png") center center / cover;
   background-attachment: fixed;
 }
 .mb-2r {
