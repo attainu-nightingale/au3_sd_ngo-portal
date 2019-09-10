@@ -83,7 +83,11 @@ app.get("/donate", (req, res) => {
 
 // About us page
 app.get("/aboutus", (req, res) => {
-  res.send("About us page");
+  res.render("aboutus", {
+    title: "eGurukul | Aboutus",
+    logoLink: "./images/e.png",
+    jsFile: "/js/all.js"
+  });
 });
 
 // Logout Route
