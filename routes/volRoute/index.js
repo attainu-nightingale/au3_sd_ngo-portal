@@ -141,9 +141,7 @@ router.post(
           const token = result.ops[0].secretToken;
           // send verification code to user's mail
           verifyEmail(result.ops[0].email, token);
-          res.json({
-            success: "Registerd. Now verify your account"
-          });
+          res.redirect("/vol/verify");
         })
         .catch(err => {
           console.log(err);
@@ -161,40 +159,50 @@ router.post(
 );
 
 /*
-@type     POST
+@type     GET and POST
 @route    /user/verify
 @desc     Verufy volunteer
 @access   PUBLIC
 */
-router.post("/verify", async (req, res) => {
-  const { secretToken } = req.body;
-  try {
-    const data = await Vol();
-
-    data
-      .getDB()
-      .db()
-      .collection("volunteers")
-      .updateOne({ secretToken }, { $set: { active: true, secretToken: "" } })
-      .then(result => {
-        // If secretToken doesn't matched
-        if (!result) {
-          return res.status(404).json({ error: "Can't be verified" });
-          // res.redirect("/user/login")
-        }
-        res.json(result);
-        // res.redirect("/user")
-      })
-      .catch(err => {
-        res.status(400).json({
-          error: err.errmsg
-        });
-      });
-  } catch (error) {
-    res.status(500).json({
-      error: "Server Error"
+router
+  .get("/verify", (req, res) => {
+    res.render("verify", {
+      action: "/vol/verify",
+      title: "eGurukul | Verification",
+      logoLink: "../images/e.png"
     });
-  }
-});
+  })
+  .post("/verify", async (req, res) => {
+    const { secretToken } = req.body;
+    try {
+      const data = await Vol();
+
+      data
+        .getDB()
+        .db()
+        .collection("volunteers")
+        .updateOne({ secretToken }, { $set: { active: true, secretToken: "" } })
+        .then(result => {
+          // If secretToken doesn't matched
+          if (!result.result.nModified) {
+            // return res.status(404).json({ error: "Can't be verified" });
+            res.redirect("/vol/verify");
+            return;
+          }
+
+          // res.json(result);
+          res.redirect("/");
+        })
+        .catch(err => {
+          res.status(400).json({
+            error: err.errmsg
+          });
+        });
+    } catch (error) {
+      res.status(500).json({
+        error: "Server Error"
+      });
+    }
+  });
 
 module.exports = router;
