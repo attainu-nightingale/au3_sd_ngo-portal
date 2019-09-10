@@ -90,7 +90,7 @@ label.custom-file-label {
 }
 .custom-file-input:lang(en) ~ .custom-file-label::after {
   content: "\f1c5";
-  font-family: FontAwesome;
+  font-family: "Font Awesome\ 5 Free";
   font-weight: normal;
   font-style: normal;
   margin: 0px 0px 0px 10px;

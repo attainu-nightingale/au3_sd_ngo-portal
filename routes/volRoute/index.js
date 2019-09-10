@@ -6,7 +6,7 @@ const Vol = require("../../models/Vol");
 
 const { verifyEmail } = require("../../util/mailer");
 const { Joi, loginSchema, volSchema } = require("../../config/joiSchema");
-
+const { upload } = require("../../util/uploader");
 const router = Router();
 
 /* 
@@ -99,15 +99,27 @@ router.get("/registration", (req, res) => {
 @desc     Create volunteers
 @access   PUBLIC
 */
-router.post("/registration", async (req, res) => {
-  const { error, value } = Joi.validate(req.body, volSchema);
-  if (error) {
-    return res.status(403).json({
-      error: error.message
-    });
-  }
+router.post("/registration", (req, res) => {
+  upload(req, res, err => {
+    if (err) {
+      res.json(err);
+    } else {
+      if (req.file === undefined) {
+        res.json({ err: "Error: No file selected" });
+      } else {
+        res.json(req.file.filename);
+      }
+    }
+  });
+  // const { error, value } = Joi.validate(req.body, volSchema);
+  // if (error) {
+  //   return res.status(403).json({
+  //     error: error.message
+  //   });
+  // }
+
   // Encrypt password using bcrypt
-  const saltRounds = 10;
+  /*   const saltRounds = 10;
   try {
     const data = await Vol();
 
@@ -146,7 +158,7 @@ router.post("/registration", async (req, res) => {
     res.status(500).json({
       error: "Server Error"
     });
-  }
+  } */
 });
 
 /*
