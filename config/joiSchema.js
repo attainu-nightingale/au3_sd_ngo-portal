@@ -83,7 +83,7 @@ const volSchema = Joi.object().keys({
         "username is  required and must be greater than 3 and less than 20"
       )
     ),
-  name: Joi.string()
+  fullname: Joi.string()
     .min(3)
     .max(40)
     .required()

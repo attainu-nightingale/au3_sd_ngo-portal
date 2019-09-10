@@ -6,7 +6,8 @@ const Vol = require("../../models/Vol");
 
 const { verifyEmail } = require("../../util/mailer");
 const { Joi, loginSchema, volSchema } = require("../../config/joiSchema");
-const { upload } = require("../../util/uploader");
+const { parser } = require("../../util/uploader");
+
 const router = Router();
 
 /* 
@@ -99,67 +100,65 @@ router.get("/registration", (req, res) => {
 @desc     Create volunteers
 @access   PUBLIC
 */
-router.post("/registration", (req, res) => {
-  upload(req, res, err => {
-    if (err) {
-      res.json(err);
-    } else {
-      if (req.file === undefined) {
-        res.json({ err: "Error: No file selected" });
-      } else {
-        res.json(req.file.filename);
-      }
-    }
-  });
-  // const { error, value } = Joi.validate(req.body, volSchema);
-  // if (error) {
-  //   return res.status(403).json({
-  //     error: error.message
-  //   });
-  // }
+router.post(
+  "/registration",
+  parser.single("profile_picture"),
+  async (req, res) => {
+    const { url, secure_url } = req.file;
 
-  // Encrypt password using bcrypt
-  /*   const saltRounds = 10;
-  try {
-    const data = await Vol();
-
-    const hash = await bcrypt.hash(value.password, saltRounds);
-
-    // change plain text password to hash password
-    value.password = hash;
-
-    // set secret token for email verification
-    value.secretToken = shortid.generate();
-
-    // flag for inactive
-    value.active = false;
-
-    data
-      .getDB()
-      .db()
-      .collection("volunteers")
-      .insertOne(value)
-      .then(result => {
-        const token = result.ops[0].secretToken;
-        // send verification code to user's mail
-        verifyEmail("ruhikhandaker@gmail.com", token);
-        res.json({
-          success: "Registerd. Now verify your account"
-        });
-      })
-      .catch(err => {
-        console.log(err);
-        res.status(400).json({
-          error: err.errmsg
-        });
+    const { error, value } = Joi.validate(req.body, volSchema);
+    if (error) {
+      return res.status(403).json({
+        error: error.message
       });
-  } catch (error) {
-    console.log(error);
-    res.status(500).json({
-      error: "Server Error"
-    });
-  } */
-});
+    }
+
+    // Encrypt password using bcrypt
+    const saltRounds = 10;
+    try {
+      const data = await Vol();
+
+      const hash = await bcrypt.hash(value.password, saltRounds);
+
+      // change plain text password to hash password
+      value.password = hash;
+
+      // set secret token for email verification
+      value.secretToken = shortid.generate();
+
+      // flag for inactive
+      value.active = false;
+
+      // add image url
+      value.profile_pic = secure_url;
+
+      data
+        .getDB()
+        .db()
+        .collection("volunteers")
+        .insertOne(value)
+        .then(result => {
+          const token = result.ops[0].secretToken;
+          // send verification code to user's mail
+          verifyEmail(result.ops[0].email, token);
+          res.json({
+            success: "Registerd. Now verify your account"
+          });
+        })
+        .catch(err => {
+          console.log(err);
+          res.status(400).json({
+            error: err.errmsg
+          });
+        });
+    } catch (error) {
+      console.log(error);
+      res.status(500).json({
+        error: "Server Error"
+      });
+    }
+  }
+);
 
 /*
 @type     POST
