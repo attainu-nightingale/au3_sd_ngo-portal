@@ -87,7 +87,8 @@ router.get("/registration", (req, res) => {
   res.render("volreg", {
     title: "eGurukul | Volunteer Registration",
     cssFile: "/css/volunteer.css",
-    logoLink: "../images/e.png"
+    logoLink: "../images/e.png",
+    jsFile: "/js/all.js"
   });
 });
 
