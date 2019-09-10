@@ -18,6 +18,7 @@ const userRouter = require("./routes/userRoute");
 const volRouter = require("./routes/volRoute");
 const studentRouter = require("./routes/studentRoute");
 const storiesRouter = require("./routes/storiesRoute");
+const activitesRoute = require("./routes/activityRoute");
 
 // Paths
 const STATIC_PATH = path.join(__dirname, "/public");
@@ -101,6 +102,7 @@ app.use("/user", userRouter);
 app.use("/vol", volRouter);
 app.use("/student", studentRouter);
 app.use("/stories", storiesRouter);
+app.use("/activity", activitesRoute);
 
 // Initialize Database
 db.initDB((err, db) => {
