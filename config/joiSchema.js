@@ -68,7 +68,9 @@ const regSchema = Joi.object().keys({
     ),
   location: Joi.string()
     .required()
-    .error(new Error("location is required"))
+    .error(new Error("location is required")),
+  gender: Joi.string().error(new Error("Must be string")),
+  profile_pic: Joi.string().error(new Error("Must be string"))
 });
 
 const volSchema = Joi.object().keys({

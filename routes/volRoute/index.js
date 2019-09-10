@@ -120,7 +120,7 @@ router.post(
   "/registration",
   parser.single("profile_picture"),
   async (req, res) => {
-    const { url, secure_url } = req.file;
+    const { secure_url } = req.file;
 
     const { error, value } = Joi.validate(req.body, volSchema);
     if (error) {
@@ -210,7 +210,6 @@ router
             return;
           }
           req.session["isLoggedIn"] = true;
-          // res.json(result);
           res.redirect("/");
         })
         .catch(err => {
