@@ -56,7 +56,8 @@ app.get("/donate", (req, res) => {
   res.render("donate", {
     title: "eGurukul | Donate to poor students",
     cssFile: "css/donate.css",
-    logoLink: "./images/e.png"
+    logoLink: "./images/e.png",
+    jsFile: "/js/all.js"
   });
 });
 

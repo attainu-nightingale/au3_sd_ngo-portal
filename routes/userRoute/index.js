@@ -19,7 +19,8 @@ router.get("/login", (req, res) => {
   res.render("userlogin", {
     title: "eGurukul | User Login",
     cssFile: "/css/users_login.css",
-    logoLink: "../images/e.png"
+    logoLink: "../images/e.png",
+    jsFile: "/js/all.js"
   });
 });
 
@@ -87,7 +88,8 @@ router.get("/registration", (req, res) => {
   res.render("userreg", {
     title: "eGurukul | User Registration",
     cssFile: "/css/users_signup.css",
-    logoLink: "../images/e.png"
+    logoLink: "../images/e.png",
+    jsFile: "/js/all.js"
   });
 });
 

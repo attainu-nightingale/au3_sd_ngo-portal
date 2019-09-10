@@ -19,7 +19,8 @@ router.get("/login", (req, res) => {
   res.render("vollogin", {
     title: "eGurukul | Volunteer Login",
     cssFile: "/css/vol.css",
-    logoLink: "../images/e.png"
+    logoLink: "../images/e.png",
+    jsFile: "/js/all.js"
   });
 });
 
