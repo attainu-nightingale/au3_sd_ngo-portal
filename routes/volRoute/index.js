@@ -17,6 +17,10 @@ const router = Router();
 @access   PUBLIC
 */
 router.get("/login", (req, res) => {
+  if (req.session.isLoggedIn) {
+    res.redirect("/");
+    return;
+  }
   res.render("vollogin", {
     title: "eGurukul | Volunteer Login",
     cssFile: "/css/vol.css",
@@ -34,9 +38,10 @@ router.get("/login", (req, res) => {
 router.post("/login", async (req, res) => {
   const { error, value } = Joi.validate(req.body, loginSchema);
   if (error) {
-    res.status(403).json({
-      error: error.message
-    });
+    // res.status(403).json({
+    //   error: error.message
+    // });
+    res.redirect("/vol/login");
     return;
   }
   try {
@@ -50,21 +55,28 @@ router.post("/login", async (req, res) => {
       .then(async result => {
         // If username doesn't matched
         if (!result) {
-          return res.status(404).json({ error: "Authentication Failed" });
+          // return res.status(404).json({ error: "Authentication Failed" });
+          res.redirect("/vol/login");
+          return;
         }
         // if user not verified
         if (!result.active) {
-          return res.status(403).json({ error: "Email not verified" });
+          // return res.status(403).json({ error: "Email not verified" });
+          res.redirect("/vol/verify");
+          return;
         }
 
         const isMatched = await bcrypt.compare(value.password, result.password);
 
         if (!isMatched) {
-          return res.status(404).json({
-            error: "Authentication Failed"
-          });
+          // return res.status(404).json({
+          //   error: "Authentication Failed"
+          // });
+          res.redirect("/vol/login");
+          return;
         }
-        res.json(result);
+        req.session["isLoggedIn"] = true;
+        res.redirect("/");
       })
       .catch(err => {
         console.log(err);
@@ -86,6 +98,10 @@ router.post("/login", async (req, res) => {
 @access   PUBLIC
 */
 router.get("/registration", (req, res) => {
+  if (req.session.isLoggedIn) {
+    res.redirect("/");
+    return;
+  }
   res.render("volreg", {
     title: "eGurukul | Volunteer Registration",
     cssFile: "/css/volunteer.css",
@@ -166,6 +182,10 @@ router.post(
 */
 router
   .get("/verify", (req, res) => {
+    if (req.session.isLoggedIn) {
+      res.redirect("/");
+      return;
+    }
     res.render("verify", {
       action: "/vol/verify",
       title: "eGurukul | Verification",
@@ -189,7 +209,7 @@ router
             res.redirect("/vol/verify");
             return;
           }
-
+          req.session["isLoggedIn"] = true;
           // res.json(result);
           res.redirect("/");
         })

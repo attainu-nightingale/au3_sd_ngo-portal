@@ -52,6 +52,11 @@
                     <li class="nav-item">
                         <a class="nav-link h-a" href="/stories">Stories</a>
                     </li>
+                    {{#if logged}}
+                    <li class="nav-item">
+                        <a class="nav-link h-a" href="/logout">Logout</a>
+                    </li>
+                    {{else}}
                     <li class="nav-item dropdown">
                         <div class="dropdown">
                             <button class="btn dropdown-toggle" type="button" id="userDropDown" data-toggle="dropdown"
@@ -76,6 +81,9 @@
                             </div>
                         </div>
                     </li>
+                    {{/if}}
+
+
                     <li class="nav-item active">
                         <a class="nav-link h-a" href="/contactus">Contact Us </a>
                     </li>
@@ -87,7 +95,6 @@
         </div>
     </nav>
     {{!-- Header End --}}
-
     <div class="main-wrapper">
         {{{body}}}
     </div>

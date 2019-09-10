@@ -2,6 +2,7 @@ const path = require("path");
 const http = require("http");
 
 const express = require("express");
+const session = require("express-session");
 const hbs = require("hbs");
 const reload = require("reload");
 const helmet = require("helmet");
@@ -29,6 +30,24 @@ const app = express();
 // Secure all routes
 app.use(helmet());
 
+// express-session middlewares
+app.use(
+  session({
+    secret: "Yaa this is secret code, don't copy it", // 🤪
+    resave: false,
+    saveUninitialized: true
+  })
+);
+
+// It'll prevent to use home route by back button when user logout
+app.use((req, res, next) => {
+  res.set(
+    "Cache-Control",
+    "no-cache, private, no-store, must-revalidate, max-stale=0, post-check=0, pre-check=0"
+  );
+  next();
+});
+
 // hbs setup
 app.set("view engine", "hbs");
 app.set("views", VIEWS_PATH);
@@ -44,6 +63,7 @@ app.locals.env = envt === "development";
 
 // Home route
 app.get("/", (req, res) => {
+  app.locals.logged = req.session.isLoggedIn;
   res.render("home", {
     home: true,
     title: "eGurukul | Made for Students and Helped by you",
@@ -64,6 +84,12 @@ app.get("/donate", (req, res) => {
 // About us page
 app.get("/aboutus", (req, res) => {
   res.send("About us page");
+});
+
+// Logout Route
+app.get("/logout", (req, res) => {
+  req.session.destroy();
+  res.redirect("/");
 });
 
 // Routes
