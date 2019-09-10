@@ -1,27 +1,17 @@
 .form-body {
+  background: rgb(255, 255, 255);
   background-color: #fc9d9a;
-  background: linear-gradient(
-      to right bottom,
-      rgba(252, 157, 154, 0.527),
-      rgba(252, 157, 154, 0.479),
-      rgba(107, 0, 115, 0.555)
-    ),
-    url("../images/users/login_bg.png") center center / cover;
+  background: url("../images/trianglify-lowres.png") center center / cover;
   background-attachment: fixed;
   display: flex;
   justify-content: center;
   align-items: center;
 }
-
 .mb-2r {
-  margin-bottom: 2.1rem !important;
+  margin-bottom: 3.1rem !important;
 }
 .omb-2 {
   margin-bottom: 1.9rem !important;
-}
-
-.form-row {
-  box-shadow: 0 0px 45px 3px rgba(107, 0, 115, 0.555);
 }
 
 /*  assigning color*/
@@ -38,7 +28,7 @@
       rgba(62, 1, 66, 0.527),
       rgba(60, 1, 65, 0.541)
     ),
-    url("../images/users/login_bg1.png") no-repeat center center / cover;
+    url("../images/banner-1.jpg") no-repeat center center / cover;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -62,19 +52,19 @@
 /* Main wrapper */
 .form-wrapper {
   background-color: #f5f5f5;
-  padding: 4rem;
-  height: 450px;
+  padding: 2rem;
 }
 .img {
   width: 100px;
   box-shadow: 0 5px 10px rgba(252, 154, 231, 0.87);
 }
 /* sign up form*/
-.input {
+.input,
+.textarea {
   background: none;
   color: #525151ad;
-  font-size: 10px;
-  padding: 8px 8px 15px 5px;
+  font-size: 12px;
+  padding: 8px 8px 8px 5px;
   display: block;
   width: 100%;
   min-width: 320px;
@@ -82,10 +72,12 @@
   border-radius: 0;
   border-bottom: 1px solid #c6c6c6;
 }
-.input:focus {
+.input:focus,
+.textarea:focus {
   outline: none;
 }
-.input:focus ~ .label {
+.input:focus ~ .label,
+.textarea:focus ~ .label {
   top: -14px;
   font-size: 12px;
   color: #2196f3;
@@ -96,7 +88,8 @@
   font-size: 12px;
   color: #2196f3;
 }
-.input:focus ~ .bar:before {
+.input:focus ~ .bar:before,
+.textarea:focus ~ .bar:before {
   width: 100%;
   min-width: 320px;
 }
@@ -151,8 +144,13 @@ datalist option {
 .btn.btn-submit {
   background: #6b0073;
   background: -webkit-linear-gradient(to right bottom, #ec6ead, #6b0073);
-  background: linear-gradient(to right bottom, #ec6ead, #6b0073);
+  background: linear-gradient(
+    to right bottom,
+    #ec6ead,
+    #6b0073
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
+  color: #fff;
   border: none;
   padding: 0.8rem 3rem;
   border-radius: 2rem;
@@ -163,12 +161,20 @@ datalist option {
   box-shadow: 0 1px 3px rgba(236, 110, 173, 0.562),
     0 1px 2px rgba(236, 110, 173, 0.575);
   transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-  color: #fff;
 }
 .btn.btn-submit:hover {
   background: #6b0073;
-  background: -webkit-linear-gradient(to left top, #ec6ead, #6b0073);
-  background: linear-gradient(to left top, #ec6ead, #6b0073);
+  background: -webkit-linear-gradient(
+    to left top,
+    #ec6ead,
+    #6b0073
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to left top,
+    #ec6ead,
+    #6b0073
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
   color: #deeffd;
   box-shadow: 0 7px 14px rgba(0, 0, 0, 0.18), 0 5px 5px rgba(0, 0, 0, 0.12);
 }
@@ -184,9 +190,67 @@ datalist option {
   min-width: 100%;
 }
 
-.input:focus ~ .bar:before {
+.inline-input .bar {
   width: 100%;
   min-width: 100%;
+}
+
+.inline-input:focus ~ .bar:before {
+  width: 85%;
+  min-width: 85%;
+}
+
+/* Radio button style */
+
+.inline-radio {
+  width: 100%;
+  display: flex;
+  overflow: hidden;
+  border-bottom: 1px solid #b6b6b6;
+}
+.inline-radio div {
+  position: relative;
+  flex: 1;
+}
+.inline-radio input {
+  width: 100%;
+  height: 40px;
+  opacity: 0;
+  font-size: 12px;
+}
+.inline-radio label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: #525151ad;
+  width: 100%;
+  height: 100%;
+  background: inherit;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  font-size: 16px;
+}
+.inline-radio div:last-child label {
+  border-right: 0;
+}
+.inline-radio input:checked + label {
+  background: #6b0073;
+  background: -webkit-linear-gradient(
+    45deg,
+    #ec6ead,
+    #6b0073
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    45deg,
+    #ec6ead,
+    #6b0073
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  font-weight: 500;
+  color: #fff;
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
 }
 
 /* Date picker style */
@@ -202,6 +266,15 @@ datalist option {
 [type="date"]::-webkit-calendar-picker-indicator {
   opacity: 0;
 }
-.main-wrapper {
-  height: 100%;
+.dob-label {
+  font-size: 16px;
+  color: #525151ad;
+}
+.dob-input {
+  color: #525151ad;
+  font-size: 14px;
+  border: none;
+  border-radius: 0;
+  border-bottom: 1px solid #c6c6c6;
+  padding-bottom: 2px;
 }

@@ -1,0 +1,44 @@
+<div class="container-fluid form-body">
+    <div class="container">
+        <div class="row no-gutters">
+            <div class="col-10 m-auto">
+                <div class="row no-gutters form-row">
+                    <!--left side picture-->
+                    <div class="col-md-6 left-img p-0">
+                        <h2 class="slogan-text"></h2>
+
+                        <!--  slogan -->
+                        <p class="slogan-details">
+                            “The best way to find yourself is to lose yourself in the
+                            service of others.”
+                        </p>
+
+                        <div class="btn-box">
+                            <a class="btn btn-submit" href="/vol/registration">Sign Up</a>
+                        </div>
+                    </div>
+
+                    <!--right side form-->
+                    <div class="col-md-6 p-0">
+                        <div class="form-wrapper">
+                            <h2 class=" text-center ">
+                                Login to<span class="pinks">Your Account</span>
+                            </h2>
+                            <form>
+                                <div class="row">
+                                    {{> requiredInput type="text" name="username" className="input" label="User name"}}
+                                    {{> requiredInput type="password" name="password" className="input" label="Password"}}
+                                    <div class="btn-box">
+                                        <button class="btn btn-submit" type="submit">
+                                            Log in
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "dev": "nodemon index.js -e hbs,js,css,html"
+    "dev": "nodemon -r dotenv/config index.js -e hbs,js,css,html"
   },
   "repository": {
     "type": "git",
@@ -27,6 +27,21 @@
   },
   "homepage": "https://github.com/attainu-nightingale/au3_sd_ngo-portal#readme",
   "devDependencies": {
-    "nodemon": "^1.19.1"
+    "dotenv": "^8.1.0",
+    "nodemon": "^1.19.1",
+    "reload": "^3.0.1"
+  },
+  "dependencies": {
+    "@hapi/joi": "^15.1.1",
+    "@sendgrid/mail": "^6.4.0",
+    "bcrypt": "^3.0.6",
+    "express": "^4.17.1",
+    "express-session": "^1.16.2",
+    "hbs": "^4.0.4",
+    "helmet": "^3.21.0",
+    "mongodb": "^3.3.2",
+    "multer": "^1.4.2",
+    "multer-storage-cloudinary": "^2.2.1",
+    "shortid": "^2.2.15"
   }
 }
