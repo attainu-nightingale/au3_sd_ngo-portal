@@ -130,10 +130,10 @@ app.get("/add-activity", (req, res) => {
 
 // Add Student
 app.get("/add-student", (req, res) => {
-  // if (!req.session.volUser) {
-  //   res.redirect("/vol/login");
-  //   return;
-  // }
+  if (!req.session.volUser) {
+    res.redirect("/vol/login");
+    return;
+  }
   res.render("addNewStudent", {
     title: "eGurukul | Add student",
     cssFile: "css/addNewStudent.css",

@@ -13,6 +13,10 @@ const router = Router();
 @access   PRIVATE(for volunteers)
 */
 router.get("/", async (req, res) => {
+  if (!req.session.volUser) {
+    res.redirect("/vol/login");
+    return;
+  }
   try {
     const data = await Student();
 
@@ -24,20 +28,18 @@ router.get("/", async (req, res) => {
       .toArray()
       .then(result => {
         res.render("students", {
-          logoLink: "./images/e.png",
+          logoLink: "../images/e.png",
           jsFile: "/js/all.js",
           data: result
         });
       })
       .catch(err => {
-        res.status(400).json({
-          error: err.errmsg
-        });
+        req.flash("errorMessage", err.errmsg);
+        res.redirect("/");
       });
   } catch (error) {
-    res.status(500).json({
-      error: "Server Error"
-    });
+    req.flash("errorMessage", "Server Error");
+    res.redirect("/");
   }
 });
 
@@ -48,6 +50,10 @@ router.get("/", async (req, res) => {
 @access   PRIVATE(for volunteers)
 */
 router.get("/:id", async (req, res) => {
+  if (!req.session.volUser) {
+    res.redirect("/vol/login");
+    return;
+  }
   const id = req.params.id;
   try {
     const data = await Student();
@@ -84,14 +90,12 @@ router.get("/:id", async (req, res) => {
         });
       })
       .catch(err => {
-        res.status(400).json({
-          error: err.errmsg
-        });
+        req.flash("errorMessage", err.errmsg);
+        res.redirect("/");
       });
   } catch (error) {
-    res.status(500).json({
-      error: "Server Error"
-    });
+    req.flash("errorMessage", "Server Error");
+    res.redirect("/");
   }
 });
 
@@ -124,6 +128,50 @@ router.post("/", parser.single("profile_picture"), async (req, res) => {
         res.redirect("/students");
       })
       .catch(err => {
+        req.flash("errorMessage", err.errmsg);
+      });
+  } catch (error) {
+    rreq.flash("errorMessage", "Server Error");
+    res.redirect("/");
+  }
+});
+
+/*
+@type     GET
+@route    /student/:id
+@desc     Get a student in a from
+@access   Private (for volunteer)
+*/
+router.get("/edit/:id", async (req, res) => {
+  if (!req.session.volUser) {
+    res.redirect("/vol/login");
+    return;
+  }
+  const id = req.params.id;
+  try {
+    const data = await Student();
+
+    data
+      .getDB()
+      .db()
+      .collection("students")
+      .findOne({ _id: ObjectID(id) })
+      .then(result => {
+        const { fullname, guardian, dob, location, study } = result;
+
+        res.render("edit", {
+          title: "eGurukul: Edit Student's Field",
+          logoLink: "../../images/e.png",
+          jsFile: "/js/all.js",
+          fullname,
+          guardian,
+          dob,
+          location,
+          study,
+          id
+        });
+      })
+      .catch(err => {
         res.status(400).json({
           error: err.errmsg
         });
@@ -134,24 +182,25 @@ router.post("/", parser.single("profile_picture"), async (req, res) => {
     });
   }
 });
-
 /* 
 @type     PUT
 @route    /student/:id
 @desc     Update a student
 @access   Private (for volunteer)
 */
-router.put("/:id", async (req, res) => {
+router.put("/edit/:id", async (req, res) => {
+  const datas = req.body;
   try {
     const data = await Student();
-
     data
       .getDB()
       .db()
       .collection("students")
-      .updateOne({ _id: ObjectID(req.params.id) }, { $set: req.body })
+      .updateOne({ _id: ObjectID(req.params.id) }, { $set: { ...datas } })
       .then(result => {
-        res.json(result);
+        res.json({
+          success: "Succssfully updated"
+        });
       })
       .catch(err => {
         res.status(400).json({

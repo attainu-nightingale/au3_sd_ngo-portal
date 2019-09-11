@@ -41,4 +41,32 @@ $(document).ready(function() {
       });
     });
   }
+
+  // update form
+  if ($(".update-form")) {
+    $(".update-form").submit(function(event) {
+      event.preventDefault();
+      const values = $(this).serializeArray();
+      const updatedForm = {};
+      values.forEach(element => {
+        updatedForm[element.name] = element.value;
+      });
+
+      const id = $(".student-up").attr("data-id");
+      console.log(id);
+      $.ajax({
+        url: `/students/edit/${id}`,
+        type: "PUT",
+        data: JSON.stringify(updatedForm),
+        contentType: "application/json",
+        success: function(result) {
+          alert("successfully updated");
+          location.replace("/students");
+        },
+        error: function(err) {
+          console.log(err);
+        }
+      });
+    });
+  }
 });
