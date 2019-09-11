@@ -23,7 +23,11 @@ router.get("/", async (req, res) => {
       .find()
       .toArray()
       .then(result => {
-        res.json(result);
+        res.render("activites", {
+          logoLink: "./images/e.png",
+          jsFile: "/js/all.js",
+          cssFile: "css/activity.css"
+        });
       })
       .catch(err => {
         res.status(400).json({

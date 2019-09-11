@@ -145,7 +145,7 @@ app.use("/user", userRouter);
 app.use("/vol", volRouter);
 app.use("/students", studentRouter);
 app.use("/stories", storiesRouter);
-app.use("/activity", activitesRoute);
+app.use("/activites", activitesRoute);
 
 // Initialize Database
 db.initDB((err, db) => {
