@@ -1,45 +1,50 @@
 <div class="container-fluid contact-container">
     <div class="container mt-5 mb-5">
-        <div class="row no-gutters">
-            <div class="col-md-6 left">
-                <div class="content">
-                    <h1>Contact us</h1>
-                    <br />
-                    <h5>We'd love to hear from you.</h5>
-                    <br />
-                    <p class="lead">E-Gurukul has always been trying to be as much
-                        responsible we can. we will try out best to
-                        reach out to you in few hours
-                    </p>
-                </div>
-
-            </div>
-            <div class="col-md-6 right">
-                <div class="card-body">
-                    <form method="POST">
-                        {{> requiredInput name="fullname" type="text" label="Full Name" className="input inline-input"}}
-
-                        {{> requiredInput name="email" type="email" label="Email" className="input inline-input"}}
-                        {{> requiredInput name="phone" type="rexr" label="Phone number" className="input inline-input"}}
-                        <div class="form-group position-relative my-4">
-                            <textarea type="textarea" name="message" class="textarea anim" rows="3"></textarea><span
-                                class="highlight"></span><span class="bar"></span>
-                            <label class="label">Your Message
-                            </label>
-                            <span class="highlight"></span>
-                            <span class="bar"></span>
-                            <label class="label">Your Message <sup class="text-danger">*</sup>
-                            </label>
+        <div class="row">
+            <div class="col-10 m-auto">
+                <div class="row no-gutters">
+                    <div class="col-md-6 left">
+                        <div class="content">
+                            <h1>Contact us</h1>
+                            <br />
+                            <h5>We'd love to hear from you.</h5>
+                            <br />
+                            <p class="lead">E-Gurukul has always been trying to be as much
+                                responsible we can. we will try out best to
+                                reach out to you in few hours
+                            </p>
                         </div>
-                        <div class="btn-box">
-                            <button class="button button-like" type="submit">
-                                <i class="fa fa-heart fa-2x"></i>
-                                <span>Submit</span>
-                            </button>
+
+                    </div>
+                    <div class="col-md-6 right">
+                        <div class="card-body">
+                            <form method="POST">
+                                {{> requiredInput name="fullname" type="text" label="Full Name" className="input inline-input"}}
+
+                                {{> requiredInput name="email" type="email" label="Email" className="input inline-input"}}
+                                {{> requiredInput name="phone" type="rexr" label="Phone number" className="input inline-input"}}
+                                <div class="form-group position-relative my-4">
+                                    <textarea type="textarea" name="message" class="textarea anim"
+                                        rows="3"></textarea><span class="highlight"></span><span class="bar"></span>
+                                    <label class="label">Your Message
+                                    </label>
+                                    <span class="highlight"></span>
+                                    <span class="bar"></span>
+                                    <label class="label">Your Message <sup class="text-danger">*</sup>
+                                    </label>
+                                </div>
+                                <div class="btn-box">
+                                    <button class="button button-like" type="submit">
+                                        <i class="fa fa-heart fa-2x"></i>
+                                        <span>Submit</span>
+                                    </button>
+                                </div>
+                            </form>
                         </div>
-                    </form>
+                    </div>
                 </div>
             </div>
         </div>
+
     </div>
 </div>
