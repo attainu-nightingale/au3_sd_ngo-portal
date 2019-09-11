@@ -158,3 +158,11 @@ a.h-donate-btn:hover {
 input {
   font-size: 0.8rem !important;
 }
+
+/* Alert */
+.alert p {
+  font-size: 0.8rem;
+}
+.alert button {
+  padding-right: 5px !important;
+}

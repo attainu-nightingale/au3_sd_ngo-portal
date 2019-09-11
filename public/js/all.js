@@ -1,4 +1,5 @@
 $(document).ready(function() {
+  // Input animation
   if ($(".anim")) {
     $(".anim").on("keyup", function() {
       if ($(this).val() == "") {
@@ -9,6 +10,7 @@ $(document).ready(function() {
     });
   }
 
+  // Show image name in file field
   if ($('input[type="file"]')) {
     $('input[type="file"]').on("change", function(e) {
       let filename = e.target.files[0].name;
@@ -16,5 +18,12 @@ $(document).ready(function() {
         .next(".custom-file-label")
         .html(filename);
     });
+  }
+
+  // Dismiss alert if available
+  if ($(".alert")) {
+    setTimeout(() => {
+      $(".alert").remove();
+    }, 4000);
   }
 });

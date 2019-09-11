@@ -21,6 +21,16 @@
             <!--right side -->
             <div class="col-md-7 ">
                 <div class="form-wrapper">
+                    {{#if flash}}
+                    <div class="alert alert-danger alert-dismissible fade show m-0 p-1" role="alert">
+                        <p class="m-0">
+                            {{ flash }}
+                        </p>
+                        <button type="button" class="close p-0" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    {{/if}}
                     <h2 class=" text-center "><b class="pinks">Users Sign Up</b></h2>
                     <form action="/user/registration" method="POST" enctype="multipart/form-data">
                         <div class="row">

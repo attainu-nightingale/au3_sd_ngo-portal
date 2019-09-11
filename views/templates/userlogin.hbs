@@ -21,10 +21,20 @@
                     <!--right side  -->
                     <div class="col-md-6 p-0">
                         <div class="form-wrapper">
+                            {{#if flash}}
+                            <div class="alert alert-danger alert-dismissible fade show m-0 p-1" role="alert">
+                                <p class="m-0">
+                                    {{ flash }}
+                                </p>
+                                <button type="button" class="close p-0" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            {{/if}}
                             <h2 class=" text-center ">
                                 Users <span class="pinks">Login</span>
                             </h2>
-                            <form>
+                            <form action="/user/login" method="POST">
                                 <div class="row">
                                     {{> requiredInput type="text" name="username" label="User name" className="input"}}
                                     {{> requiredInput type="password" name="password" label="Password" className="input"}}

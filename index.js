@@ -6,6 +6,7 @@ const session = require("express-session");
 const hbs = require("hbs");
 const reload = require("reload");
 const helmet = require("helmet");
+const flash = require("req-flash");
 
 // DB
 const db = require("./db/db");
@@ -58,6 +59,9 @@ hbs.registerPartials(PARTIALS_PATH);
 app.use(express.static(STATIC_PATH));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+// Flash Middleware
+app.use(flash());
 
 // set locals for using reload js inside of layout file
 app.locals.env = envt === "development";
