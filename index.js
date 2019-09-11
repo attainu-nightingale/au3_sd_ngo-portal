@@ -69,6 +69,7 @@ app.locals.env = envt === "development";
 // Home route
 app.get("/", (req, res) => {
   app.locals.logged = req.session.isLoggedIn;
+  app.locals.voLogged = req.session.volUser;
   res.render("home", {
     home: true,
     title: "eGurukul | Made for Students and Helped by you",
@@ -113,6 +114,10 @@ app.get("/contactus", (req, res) => {
 
 // Add activity
 app.get("/add-activity", (req, res) => {
+  if (!req.session.volUser) {
+    res.redirect("/vol/login");
+    return;
+  }
   res.render("add-activities", {
     title: "eGurukul | Add student activity",
     cssFile: "css/activites.css",
@@ -123,6 +128,10 @@ app.get("/add-activity", (req, res) => {
 
 // Add Student
 app.get("/add-student", (req, res) => {
+  if (!req.session.volUser) {
+    res.redirect("/vol/login");
+    return;
+  }
   res.render("addNewStudent", {
     title: "eGurukul | Add student",
     cssFile: "css/addNewStudent.css",

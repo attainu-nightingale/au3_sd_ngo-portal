@@ -76,6 +76,7 @@ router.post("/login", async (req, res) => {
           return;
         }
         req.session["isLoggedIn"] = true;
+        req.session["volUser"] = result.username;
         res.redirect("/");
       })
       .catch(err => {
@@ -210,6 +211,7 @@ router
             return;
           }
           req.session["isLoggedIn"] = true;
+          req.session["volUser"] = result.username;
           res.redirect("/");
         })
         .catch(err => {
