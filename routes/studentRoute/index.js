@@ -2,6 +2,7 @@ const Router = require("express").Router;
 const ObjectID = require("mongodb").ObjectID;
 
 const Student = require("../../models/Student");
+const { parser } = require("../../util/uploader");
 
 const router = Router();
 
@@ -12,11 +13,7 @@ const router = Router();
 @access   PRIVATE(for volunteers)
 */
 router.get("/", async (req, res) => {
-  res.render("students", {
-    logoLink: "./images/e.png",
-    jsFile: "/js/all.js"
-  });
-  /*   try {
+  try {
     const data = await Student();
 
     data
@@ -26,7 +23,11 @@ router.get("/", async (req, res) => {
       .find({})
       .toArray()
       .then(result => {
-        res.render(result);
+        res.render("students", {
+          logoLink: "./images/e.png",
+          jsFile: "/js/all.js",
+          data: result
+        });
       })
       .catch(err => {
         res.status(400).json({
@@ -37,7 +38,7 @@ router.get("/", async (req, res) => {
     res.status(500).json({
       error: "Server Error"
     });
-  } */
+  }
 });
 
 /* 
@@ -51,19 +52,42 @@ router.get("/:id", async (req, res) => {
   try {
     const data = await Student();
 
-    //   data
-    //     .getDB()
-    //     .db()
-    //     .collection("students")
-    //     .findOne({ _id: ObjectID(id) })
-    //     .then(result => {
-    //       res.json(result);
-    //     })
-    //     .catch(err => {
-    //       res.status(400).json({
-    //         error: err.errmsg
-    //       });
-    //     });
+    data
+      .getDB()
+      .db()
+      .collection("students")
+      .findOne({ _id: ObjectID(id) })
+      .then(result => {
+        const {
+          fullname,
+          guardian,
+          dob,
+          gender,
+          location,
+          study,
+          profile_pic,
+          _id: id
+        } = result;
+        res.render("student-report", {
+          title: "eGurukul: Student Report Card",
+          logoLink: "../images/e.png",
+          jsFile: "/js/all.js",
+          cssFile: "../css/report.css",
+          fullname,
+          guardian,
+          dob,
+          gender,
+          location,
+          study,
+          profile_pic,
+          id
+        });
+      })
+      .catch(err => {
+        res.status(400).json({
+          error: err.errmsg
+        });
+      });
   } catch (error) {
     res.status(500).json({
       error: "Server Error"
@@ -77,16 +101,27 @@ router.get("/:id", async (req, res) => {
 @desc     Create a Student
 @access   Private (for volunteer)
 */
-router.post("/", async (req, res) => {
+router.post("/", parser.single("profile_picture"), async (req, res) => {
+  if (!req.file) {
+    req.flash("errorMessage", "You need to upload profile picture");
+    res.redirect("/add-student");
+    return;
+  }
+
+  const { secure_url: profile_pic } = req.file;
+
   try {
     const data = await Student();
     data
       .getDB()
       .db()
       .collection("students")
-      .insertOne(req.body)
+      .insertOne({
+        ...req.body,
+        profile_pic
+      })
       .then(result => {
-        res.json(result);
+        res.redirect("/students");
       })
       .catch(err => {
         res.status(400).json({
@@ -146,7 +181,9 @@ router.delete("/:id", async (req, res) => {
       .collection("students")
       .deleteOne({ _id: ObjectID(req.params.id) })
       .then(result => {
-        res.json(result);
+        res.json({
+          success: "Successfully deleted"
+        });
       })
       .catch(err => {
         res.status(400).json({

@@ -4,13 +4,14 @@
             <h1 class="activities-title text-center mb-5">
                 New student entry
             </h1>
-            <form class="activites">
+            <form class="activites" action="/students" method="post" enctype="multipart/form-data">
                 {{> requiredInput name="fullname" type="text" label="Full Name" className="input inline-input"}}
                 {{> requiredInput name="guardian" type="text" label="Guardian name" className="input inline-input"}}
                 <div class="form-group position-relative my-4">
 
-                    <input type="text" class="input" for="dob" required="required" onfocus="(this.type='date')"
-                        onfocusout="(this.type='text')" /><span class="highlight"></span><span class="bar"></span>
+                    <input type="text" class="input" for="dob" name="dob" required="required"
+                        onfocus="(this.type='date')" onfocusout="(this.type='text')" /><span
+                        class="highlight"></span><span class="bar"></span>
                     <label>Date of birth</label>
                 </div>
 
@@ -32,12 +33,13 @@
 
                 {{> requiredInput name="location" type="text" label="Location" className="input inline-input"}}
                 {{> requiredInput name="study" type="text" label="Study status" className="input inline-input"}}
-                {{> requiredInput name="email" type="email" label="Email" className="input inline-input"}}
 
-                <div class="form-group position-relative my-4">
-                    <input type="text" class="input" required="required" onfocus="(this.type='file')"
-                        onfocusout="(this.type='text')" /><span class="highlight"></span><span class="bar"></span>
-                    <label>Profile picture</label>
+                <div class="form-group position-relative my-4 mb-2r">
+                    <div class="custom-file">
+                        <input type="file" class="custom-file-input" name="profile_picture" id="activity_img" />
+                        <label class="custom-file-label label" for="activity_img">Profile Picture <sup
+                                class="text-danger">*</sup></label>
+                    </div>
                 </div>
 
                 <div class="btn-box">

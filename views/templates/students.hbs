@@ -1,22 +1,22 @@
 <div class="container mx-3">
     <div class="row">
+        {{#each data }}
         <div class="col-12 col-sm-6 col-md-4 col-lg-3 mx-2">
             <div class="card">
-                <img src="/images/allstudents/images.jpg" class="card-img-top" alt="not avaliable">
+                <img src="{{this.profile_pic}}" class="card-img-top" alt="{{this.fullname}}">
                 <div class="card-body">
-                    <h5 class="card-title text-secondary"><strong class="text-dark">Name:</strong> John Doe</h5>
-                    <h6 class="card-text text-secondary"><strong class="text-dark">Gaurdian:</strong> Michel Doe</h6>
-                    <h6 class="card-text text-secondary"><strong class="text-dark">DOB:</strong> 19-1-2001</h6>
-                    <h6 class="card-text text-secondary"><strong class="text-dark">Study:</strong> Random</h6>
-                    <h6 class="card-text text-secondary"><strong class="text-dark">Summary:</strong> Lorem ipsum dolor,
-                        sit amet consectetur adipisicing
-                        elit. Facilis,
-                        dolorum?</h6>
+                    <h5 class="card-title text-secondary"><strong class="text-dark">Name:</strong> {{this.fullname}}
+                    </h5>
+                    <h6 class="card-text text-secondary"><strong class="text-dark">Gaurdian:</strong>
+                        {{ this.guardian }}</h6>
+                    <h6 class="card-text text-secondary"><strong class="text-dark">DOB:</strong> {{ this.dob }}</h6>
+                    <h6 class="card-text text-secondary"><strong class="text-dark">Study:</strong> {{ this.study }}</h6>
                 </div>
                 <div class="card-footer">
-                    <a href="#" class="stretched-link">Details</a>
+                    <a href="students/{{this._id}}" class="stretched-link">Details</a>
                 </div>
             </div>
         </div>
+        {{/each}}
     </div>
 </div>

@@ -4,16 +4,16 @@ const schema = {
   $jsonSchema: {
     bsonType: "object",
     additionalProperties: false,
-    required: ["gurdianName", "name", "dob", "location"],
+    required: ["guardian", "fullname", "dob", "location", "study"],
     properties: {
       _id: {
         bsonType: "objectId"
       },
-      name: {
+      fullname: {
         bsonType: "string",
         description: "must be a string and is required"
       },
-      gurdianName: {
+      guardian: {
         bsonType: "string",
         description: "must be a email and is required"
       },
@@ -31,7 +31,7 @@ const schema = {
       profile_pic: {
         bsonType: "string"
       },
-      studyStatus: {
+      study: {
         bsonType: "string"
       }
     }

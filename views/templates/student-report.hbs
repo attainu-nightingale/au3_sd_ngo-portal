@@ -1,0 +1,29 @@
+<div class="container s-report my-3">
+    <div class="row">
+        <div class="col-md-6  p-3">
+            <h6>Name :- {{ fullname }}</h6>
+            <h6>Guardian :- {{ guardian }}</h6>
+            <h6>DOB :- {{ dob }}</h6>
+            <h6>Place :- {{ location }}</h6>
+            <h6>Study Status :- {{ study }}</h6>
+
+        </div>
+        <div class="col-md-3"></div>
+        <div class="col-md-3">
+            <img src="{{profile_pic}}" class="img s-report__img" alt="{{fullname}}" />
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-7">
+            <h4>Details</h4>
+            <p class="report">
+                always completes daily assignments in a timely manner.returns
+                homework on time and well done.stays focused on the task at hand.
+            </p>
+        </div>
+    </div>
+    <div class="btn-box">
+        <button class="btn btn-submit del-student" type="submit" data-id="{{id}}">Remove</button>
+    </div>
+</div>

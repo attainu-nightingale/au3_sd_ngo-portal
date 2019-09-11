@@ -26,4 +26,19 @@ $(document).ready(function() {
       $(".alert").remove();
     }, 4000);
   }
+
+  // Delete student
+  if ($(".del-student")) {
+    $(".del-student").on("click", function() {
+      const id = $(this).attr("data-id");
+      $.ajax({
+        url: `/students/${id}`,
+        type: "DELETE",
+        success: function(result) {
+          alert("Deleted successfully");
+          location.replace("/students");
+        }
+      });
+    });
+  }
 });
