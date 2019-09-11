@@ -166,3 +166,10 @@ input {
 .alert button {
   padding-right: 5px !important;
 }
+
+/* Studnet page  */
+.stretched-link {
+  color: #cc2e78;
+  font-size: 1rem;
+  font-weight: bold;
+}

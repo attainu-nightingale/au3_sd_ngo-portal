@@ -12,7 +12,11 @@ const router = Router();
 @access   PRIVATE(for volunteers)
 */
 router.get("/", async (req, res) => {
-  try {
+  res.render("students", {
+    logoLink: "./images/e.png",
+    jsFile: "/js/all.js"
+  });
+  /*   try {
     const data = await Student();
 
     // TODO:- like this
@@ -34,7 +38,7 @@ router.get("/", async (req, res) => {
     res.status(500).json({
       error: "Server Error"
     });
-  }
+  } */
 });
 
 /* 

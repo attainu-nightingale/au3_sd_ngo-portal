@@ -143,7 +143,7 @@ app.get("/add-student", (req, res) => {
 // Routes
 app.use("/user", userRouter);
 app.use("/vol", volRouter);
-app.use("/student", studentRouter);
+app.use("/students", studentRouter);
 app.use("/stories", storiesRouter);
 app.use("/activity", activitesRoute);
 
