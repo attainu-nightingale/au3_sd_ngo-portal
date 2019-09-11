@@ -1,6 +1,7 @@
 const Router = require("express").Router;
 const bcrypt = require("bcrypt");
 const shortid = require("shortid");
+const ObjectID = require("mongodb").ObjectID;
 
 const User = require("../../models/User");
 
@@ -56,7 +57,8 @@ router.get("/profile", async (req, res) => {
             dob: result.dob,
             location: result.location,
             profile: result.profile_pic,
-            id: result._id
+            id: result._id,
+            route: "user"
           });
         })
         .catch(err => {
@@ -251,5 +253,36 @@ router
       req.flash("errorMessage", "Server Error");
     }
   });
+
+/*
+@type     DELETE
+@route    /vol/profile/:id
+@desc     Delete Profile
+@access   PRIVATE
+*/
+router.delete("/profile/:id", async (req, res) => {
+  const id = req.params.id;
+  try {
+    const data = await User();
+    data
+      .getDB()
+      .db()
+      .collection("users")
+      .deleteOne({ _id: ObjectID(id) })
+      .then(result => {
+        res.json({
+          success: "Successfully deleted"
+        });
+      })
+      .catch(err => {
+        req.json({
+          err: "Some error occured"
+        });
+      });
+  } catch (error) {
+    req.flash("errorMessage", "Server Error");
+    res.redirect("/");
+  }
+});
 
 module.exports = router;

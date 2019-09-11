@@ -27,6 +27,42 @@ $(document).ready(function() {
     }, 4000);
   }
 
+  // Delete profilr
+  if ($(".rem-profile")) {
+    $(".rem-profile").on("click", function() {
+      const id = $(this).attr("data-id");
+      const route = $(this).attr("data-route");
+
+      if (confirm("Are you sure you want to delete")) {
+        if (route === "vol") {
+          $.ajax({
+            url: `/vol/profile/${id}`,
+            type: "DELETE",
+            success: function(result) {
+              alert("Deleted successfully");
+              location.replace("/");
+
+              setTimeout(() => {
+                location.reload();
+              }, 30000);
+            }
+          });
+        }
+
+        if (route === "user") {
+          $.ajax({
+            url: `/user/profile/${id}`,
+            type: "DELETE",
+            success: function(result) {
+              alert("Deleted successfully");
+              location.replace("/");
+            }
+          });
+        }
+      }
+    });
+  }
+
   // Delete student
   if ($(".del-student")) {
     $(".del-student").on("click", function() {
