@@ -15,21 +15,20 @@ router.get("/", async (req, res) => {
   try {
     const data = await Student();
 
-    // TODO:- like this
-    // data
-    //   .getDB()
-    //   .db()
-    //   .collection("students")
-    //   .find()
-    //   .toArray()
-    //   .then(result => {
-    //     res.json(result);
-    //   })
-    //   .catch(err => {
-    //     res.status(400).json({
-    //       error: err.errmsg
-    //     });
-    //   });
+    data
+      .getDB()
+      .db()
+      .collection("students")
+      .find({})
+      .toArray()
+      .then(result => {
+        res.render(result);
+      })
+      .catch(err => {
+        res.status(400).json({
+          error: err.errmsg
+        });
+      });
   } catch (error) {
     res.status(500).json({
       error: "Server Error"
@@ -48,20 +47,19 @@ router.get("/:id", async (req, res) => {
   try {
     const data = await Student();
 
-    // TODO:- like this
-    // data
-    //   .getDB()
-    //   .db()
-    //   .collection("students")
-    //   .findOne({ _id: ObjectID(id) })
-    //   .then(result => {
-    //     res.json(result);
-    //   })
-    //   .catch(err => {
-    //     res.status(400).json({
-    //       error: err.errmsg
+    //   data
+    //     .getDB()
+    //     .db()
+    //     .collection("students")
+    //     .findOne({ _id: ObjectID(id) })
+    //     .then(result => {
+    //       res.json(result);
+    //     })
+    //     .catch(err => {
+    //       res.status(400).json({
+    //         error: err.errmsg
+    //       });
     //     });
-    //   });
   } catch (error) {
     res.status(500).json({
       error: "Server Error"
@@ -78,26 +76,19 @@ router.get("/:id", async (req, res) => {
 router.post("/", async (req, res) => {
   try {
     const data = await Student();
-
-    //TODO:- like this
-    // data
-    //   .getDB()
-    //   .db()
-    //   .collection("students")
-    //   .insertOne({
-    //     gurdianName: "Johny Michel Doe",
-    //     name: "John Doe",
-    //     location: "Delhi, India",
-    //     dob: "25-05-1995"
-    //   })
-    //   .then(result => {
-    //     res.json(result);
-    //   })
-    //   .catch(err => {
-    //     res.status(400).json({
-    //       error: err.errmsg
-    //     });
-    //   });
+    data
+      .getDB()
+      .db()
+      .collection("students")
+      .insertOne(req.body)
+      .then(result => {
+        res.json(result);
+      })
+      .catch(err => {
+        res.status(400).json({
+          error: err.errmsg
+        });
+      });
   } catch (error) {
     res.status(500).json({
       error: "Server Error"
@@ -115,25 +106,19 @@ router.put("/:id", async (req, res) => {
   try {
     const data = await Student();
 
-    //TODO:- Do with same way
-    // data
-    //   .getDB()
-    //   .db()
-    //   .collection("students")
-    //   .insertOne({
-    //     gurdianName: "Johny Michel Doe",
-    //     name: "John Doe",
-    //     location: "Delhi, India",
-    //     dob: "25-05-1995"
-    //   })
-    //   .then(result => {
-    //     res.json(result);
-    //   })
-    //   .catch(err => {
-    //     res.status(400).json({
-    //       error: err.errmsg
-    //     });
-    //   });
+    data
+      .getDB()
+      .db()
+      .collection("students")
+      .updateOne({ _id: ObjectID(req.params.id) }, { $set: req.body })
+      .then(result => {
+        res.json(result);
+      })
+      .catch(err => {
+        res.status(400).json({
+          error: err.errmsg
+        });
+      });
   } catch (error) {
     res.status(500).json({
       error: "Server Error"
@@ -151,30 +136,23 @@ router.delete("/:id", async (req, res) => {
   try {
     const data = await Student();
 
-    //TODO:- Do with same way
-    // data
-    //   .getDB()
-    //   .db()
-    //   .collection("students")
-    //   .insertOne({
-    //     gurdianName: "Johny Michel Doe",
-    //     name: "John Doe",
-    //     location: "Delhi, India",
-    //     dob: "25-05-1995"
-    //   })
-    //   .then(result => {
-    //     res.json(result);
-    //   })
-    //   .catch(err => {
-    //     res.status(400).json({
-    //       error: err.errmsg
-    //     });
-    //   });
+    data
+      .getDB()
+      .db()
+      .collection("students")
+      .deleteOne({ _id: ObjectID(req.params.id) })
+      .then(result => {
+        res.json(result);
+      })
+      .catch(err => {
+        res.status(400).json({
+          error: err.errmsg
+        });
+      });
   } catch (error) {
     res.status(500).json({
       error: "Server Error"
     });
   }
 });
-
 module.exports = router;
