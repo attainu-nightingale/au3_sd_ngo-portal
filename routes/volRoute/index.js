@@ -25,7 +25,8 @@ router.get("/login", (req, res) => {
     title: "eGurukul | Volunteer Login",
     cssFile: "/css/vol.css",
     logoLink: "../images/e.png",
-    jsFile: "/js/all.js"
+    jsFile: "/js/all.js",
+    flash: req.flash()["errorMessage"]
   });
 });
 
@@ -38,9 +39,7 @@ router.get("/login", (req, res) => {
 router.post("/login", async (req, res) => {
   const { error, value } = Joi.validate(req.body, loginSchema);
   if (error) {
-    // res.status(403).json({
-    //   error: error.message
-    // });
+    req.flash("errorMessage", error.message);
     res.redirect("/vol/login");
     return;
   }
@@ -55,13 +54,12 @@ router.post("/login", async (req, res) => {
       .then(async result => {
         // If username doesn't matched
         if (!result) {
-          // return res.status(404).json({ error: "Authentication Failed" });
+          req.flash("errorMessage", "Authentication Failed");
           res.redirect("/vol/login");
           return;
         }
         // if user not verified
         if (!result.active) {
-          // return res.status(403).json({ error: "Email not verified" });
           res.redirect("/vol/verify");
           return;
         }
@@ -69,9 +67,7 @@ router.post("/login", async (req, res) => {
         const isMatched = await bcrypt.compare(value.password, result.password);
 
         if (!isMatched) {
-          // return res.status(404).json({
-          //   error: "Authentication Failed"
-          // });
+          req.flash("errorMessage", "Authentication Failed");
           res.redirect("/vol/login");
           return;
         }
@@ -80,15 +76,10 @@ router.post("/login", async (req, res) => {
         res.redirect("/");
       })
       .catch(err => {
-        console.log(err);
-        res.status(400).json({
-          error: err.errmsg
-        });
+        req.flash("errorMessage", err.errmsg);
       });
   } catch (error) {
-    res.status(500).json({
-      error: "Server Error"
-    });
+    req.flash("errorMessage", "Server Error");
   }
 });
 
@@ -107,7 +98,8 @@ router.get("/registration", (req, res) => {
     title: "eGurukul | Volunteer Registration",
     cssFile: "/css/volunteer.css",
     logoLink: "../images/e.png",
-    jsFile: "/js/all.js"
+    jsFile: "/js/all.js",
+    flash: req.flash()["errorMessage"]
   });
 });
 
@@ -121,13 +113,18 @@ router.post(
   "/registration",
   parser.single("profile_picture"),
   async (req, res) => {
+    if (!req.file) {
+      req.flash("errorMessage", "You need to upload profile picture");
+      res.redirect("/user/registration");
+      return;
+    }
     const { secure_url } = req.file;
 
     const { error, value } = Joi.validate(req.body, volSchema);
     if (error) {
-      return res.status(403).json({
-        error: error.message
-      });
+      req.flash("errorMessage", error.message);
+      res.redirect("/user/registration");
+      return;
     }
 
     // Encrypt password using bcrypt
@@ -161,16 +158,10 @@ router.post(
           res.redirect("/vol/verify");
         })
         .catch(err => {
-          console.log(err);
-          res.status(400).json({
-            error: err.errmsg
-          });
+          req.flash("errorMessage", err.errmsg);
         });
     } catch (error) {
-      console.log(error);
-      res.status(500).json({
-        error: "Server Error"
-      });
+      req.flash("errorMessage", "Server Error");
     }
   }
 );
@@ -190,7 +181,8 @@ router
     res.render("verify", {
       action: "/vol/verify",
       title: "eGurukul | Verification",
-      logoLink: "../images/e.png"
+      logoLink: "../images/e.png",
+      flash: req.flash()["errorMessage"]
     });
   })
   .post("/verify", async (req, res) => {
@@ -206,7 +198,7 @@ router
         .then(result => {
           // If secretToken doesn't matched
           if (!result.result.nModified) {
-            // return res.status(404).json({ error: "Can't be verified" });
+            req.flash("errorMessage", "Verification failed");
             res.redirect("/vol/verify");
             return;
           }
@@ -215,14 +207,10 @@ router
           res.redirect("/");
         })
         .catch(err => {
-          res.status(400).json({
-            error: err.errmsg
-          });
+          req.flash("errorMessage", err.errmsg);
         });
     } catch (error) {
-      res.status(500).json({
-        error: "Server Error"
-      });
+      req.flash("errorMessage", "Server Error");
     }
   });
 
