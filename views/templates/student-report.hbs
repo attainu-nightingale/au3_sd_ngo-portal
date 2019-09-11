@@ -1,11 +1,11 @@
 <div class="container s-report my-3">
     <div class="row">
-        <div class="col-md-6  p-3">
-            <h6>Name :- {{ fullname }}</h6>
-            <h6>Guardian :- {{ guardian }}</h6>
-            <h6>DOB :- {{ dob }}</h6>
-            <h6>Place :- {{ location }}</h6>
-            <h6>Study Status :- {{ study }}</h6>
+        <div class="col-md-6  px-3 py-5">
+            <h6>Name :- <span class="text-secondary">{{ fullname }}</span></h6>
+            <h6>Guardian :- <span class="text-secondary">{{ guardian }}</span></h6>
+            <h6>DOB :- <span class="text-secondary">{{ dob }}</span></h6>
+            <h6>Place :- <span class="text-secondary">{{ location }}</span></h6>
+            <h6>Study Status :- <span class="text-secondary">{{ study }}</span></h6>
 
         </div>
         <div class="col-md-3"></div>
@@ -18,8 +18,7 @@
         <div class="col-7">
             <h4>Details</h4>
             <p class="report">
-                always completes daily assignments in a timely manner.returns
-                homework on time and well done.stays focused on the task at hand.
+                {{ report }}
             </p>
         </div>
     </div>

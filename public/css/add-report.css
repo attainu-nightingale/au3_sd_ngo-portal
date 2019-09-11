@@ -1,0 +1,87 @@
+/* sign up form*/
+.textarea {
+  background: none;
+  color: #525151ad;
+  font-size: 12px;
+  padding: 8px 8px 8px 5px;
+  display: block;
+  width: 100%;
+  min-width: 320px;
+  border: none;
+  border-radius: 0;
+  border-bottom: 1px solid #c6c6c6;
+}
+
+.textarea:focus {
+  outline: none;
+}
+
+.textarea:focus ~ .label {
+  top: -14px;
+  font-size: 12px;
+  color: #2196f3;
+}
+
+.textarea:focus ~ .bar:before {
+  width: 100%;
+  min-width: 320px;
+}
+
+.bar {
+  position: relative;
+  display: block;
+  min-width: 320px;
+}
+.bar:before {
+  content: "";
+  height: 2px;
+  width: 0;
+  min-width: 0;
+  bottom: 0px;
+  position: absolute;
+  background: #2196f3;
+  transition: 300ms ease all;
+  left: 0%;
+}
+
+.btn.btn-submit {
+  background: #6b0073;
+  background: -webkit-linear-gradient(to right bottom, #ec6ead, #6b0073);
+  background: linear-gradient(
+    to right bottom,
+    #ec6ead,
+    #6b0073
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+  color: #fff;
+  border: none;
+  padding: 0.8rem 3rem;
+  border-radius: 2rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-decoration: none;
+  outline: none;
+  box-shadow: 0 1px 3px rgba(236, 110, 173, 0.562),
+    0 1px 2px rgba(236, 110, 173, 0.575);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+.btn.btn-submit:hover {
+  background: #6b0073;
+  background: -webkit-linear-gradient(
+    to left top,
+    #ec6ead,
+    #6b0073
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to left top,
+    #ec6ead,
+    #6b0073
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+  color: #deeffd;
+  box-shadow: 0 7px 14px rgba(0, 0, 0, 0.18), 0 5px 5px rgba(0, 0, 0, 0.12);
+}
+.btn-box {
+  text-align: center;
+  margin: 1rem 0;
+}

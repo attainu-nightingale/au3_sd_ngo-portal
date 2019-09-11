@@ -53,7 +53,7 @@ $(document).ready(function() {
       });
 
       const id = $(".student-up").attr("data-id");
-      console.log(id);
+
       $.ajax({
         url: `/students/edit/${id}`,
         type: "PUT",
@@ -61,6 +61,31 @@ $(document).ready(function() {
         contentType: "application/json",
         success: function(result) {
           alert("successfully updated");
+          location.replace("/students");
+        },
+        error: function(err) {
+          console.log(err);
+        }
+      });
+    });
+  }
+
+  // Report form
+  if ($(".add-report")) {
+    $(".add-report").submit(function(event) {
+      event.preventDefault();
+
+      const report = $(".add-report textarea").val();
+
+      const id = $(".add-report-btn").attr("data-id");
+
+      $.ajax({
+        url: `/students/edit/${id}`,
+        type: "PUT",
+        data: JSON.stringify({ report }),
+        contentType: "application/json",
+        success: function(result) {
+          alert("successfully Added");
           location.replace("/students");
         },
         error: function(err) {

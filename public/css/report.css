@@ -15,7 +15,7 @@ body {
 }
 .s-report {
   width: 500px;
-  padding-top: 2rem;
+  padding-top: 0;
   padding-bottom: 2rem;
   background: #ba5370; /* fallback for old browsers */
   background: -webkit-linear-gradient(

@@ -1,0 +1,25 @@
+<div class="container my-5">
+    <div class="row">
+        <div class="col-md-6 m-auto">
+            <div class="card">
+                <div class="card-title">
+                    <h3 class="text-center">Add Student Report</h3>
+                </div>
+                <div class="card-body">
+                    <p class="lead"><strong>Student Name:-</strong> {{name}}</p>
+                    <form class="add-report">
+                        <div class="form-group position-relative my-4">
+                            <textarea type="textarea" name="report" required class="textarea anim" rows="3"
+                                placeholder="Add Report">{{report}}</textarea><span class="highlight"></span><span
+                                class="bar"></span>
+
+                        </div>
+                        <div class="btn-box">
+                            <button type="submit" class="btn btn-submit add-report-btn" data-id="{{id}}">Add</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

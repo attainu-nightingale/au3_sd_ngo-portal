@@ -33,6 +33,9 @@ const schema = {
       },
       study: {
         bsonType: "string"
+      },
+      report: {
+        bsonType: "string"
       }
     }
   }
