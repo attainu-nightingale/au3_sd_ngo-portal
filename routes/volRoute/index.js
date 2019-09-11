@@ -204,9 +204,13 @@ router.post(
         })
         .catch(err => {
           req.flash("errorMessage", err.errmsg);
+          res.redirect("/vol/registration");
+          return;
         });
     } catch (error) {
       req.flash("errorMessage", "Server Error");
+      res.redirect("/vol/registration");
+      return;
     }
   }
 );
@@ -247,9 +251,7 @@ router
             res.redirect("/vol/verify");
             return;
           }
-          req.session["isLoggedIn"] = true;
-          req.session["volUser"] = result.username;
-          res.redirect("/");
+          res.redirect("/vol/login");
         })
         .catch(err => {
           req.flash("errorMessage", err.errmsg);

@@ -65,7 +65,7 @@ const User = async () => {
     .getDB()
     .db()
     .collection("users")
-    .createIndex({ email: 1, username: 1 }, { unique: true });
+    .createIndex({ username: 1 }, { unique: true });
 
   return await db;
 };

@@ -119,9 +119,13 @@ router.post("/login", async (req, res) => {
       })
       .catch(err => {
         req.flash("errorMessage", err.errmsg);
+        res.redirect("/user/login");
+        return;
       });
   } catch (error) {
     req.flash("errorMessage", "Server Error");
+    res.redirect("/user/login");
+    return;
   }
 });
 
@@ -199,9 +203,13 @@ router.post(
         })
         .catch(err => {
           req.flash("errorMessage", err.errmsg);
+          res.redirect("/user/registration");
+          return;
         });
     } catch (error) {
       req.flash("errorMessage", "Server Error");
+      res.redirect("/user/registration");
+      return;
     }
   }
 );
@@ -242,15 +250,17 @@ router
             res.redirect("/user/verify");
             return;
           }
-          req.session["isLoggedIn"] = true;
-          req.session["userLogged"] = result.username;
-          res.redirect("/");
+          res.redirect("/user/login");
         })
         .catch(err => {
           req.flash("errorMessage", err.errmsg);
+          res.redirect("/user/verify");
+          return;
         });
     } catch (error) {
       req.flash("errorMessage", "Server Error");
+      res.redirect("/user/verify");
+      return;
     }
   });
 
