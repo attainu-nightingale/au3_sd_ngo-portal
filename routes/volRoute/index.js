@@ -30,7 +30,12 @@ router.get("/login", (req, res) => {
   });
 });
 
-// Profile page
+/*
+@type     GET
+@route    /vol/profile
+@desc     Profile for Volunteers
+@access   PRIVATE
+*/
 router.get("/profile", async (req, res) => {
   if (req.session.volUser) {
     try {

@@ -70,6 +70,7 @@ app.locals.env = envt === "development";
 app.get("/", (req, res) => {
   app.locals.logged = req.session.isLoggedIn;
   app.locals.voLogged = req.session.volUser;
+  app.locals.userLogged = req.session.userLogged;
   res.render("home", {
     home: true,
     title: "eGurukul | Made for Students and Helped by you",

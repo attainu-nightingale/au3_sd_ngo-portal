@@ -30,6 +30,46 @@ router.get("/login", (req, res) => {
   });
 });
 
+/*
+@type     GET
+@route    /user/profile
+@desc     Profile for user
+@access   Private(user)
+*/
+router.get("/profile", async (req, res) => {
+  if (req.session.userLogged) {
+    try {
+      const data = await User();
+      data
+        .getDB()
+        .db()
+        .collection("users")
+        .findOne({ username: req.session.userLogged })
+        .then(result => {
+          res.render("profile", {
+            title: "eGurukul| Your profile",
+            logoLink: "../images/e.png",
+            cssFile: "/css/profile.css",
+            jsFile: "/js/all.js",
+            name: result.name,
+            email: result.email,
+            dob: result.dob,
+            location: result.location,
+            profile: result.profile_pic,
+            id: result._id
+          });
+        })
+        .catch(err => {
+          req.flash("errorMessage", err.errmsg);
+        });
+    } catch (error) {
+      req.flash("errorMessage", "Server Error");
+      res.redirect("/");
+    }
+  } else {
+    res.redirect("/user/login");
+  }
+});
 /* 
 @type     POST
 @route    /user/login
@@ -72,6 +112,7 @@ router.post("/login", async (req, res) => {
           return;
         }
         req.session["isLoggedIn"] = true;
+        req.session["userLogged"] = result.username;
         res.redirect("/");
       })
       .catch(err => {
@@ -200,6 +241,7 @@ router
             return;
           }
           req.session["isLoggedIn"] = true;
+          req.session["userLogged"] = result.username;
           res.redirect("/");
         })
         .catch(err => {
