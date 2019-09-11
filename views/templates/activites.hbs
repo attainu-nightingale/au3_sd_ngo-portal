@@ -1,14 +1,41 @@
 <div class="container my-3 activity">
     <div class="row">
+        <div class="col-12">
+            <h1 class="text-center">Our activities for Students</h1>
+        </div>
+    </div>
+    <div class="row">
+        {{#if flash}}
+        <div class="col-4 m-auto">
+            <div class="alert alert-danger alert-dismissible fade show m-0 p-1" role="alert">
+                <p class="m-0">
+                    {{ flash }}
+                </p>
+                <button type="button" class="close p-0" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        </div>
+        {{/if}}
+    </div>
+    <div class="row">
+        {{#each data }}
         <div class="col-12 col-sm-6 col-md-4">
             <div class="media">
-                <img src="https://d1bile9su2eskg.cloudfront.net/wp-content/uploads/sites/16/2013/08/Blog-Topic-Ideas.jpg"
-                    width="100px" class="mr-3 img-fluid" alt="manthan">
+                <img src="{{this.activity_image}}" width="100px" class="mr-3 img-fluid" alt="{{this.activity_name}}">
                 <div class="media-body">
-                    <h5 class="mt-0 mb-1">Manthan</h5>
-                    <p class="lead">Manthan Opportunities and Experiences</p>
+                    <h5 class="mt-0 mb-1">{{this.activity_name}}</h5>
+                    <p class="act-details"><strong>Type:</strong> <span
+                            class="badge badge-info float-right">{{ this.activity_type }}</span>
+                    </p>
+                    <p class="act-details">{{ this.activity_details }}</p>
+                    {{#if voLogged}}
+                    <button class="delete-act" type="button" class="btn btn-outline-danger float-right"><i
+                            class="fas fa-trash text-danger fa-2x"></i></button>
+                    {{/if}}
                 </div>
             </div>
         </div>
+        {{/each}}
     </div>
 </div>

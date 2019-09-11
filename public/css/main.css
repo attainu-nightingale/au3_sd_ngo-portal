@@ -173,3 +173,18 @@ input {
   font-size: 1rem;
   font-weight: bold;
 }
+
+/* Activity Details */
+.act-details,
+.delete-act {
+  font-size: 0.8rem;
+  color: rgb(71, 69, 69);
+}
+
+.activity .media {
+  border: 1px solid #333;
+  padding: 1rem;
+  height: 200px;
+  display: flex;
+  align-items: center;
+}

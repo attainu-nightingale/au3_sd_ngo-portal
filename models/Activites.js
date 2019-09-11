@@ -45,12 +45,12 @@ const Activities = async () => {
   await db
     .getDB()
     .db()
-    .createCollection("activites");
+    .createCollection("activities");
   await db
     .getDB()
     .db()
     .command({
-      collMod: "activites",
+      collMod: "activities",
       validator: schema
     });
   return await db;

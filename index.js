@@ -122,7 +122,8 @@ app.get("/add-activity", (req, res) => {
     title: "eGurukul | Add student activity",
     cssFile: "css/activites.css",
     logoLink: "./images/e.png",
-    jsFile: "/js/all.js"
+    jsFile: "/js/all.js",
+    flash: req.flash()["errorMessage"]
   });
 });
 

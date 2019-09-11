@@ -19,25 +19,24 @@ router.get("/", async (req, res) => {
     data
       .getDB()
       .db()
-      .collection("activites")
+      .collection("activities")
       .find()
       .toArray()
       .then(result => {
         res.render("activites", {
           logoLink: "./images/e.png",
           jsFile: "/js/all.js",
-          cssFile: "css/activity.css"
+          cssFile: "css/activity.css",
+          data: result
         });
       })
       .catch(err => {
-        res.status(400).json({
-          error: err.errmsg
-        });
+        req.flash("errorMessage", err.errmsg);
+        res.redirect("/activites");
       });
   } catch (error) {
-    res.status(500).json({
-      error: "Server Error"
-    });
+    req.flash("errorMessage", "Server Error");
+    res.redirect("/");
   }
 });
 
@@ -47,27 +46,36 @@ router.get("/", async (req, res) => {
 @desc     Create a activity
 @access   Private (for volunteer)
 */
-router.post("/", async (req, res) => {
+router.post("/", parser.single("activity_img"), async (req, res) => {
+  if (!req.file) {
+    req.flash("errorMessage", "You need to upload activity image");
+    res.redirect("/add-activity");
+    return;
+  }
+  const { secure_url: activity_image } = req.file;
+
   try {
     const data = await Activites();
 
     data
       .getDB()
       .db()
-      .collection("activites")
-      .insertOne({ ...req.body, createdBy: "RuhanRK" })
+      .collection("activities")
+      .insertOne({
+        ...req.body,
+        activity_image,
+        createdBy: req.session.volUser
+      })
       .then(result => {
-        res.json(result.ops);
+        res.redirect("/activites");
       })
       .catch(err => {
-        res.status(400).json({
-          error: err.errmsg
-        });
+        req.flash("errorMessage", err.errmsg);
+        res.redirect("/add-activity");
       });
   } catch (error) {
-    res.status(500).json({
-      error: "Server Error"
-    });
+    req.flash("errorMessage", "Server Error");
+    res.redirect("/");
   }
 });
 
@@ -84,7 +92,7 @@ router.put("/:id", async (req, res) => {
     data
       .getDB()
       .db()
-      .collection("activites")
+      .collection("activities")
       .updateOne({ _id: ObjectID(req.params.id) }, { $set: req.body })
       .then(result => {
         if (!result.result.nModified) {
@@ -122,7 +130,7 @@ router.delete("/:id", async (req, res) => {
     data
       .getDB()
       .db()
-      .collection("activites")
+      .collection("activities")
       .deleteOne({ _id: ObjectID(req.params.id) })
       .then(result => {
         if (!result.result.n) {

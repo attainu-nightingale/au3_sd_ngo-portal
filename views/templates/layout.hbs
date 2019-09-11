@@ -56,11 +56,17 @@
                         <a class="nav-link h-a" href="/stories">Stories</a>
                     </li>
                     {{#if voLogged}}
-                    <li class="nav-item active">
-                        <a class="nav-link h-a" href="/add-activity">Add activity</a>
-                    </li>
-                    <li class="nav-item active">
-                        <a class="nav-link h-a" href="/add-student">Add Student</a>
+                    <li class="nav-item dropdown">
+                        <div class="dropdown">
+                            <button class="btn dropdown-toggle" type="button" id="userDropDown" data-toggle="dropdown"
+                                aria-haspopup="true" aria-expanded="false">
+                                Add
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="userDropDown">
+                                <a class="nav-link h-a" href="/add-activity">Add activity</a>
+                                <a class="nav-link h-a" href="/add-student">Add Student</a>
+                            </div>
+                        </div>
                     </li>
                     {{/if}}
                     {{#if logged}}
