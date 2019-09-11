@@ -1,0 +1,74 @@
+<div class="container p-5">
+    <div class="row">
+        <div class="col-md-7 m-auto form-wrapper">
+            <h1 class="activities-title text-center mb-5">
+                New students entry
+            </h1>
+
+            <form class="activites">
+                <div class="form-group position-relative my-4">
+                    {{> requiredInput name="fullname" type="text" label="Full Name" className="input inline-input"}}
+
+                    {{!-- <input type="text" class="input" required="required"
+                                /><span
+                                class="highlight"></span><span class="bar"></span>
+                            <label>Name</label> --}}
+                </div>
+
+                <div class="form-group position-relative my-4">
+
+                    {{> requiredInput name="gardian" type="text" label="Guardian name" className="input inline-input"}}
+
+                    {{!-- <input type="text" class="input" required="required" /><span class="highlight"></span><span
+                        class="bar"></span>
+                    <label>Guardian name</label> --}}
+                </div>
+
+                <div class="form-group position-relative my-4">
+
+                    {{!-- {{> requiredInput name="dob" type="text" label="Date of birth" onfocus="(this.type='date')"
+                        onfocusout="(this.type='text')" className="input inline-input"}} --}}
+
+                    <input type="text" class="input" for="dob" required="required" onfocus="(this.type='date')"
+                        onfocusout="(this.type='text')" /><span class="highlight"></span><span class="bar"></span>
+                    <label>Date of birth</label>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="row ">
+                        <group class="inline-radio">
+                            <div>
+                                <input type="radio" name="gender" checked /><label>Female</label>
+                            </div>
+                            <div>
+                                <input type="radio" name="gender" /><label>Male</label>
+                            </div>
+                            <div>
+                                <input type="radio" name="gender" /><label>Others</label>
+                            </div>
+                        </group>
+                    </div>
+                </div>
+                <div class="form-group position-relative my-4">
+                    {{> requiredInput name="location" type="text" label="Location" className="input inline-input"}}
+
+                    {{!-- <input type="text" class="input" required="required" /><span class="highlight"></span><span
+                        class="bar"></span>
+                    <label>Location</label> --}}
+                </div>
+
+                <div class="form-group position-relative my-4">
+                    {{> requiredInput name="study" type="text" label="Study status" className="input inline-input"}}
+
+
+                    {{!-- <input type="text" class="input" required="required" /><span class="highlight"></span><span
+                        class="bar"></span>
+                    <label>Study status</label> --}}
+                </div>
+                <div class="btn-box">
+                    <button class="btn btn-submit" type="submit">Create</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
