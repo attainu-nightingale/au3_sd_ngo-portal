@@ -1,0 +1,110 @@
+@import url("https://fonts.googleapis.com/css?family=Ubuntu|Roboto+Slab&display=swap");
+
+*,
+:before,
+:after {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Roboto Slab", serif;
+  font-size: 8px;
+  background: #642b73; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #c6426e,
+    #642b73
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #c6426e,
+    #642b73
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+.container {
+  width: 500px;
+  height: 500px;
+  background: #ba5370; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #f4e2d8,
+    #ba5370
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #f4e2d8,
+    #ba5370
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+.img {
+  width: 200px;
+  height: 200px;
+  display: flex;
+}
+.row {
+  display: flex;
+}
+.jumbotron {
+  display: flex;
+  width: 100%;
+  color: #642b73;
+  background: #ba5370; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #f4e2d8,
+    #ba5370
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #f4e2d8,
+    #ba5370
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+.btn {
+  background: #fff;
+  color: #000;
+  border: none;
+  padding: 0.8rem 3rem;
+  border-radius: 2rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-decoration: none;
+  outline: none;
+  box-shadow: 0 1px 3px rgba(236, 110, 173, 0.562),
+    0 1px 2px rgba(236, 110, 173, 0.575);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+.btn:hover {
+  color: #8b8b8b;
+  box-shadow: 0 7px 14px rgba(0, 0, 0, 0.18), 0 5px 5px rgba(0, 0, 0, 0.12);
+}
+.btn.btn-submit {
+  background: #6b0073;
+  background: -webkit-linear-gradient(to right bottom, #ec6ead, #6b0073);
+  background: linear-gradient(
+    to right bottom,
+    #ec6ead,
+    #6b0073
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+  color: #fff;
+}
+.btn.btn-submit:hover {
+  background: #6b0073;
+  background: -webkit-linear-gradient(
+    to left top,
+    #ec6ead,
+    #6b0073
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to left top,
+    #ec6ead,
+    #6b0073
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+  color: #deeffd;
+}
+.btn-box {
+  text-align: center;
+  margin: 1rem 0;
+}

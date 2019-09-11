@@ -24,9 +24,6 @@ const schema = {
       gender: {
         bsonType: "string"
       },
-      email: {
-        bsonType: "string"
-      },
       location: {
         bsonType: "string",
         description: "must be a string and is required"
@@ -53,13 +50,6 @@ const Student = async () => {
       collMod: "students",
       validator: schema
     });
-
-  await db
-    .getDB()
-    .db()
-    .collection("students")
-    .createIndex({ email: 1 }, { unique: true });
-
   return await db;
 };
 
