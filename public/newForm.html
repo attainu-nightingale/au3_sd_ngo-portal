@@ -1,86 +1,94 @@
 <!DOCTYPE >
 <html>
-    <head>
-        <title>New student</title>
-        <link rel="stylesheet" href="newForm.css" />
-        <link rel="stylesheet"
-            href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-            integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-            crossorigin="anonymous">
-        <link href="https://fonts.googleapis.com/css?family=Ubuntu&display=swap"
-            rel="stylesheet">
-    </head>
-    <body class="form-body">
-        <div class="container p-5">
-            <div class="row">
-                <div class="col-md-7 m-auto form-wrapper">
-                    <h1 class="activities-title text-center mb-5">
-                        New students entry
-                    </h1>
+  <head>
+    <title>New student</title>
+    <link rel="stylesheet" href="./css/newForm.css" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Ubuntu&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="form-body">
+    <div class="container p-5">
+      <div class="row">
+        <div class="col-md-7 m-auto form-wrapper">
+          <h1 class="activities-title text-center mb-5">
+            New students entry
+          </h1>
 
-                    <form class="activites">
-                        <div class="form-group position-relative my-4">
-                            <input type="text" class="input" required="required"
-                                /><span
-                                class="highlight"></span><span class="bar"></span>
-                            <label>Full name</label>
-                        </div>
-
-                        <div class="form-group position-relative my-4">
-                            <input type="text" class="input" required="required"
-                                /><span
-                                class="highlight"></span><span class="bar"></span>
-                            <label>Guardian name</label>
-                        </div>
-
-                        <div class="form-group position-relative my-4">
-                            <input type="text" class="input" required="required"
-                                onfocus="(this.type='date')"
-                                onfocusout="(this.type='text')"
-                                /><span
-                                class="highlight"></span><span class="bar"></span>
-                            <label>Date of birth</label>
-                        </div>
-
-                        <div class="col-md-6">
-                            <div class="row ">
-                              <group class="inline-radio">
-                                <div>
-                                  <input type="radio" name="gender" checked /><label
-                                    >Female</label
-                                  >
-                                </div>
-                                <div>
-                                  <input type="radio" name="gender" /><label>Male</label>
-                                </div>
-                                <div>
-                                  <input type="radio" name="gender" /><label
-                                    >Others</label
-                                  >
-                                </div>
-                              </group>
-                            </div>
-                          </div>
-                        <div class="form-group position-relative my-4">
-                            <input type="text" class="input" required="required"
-                                /><span
-                                class="highlight"></span><span class="bar"></span>
-                            <label>Location</label>
-                        </div>
-
-                        <div class="form-group position-relative my-4">
-                            <input type="text" class="input" required="required"
-                                /><span
-                                class="highlight"></span><span class="bar"></span>
-                            <label>Study status</label>
-                        </div>
-
-                        <div class="btn-box">
-                            <button class="btn btn-submit" type="submit">Create</button>
-                        </div>
-                    </form>
-                </div>
+          <form class="activites">
+            <div class="form-group position-relative my-4">
+              <input type="text" class="input" required="required" /><span
+                class="highlight"
+              ></span
+              ><span class="bar"></span>
+              <label>Full name</label>
             </div>
+
+            <div class="form-group position-relative my-4">
+              <input type="text" class="input" required="required" /><span
+                class="highlight"
+              ></span
+              ><span class="bar"></span>
+              <label>Guardian name</label>
+            </div>
+
+            <div class="form-group position-relative my-4">
+              <input
+                type="text"
+                class="input"
+                required="required"
+                onfocus="(this.type='date')"
+                onfocusout="(this.type='text')"
+              /><span class="highlight"></span><span class="bar"></span>
+              <label>Date of birth</label>
+            </div>
+
+            <div class="col-md-6">
+              <div class="row ">
+                <group class="inline-radio">
+                  <div>
+                    <input type="radio" name="gender" checked /><label
+                      >Female</label
+                    >
+                  </div>
+                  <div>
+                    <input type="radio" name="gender" /><label>Male</label>
+                  </div>
+                  <div>
+                    <input type="radio" name="gender" /><label>Others</label>
+                  </div>
+                </group>
+              </div>
+            </div>
+            <div class="form-group position-relative my-4">
+              <input type="text" class="input" required="required" /><span
+                class="highlight"
+              ></span
+              ><span class="bar"></span>
+              <label>Location</label>
+            </div>
+
+            <div class="form-group position-relative my-4">
+              <input type="text" class="input" required="required" /><span
+                class="highlight"
+              ></span
+              ><span class="bar"></span>
+              <label>Study status</label>
+            </div>
+
+            <div class="btn-box">
+              <button class="btn btn-submit" type="submit">Create</button>
+            </div>
+          </form>
         </div>
-    </body>
+      </div>
+    </div>
+  </body>
 </html>

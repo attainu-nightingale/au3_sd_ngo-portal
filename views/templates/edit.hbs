@@ -1,49 +1,63 @@
-<form class="update-form">
-    <div class="form-group">
-        <label for="fullname">Full Name</label>
-        <input type="text" name="fullname" class="form-control" id="fullname" value="{{fullname}}"
-            placeholder="Full Name">
-    </div>
-    <div class="form-group">
-        <label for="guardian">Guardian Name</label>
-        <input type="text" name="guardian" class="form-control" id="guardian" value="{{guardian}}"
-            placeholder="Guardian name">
-    </div>
-    <div class="form-group">
-        <label for="dob">Dob</label>
-        <input type="date" name="dob" class="form-control" id="dob" value="{{dob}}">
-    </div>
-    <div class="form-group">
-        <div class="form-check">
-            <input class="form-check-input" type="radio" name="gender" id="female" value="female" checked>
-            <label class="form-check-label" for="female">
-                Female
-            </label>
-        </div>
-        <div class="form-check">
-            <input class="form-check-input" type="radio" name="gender" id="male" value="male">
-            <label class="form-check-label" for="male">
-                Male
-            </label>
-        </div>
-        <div class="form-check">
-            <input class="form-check-input" type="radio" name="gender" id="others" value="others">
-            <label class="form-check-label" for="others">
-                Others
-            </label>
-        </div>
-    </div>
+<div class="container-fluid form-body">
+    <div class="container p-5">
+        <div class="row">
+            <div class="col-md-7 m-auto form-wrapper">
+                <h1 class="activities-title text-center mb-5">
+                    Update
+                </h1>
 
-    <div class="form-group">
-        <label for="location">Location</label>
-        <input type="text" name="location" class="form-control" id="location" value="{{location}}"
-            placeholder="Location">
-    </div>
+                <form class="activites update-form">
+                    <div class="form-group position-relative my-4">
+                        <input type="text" class="input" required="required" name="fullname"
+                            value="{{fullname}}" /><span class="highlight"></span><span class="bar"></span>
+                        <label>Full name</label>
+                    </div>
 
-    <div class="form-group">
-        <label for="study">Study Status</label>
-        <input type="text" name="study" class="form-control" id="study" value="{{study}}" placeholder="Study Status">
-    </div>
+                    <div class="form-group position-relative my-4">
+                        <input type="text" class="input" required="required" name="guardian"
+                            value="{{guardian}}" /><span class="highlight"></span><span class="bar"></span>
+                        <label>Guardian name</label>
+                    </div>
 
-    <button type="submit" class="btn btn-success student-up" data-id="{{id}}">Update</button>
-</form>
+                    <div class="form-group position-relative my-4">
+                        <input type="text" class="input" required="required" name="dob" value="{{dob}}"
+                            onfocus="(this.type='date')" onfocusout="(this.type='text')" /><span
+                            class="highlight"></span><span class="bar"></span>
+                        <label>Date of birth</label>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="row ">
+                            <group class="inline-radio">
+                                <div>
+                                    <input type="radio" name="gender" value="female" checked /><label>Female</label>
+                                </div>
+                                <div>
+                                    <input type="radio" name="gender" value="male" /><label>Male</label>
+                                </div>
+                                <div>
+                                    <input type="radio" name="gender" value="others" /><label>Others</label>
+                                </div>
+                            </group>
+                        </div>
+                    </div>
+                    <div class="form-group position-relative my-4">
+                        <input type="text" class="input" name="location" value="{{location}}"
+                            required="required" /><span class="highlight"></span><span class="bar"></span>
+                        <label>Location</label>
+                    </div>
+
+                    <div class="form-group position-relative my-4">
+                        <input type="text" class="input" required="required" name="study" value="{{study}}" /><span
+                            class="highlight"></span><span class="bar"></span>
+                        <label>Study status</label>
+                    </div>
+
+                    <div class="btn-box">
+                        <button type="submit" class="btn btn-submit student-up" data-id="{{id}}">Update</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

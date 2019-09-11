@@ -163,6 +163,7 @@ router.get("/edit/:id", async (req, res) => {
           title: "eGurukul: Edit Student's Field",
           logoLink: "../../images/e.png",
           jsFile: "/js/all.js",
+          cssFile: "/css/newForm.css",
           fullname,
           guardian,
           dob,
