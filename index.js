@@ -121,6 +121,16 @@ app.get("/add-activity", (req, res) => {
   });
 });
 
+// Add Student
+app.get("/add-student", (req, res) => {
+  res.render("addNewStudent", {
+    title: "eGurukul | Add student",
+    cssFile: "css/addNewStudent.css",
+    logoLink: "./images/e.png",
+    jsFile: "/js/all.js"
+  });
+});
+
 // Routes
 app.use("/user", userRouter);
 app.use("/vol", volRouter);
