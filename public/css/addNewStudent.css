@@ -53,69 +53,7 @@ label {
     transition: 300ms ease all;
 }
 
-.bar {
-    position: relative;
-    display: block;
-    min-width: 320px;
-}
-
-.bar:before {
-    content: "";
-    height: 2px;
-    width: 0;
-    min-width: 0;
-    bottom: 0px;
-    position: absolute;
-    background: #2196f3;
-    transition: 300ms ease all;
-    left: 0%;
-}
-
-.btn {
-    background: #fff;
-    color: #959595;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 3px;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    text-decoration: none;
-    outline: none;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-}
-
-.btn:hover {
-    color: #8b8b8b;
-    box-shadow: 0 7px 14px rgba(0, 0, 0, 0.18), 0 5px 5px rgba(0, 0, 0, 0.12);
-}
-
-.btn.btn-link {
-    background: #2196f3;
-    color: #d3eafd;
-}
-
-.btn.btn-link:hover {
-    background: #0d8aee;
-    color: #deeffd;
-}
-
-.btn.btn-submit {
-    background: #2196f3;
-    color: #bce0fb;
-}
-
-.btn.btn-submit:hover {
-    background: #0d8aee;
-    color: #deeffd;
-}
-
-.btn-box {
-    text-align: center;
-    margin: 50px 0;
-}
-
-.form-body {
+.container {
     background: rgb(255, 255, 255);
     background: linear-gradient(-45deg, #f8f8ff 51%, #fe4e66 51%, #fc9d9a 100%);
     background-attachment: fixed;
@@ -195,3 +133,8 @@ label {
     border-top-left-radius: 0.5rem;
     border-top-right-radius: 0.5rem;
   }
+
+  .btn-box {
+    text-align: center;
+    margin: 1rem 0;
+  } 

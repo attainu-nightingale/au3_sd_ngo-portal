@@ -6,12 +6,10 @@
 
 .right{
     background: #3f3e3e;
-    /* margin: -3px 0px 0px 0px; */
 }
 
-.back{
+.left{
     background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTkIeYyeSraV5zAtBJu0u8LSBh_I3j7O0mJ6TMCydWZx1uqkKps');
-    /* margin: -10px 0px 0px 0px; */
     background-repeat: no-repeat, repeat;
   background-size: cover;
 }
@@ -22,13 +20,12 @@ h5{
     line-height: 30px;
     color: #000000;
     text-align: center;
-    margin-top: 2rem;
+    margin-top: 2rem
 }
 
 h1,h3{
     font-family: Ubuntu;
-    color: #000000;
-    /* color: #fe4e66; */
+    color: #000000
 }
 
 .input,
@@ -74,73 +71,16 @@ option {
   transition: 300ms ease all;
 }
 
-.bar {
-  position: relative;
-  display: block;
-  min-width: 320px;
-}
-
-.bar:before {
-  content: "";
-  height: 2px;
-  width: 0;
-  min-width: 0;
-  bottom: 0px;
-  position: absolute;
-  background: #2196f3;
-  transition: 300ms ease all;
-  left: 0%;
-}
-
-
-.btn {
-  background: #fff;
-  color: #000;
-  border: none;
-  padding: 0.8rem 3rem;
-  border-radius: 2rem;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  text-decoration: none;
-  outline: none;
-  box-shadow: 0 1px 3px rgba(236, 110, 173, 0.562),
-    0 1px 2px rgba(236, 110, 173, 0.575);
-  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-}
-.btn:hover {
-  color: #8b8b8b;
-  box-shadow: 0 7px 14px rgba(0, 0, 0, 0.18), 0 5px 5px rgba(0, 0, 0, 0.12);
-}
-
-.btn.btn-submit {
-  background: #6b0073;
-  background: -webkit-linear-gradient(to right bottom, #ec6ead, #6b0073);
-  background: linear-gradient(
-    to right bottom,
-    #ec6ead,
-    #6b0073
-  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
-  color: #fff;
-}
-.btn.btn-submit:hover {
-  background: #6b0073;
-  background: -webkit-linear-gradient(
-    to left top,
-    #ec6ead,
-    #6b0073
-  ); /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(
-    to left top,
-    #ec6ead,
-    #6b0073
-  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
-  color: #deeffd;
-}
 .btn-box {
   text-align: center;
   margin: 1rem 0;
+} 
+
+.contact-container {
+  background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSlv0eQEtCvaykmwQ9kCBMor99uyT97rVbfv-2dCfPrzeJo-5nT');
+  background-size: cover;
+  height: 100%;
+  width: 100%
 }
 
 .form-body {

@@ -101,6 +101,17 @@ app.get("/logout", (req, res) => {
   res.redirect("/");
 });
 
+// Contact us Page
+app.get("/contactus", (req, res) => {
+  res.render("contact", {
+    title: "eGurukul | Contact Us",
+    cssFile: "css/contact.css",
+    logoLink: "./images/e.png",
+    jsFile: "/js/all.js"
+  });
+});
+
+
 // Routes
 app.use("/user", userRouter);
 app.use("/vol", volRouter);
