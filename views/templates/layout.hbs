@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        {{!-- fontawesome --}}
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" />
+        {{!-- Title --}}
+        <title>{{title}}</title>
+
+        {{!-- Bootstrap CSS --}}
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+        {{!-- Main CSS --}}
+        <link rel="stylesheet" href="/css/main.css" />
+        {{#if home}}
+        {{!-- Swippper --}}
+        <link rel="stylesheet" href="/css/swiper.min.css" />
+        <link rel="stylesheet" href="/css/home.css">
+        {{/if}}
+        {{!-- Custom CSS --}}
+        <link rel="stylesheet" href="{{cssFile}}">
+    </head>
+</head>
+
+<body>
+    {{!-- Header Start --}}
+    <nav class="navbar navbar-expand-lg">
+        <a class="navbar-brand" href="/">
+            <img class="mb-1" src="{{logoLink}}" alt="eGurukul" width="200" />
+        </a>
+        <div class="container">
+            <!--<a class="navbar-brand" href="#">Navbar</a>-->
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav  ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link h-a" href="/">Home </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link h-a" href="/aboutus">About Us</a>
+                    </li>
+                </ul>
+
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link h-a" href="/stories">Stories</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <div class="dropdown">
+                            <button class="btn dropdown-toggle" type="button" id="userDropDown" data-toggle="dropdown"
+                                aria-haspopup="true" aria-expanded="false">
+                                User
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="userDropDown">
+                                <a class="dropdown-item" href="/user/login">Log In</a>
+                                <a class="dropdown-item" href="/user/registration">Registration</a>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <div class="dropdown">
+                            <button class="btn dropdown-toggle" type="button" id="userDropDown" data-toggle="dropdown"
+                                aria-haspopup="true" aria-expanded="false">
+                                Volunteer
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="userDropDown">
+                                <a class="dropdown-item" href="/vol/login">Log In</a>
+                                <a class="dropdown-item" href="/vol/registration">Registration</a>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link h-a" href="/contactus">Contact Us </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link h-a h-donate-btn" href="/donate">Donate</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    {{!-- Header End --}}
+
+    <div class="main-wrapper">
+        {{{body}}}
+    </div>
+
+    {{!-- Footer Start --}}
+    <div class="footer mr-auto">
+        <footer class="footer d-flex align-items-center justify-content-between">
+            <div class="logo">
+                <img src="{{logoLink}}" alt="eGurukul" class="img-fluid" />
+            </div>
+            <ul class="footer-ul d-flex align-items-center m-0">
+                <li class="footer-item pr-3">
+                    <a class="h-a" href="/donate"> Donate </a>
+                </li>
+                <li class="footer-item pr-3">
+                    <a class="h-a" href="#"> Terms and condition </a>
+                </li>
+                <li class="footer-item pr-3">
+                    <a class="h-a" href="#"> Policy </a>
+                </li>
+                <li class="footer-item">
+                    <a class="h-a" href="/contactus"> Contact us </a>
+                </li>
+            </ul>
+        </footer>
+    </div>
+    {{!-- Footer End --}}
+    <!-- Bootsteap's JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+    {{!-- Custom JavaScript --}}
+    <script src="{{jsFile}}"></script>
+
+    {{#if home}}
+    {{!-- Swipper js --}}
+    <script src="./js/swiper.min.js"></script>
+    {{!-- Home JS --}}
+    <script src="./js/home.js"></script>
+    {{/if}}
+    {{!-- reload files just for development  --}}
+    {{#if env}}
+    <script src="/reload/reload.js"></script>
+    {{/if}}
+</body>
+
+</html>
