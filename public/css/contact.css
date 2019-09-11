@@ -1,37 +1,49 @@
-*,
-:before,
-:after {
-  box-sizing: border-box; 
-}
-
-.right{
-    background: #3f3e3e;
-}
-
-.left{
-    background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTkIeYyeSraV5zAtBJu0u8LSBh_I3j7O0mJ6TMCydWZx1uqkKps');
-    background-repeat: no-repeat, repeat;
+.contact-container {
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+    url("https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSlv0eQEtCvaykmwQ9kCBMor99uyT97rVbfv-2dCfPrzeJo-5nT");
   background-size: cover;
+  height: 100%;
+  width: 100%;
+}
+.right {
+  background: rgba(204, 204, 204, 0.781);
 }
 
-h5{
-    font-family: Roboto+Slab;
-    font-size: 22px;
-    line-height: 30px;
-    color: #000000;
-    text-align: center;
-    margin-top: 2rem
+.left {
+  background: linear-gradient(
+      to right,
+      rgba(0, 0, 0, 0.404),
+      rgba(0, 0, 0, 0.384)
+    ),
+    url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTkIeYyeSraV5zAtBJu0u8LSBh_I3j7O0mJ6TMCydWZx1uqkKps");
+  background-repeat: no-repeat, repeat;
+  background-size: cover;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.left > * {
+  color: #fff;
+}
+.left .content {
+  padding: 0 1rem;
 }
 
-h1,h3{
-    font-family: Ubuntu;
-    color: #000000
+h5 {
+  font-family: Roboto + Slab;
+  font-size: 22px;
+  line-height: 30px;
+}
+
+h1,
+h3 {
+  font-family: Ubuntu;
 }
 
 .input,
 .textarea {
   background: none;
-  color: #3f3e3e;
+  color: #000000;
   font-family: Ubuntu;
   font-size: 18px;
   padding: 10px 10px 10px 5px;
@@ -48,9 +60,8 @@ h1,h3{
   outline: none;
 }
 
-
-.input:focus~.bar:before,
-.textarea:focus~.bar:before {
+.input:focus ~ .bar:before,
+.textarea:focus ~ .bar:before {
   width: 100%;
   min-width: 320px;
 }
@@ -59,9 +70,8 @@ h1,h3{
   letter-spacing: 0.3em;
 }
 
-label,
-option {
-  color: rgb(90, 89, 89);
+label {
+  color: rgb(0, 0, 0);
   font-size: 18px;
   font-weight: normal;
   position: absolute;
@@ -74,22 +84,6 @@ option {
 .btn-box {
   text-align: center;
   margin: 1rem 0;
-} 
-
-.contact-container {
-  background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSlv0eQEtCvaykmwQ9kCBMor99uyT97rVbfv-2dCfPrzeJo-5nT');
-  background-size: cover;
-  height: 100%;
-  width: 100%
-}
-
-.form-body {
-  background: rgb(255, 255, 255);
-  background-image: url('http://www.careerizma.com/wp-content/uploads/girl_education_india.jpg'),linear-gradient(to bottom right, #002f4b, #dc4225);;
-  /* background: linear-gradient(to bottom right, #002f4b, #dc4225); */
-   background-attachment: fixed;
-  background-repeat: no-repeat, repeat;
-  background-size: cover;
 }
 
 .form-wrapper {
@@ -102,18 +96,18 @@ option {
   border: 2px solid #8a8a8a;
   background-color: transparent;
   text-decoration: none;
-  padding: 1rem;
+  padding: 0.3rem;
   position: relative;
-  vertical-align: middle;
-  text-align: center;
-  display: inline-block;
-  border-radius: 3rem;
+  border-radius: 10px;
   color: #8a8a8a;
-  transition: all ease 0.4s;
+  display: flex;
+  align-items: center;
+  border-color: #cc4b37;
 }
 
 .button-like span {
   margin-left: 0.5rem;
+  font-size: 0.8rem;
 }
 
 .button-like .fa,
@@ -125,18 +119,8 @@ option {
   background-color: transparent;
 }
 
-.button-like:focus .fa,
-.button-like:focus span {
-  color: #8a8a8a;
-}
-
-.button-like:hover {
-  border-color: #cc4b37;
-  background-color: transparent;
-}
-
-.button-like:hover .fa,
-.button-like:hover span {
+.button-like .fa,
+.button-like span {
   color: #cc4b37;
 }
 
@@ -167,4 +151,10 @@ option {
 .liked:hover .fa,
 .liked:hover span {
   color: #fefefe;
+}
+
+.main-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
