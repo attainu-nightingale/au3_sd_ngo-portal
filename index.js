@@ -111,6 +111,15 @@ app.get("/contactus", (req, res) => {
   });
 });
 
+// Add activity
+app.get("/add-activity", (req, res) => {
+  res.render("add-activities", {
+    title: "eGurukul | Add student activity",
+    cssFile: "css/activites.css",
+    logoLink: "./images/e.png",
+    jsFile: "/js/all.js"
+  });
+});
 
 // Routes
 app.use("/user", userRouter);
