@@ -55,6 +55,9 @@
                     <li class="nav-item">
                         <a class="nav-link h-a" href="/stories">Stories</a>
                     </li>
+                    <li class="nav-item active">
+                        <a class="nav-link h-a" href="/contactus">Contact Us </a>
+                    </li>
                     {{#if voLogged}}
                     <li class="nav-item dropdown">
                         <div class="dropdown">
@@ -67,6 +70,19 @@
                                 <a class="nav-link h-a" href="/add-student">Add Student</a>
                             </div>
                         </div>
+                    </li>
+                    {{/if}}
+
+
+
+                    {{#if voLogged}}
+                    <li class="nav-item active">
+                        <a class="nav-link h-a" href="/vol/profile">Profile</a>
+                    </li>
+                    {{/if}}
+                    {{#if userLogged}}
+                    <li class="nav-item active">
+                        <a class="nav-link h-a" href="/user/profile">Profile</a>
                     </li>
                     {{/if}}
                     {{#if logged}}
@@ -99,16 +115,10 @@
                         </div>
                     </li>
                     {{/if}}
-
-
-
-
-                    <li class="nav-item active">
-                        <a class="nav-link h-a" href="/contactus">Contact Us </a>
-                    </li>
                     <li class="nav-item">
                         <a class="nav-link h-a h-donate-btn" href="/donate">Donate</a>
                     </li>
+
                 </ul>
             </div>
         </div>

@@ -30,6 +30,43 @@ router.get("/login", (req, res) => {
   });
 });
 
+// Profile page
+router.get("/profile", async (req, res) => {
+  if (req.session.volUser) {
+    try {
+      const data = await Vol();
+      data
+        .getDB()
+        .db()
+        .collection("volunteers")
+        .findOne({ username: req.session.volUser })
+        .then(result => {
+          res.render("profile", {
+            title: "eGurukul| Your profile",
+            logoLink: "../images/e.png",
+            cssFile: "/css/profile.css",
+            jsFile: "/js/all.js",
+            name: result.fullname,
+            email: result.email,
+            dob: result.dob,
+            number: result.number,
+            location: result.location,
+            profile: result.profile_pic,
+            id: result._id
+          });
+        })
+        .catch(err => {
+          req.flash("errorMessage", err.errmsg);
+        });
+    } catch (error) {
+      req.flash("errorMessage", "Server Error");
+      res.redirect("/");
+    }
+  } else {
+    res.redirect("/vol/login");
+  }
+});
+
 /* 
 @type     POST
 @route    /vol/login
@@ -80,6 +117,7 @@ router.post("/login", async (req, res) => {
       });
   } catch (error) {
     req.flash("errorMessage", "Server Error");
+    res.redirect("/");
   }
 });
 

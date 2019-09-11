@@ -1,0 +1,41 @@
+<div class="container-fluid form-body">
+    <div class="container mt-5 ">
+        <div class="row no-gutters">
+            <div class="col-8 m-auto">
+                <div class="row profile">
+                    <!--left side picture-->
+                    <div class="col-md-6 left-img d-flex justify-content-center">
+                        <div class="left">
+                            <img src="{{profile}}" class="img-fluid user-img" alt="{{name}}" />
+                        </div>
+                    </div>
+                    <div class="col-md-6 mt-5">
+                        <div class="right">
+                            <!--right side information-->
+                            <h6 class="text">Name :- {{ name }}</h6>
+                            <h6 class="text">E-mail :- {{ email }}</h6>
+                            {{#if number}}
+                            <h6 class="text">Phone-number :- {{ number }}</h6>
+                            {{/if}}
+
+                            {{#if location}}
+                            <h6 class="text">Location :- {{ location }}</h6>
+                            {{/if}}
+
+                            {{#if dob}}
+                            <h6 class="text">Date of birth :- {{ dob }}</h6>
+                            {{/if}}
+
+
+                            <div class="btn-box">
+                                <button class="btn btn-remove" type="remove" data-target="{{id}}">
+                                    Remove Profile
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
