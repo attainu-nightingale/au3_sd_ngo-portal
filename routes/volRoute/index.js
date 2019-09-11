@@ -6,6 +6,7 @@ const Vol = require("../../models/Vol");
 
 const { verifyEmail } = require("../../util/mailer");
 const { Joi, loginSchema, volSchema } = require("../../config/joiSchema");
+const { parser } = require("../../util/uploader");
 
 const router = Router();
 
@@ -16,10 +17,15 @@ const router = Router();
 @access   PUBLIC
 */
 router.get("/login", (req, res) => {
+  if (req.session.isLoggedIn) {
+    res.redirect("/");
+    return;
+  }
   res.render("vollogin", {
     title: "eGurukul | Volunteer Login",
     cssFile: "/css/vol.css",
-    logoLink: "../images/e.png"
+    logoLink: "../images/e.png",
+    jsFile: "/js/all.js"
   });
 });
 
@@ -32,9 +38,10 @@ router.get("/login", (req, res) => {
 router.post("/login", async (req, res) => {
   const { error, value } = Joi.validate(req.body, loginSchema);
   if (error) {
-    res.status(403).json({
-      error: error.message
-    });
+    // res.status(403).json({
+    //   error: error.message
+    // });
+    res.redirect("/vol/login");
     return;
   }
   try {
@@ -48,21 +55,29 @@ router.post("/login", async (req, res) => {
       .then(async result => {
         // If username doesn't matched
         if (!result) {
-          return res.status(404).json({ error: "Authentication Failed" });
+          // return res.status(404).json({ error: "Authentication Failed" });
+          res.redirect("/vol/login");
+          return;
         }
         // if user not verified
         if (!result.active) {
-          return res.status(403).json({ error: "Email not verified" });
+          // return res.status(403).json({ error: "Email not verified" });
+          res.redirect("/vol/verify");
+          return;
         }
 
         const isMatched = await bcrypt.compare(value.password, result.password);
 
         if (!isMatched) {
-          return res.status(404).json({
-            error: "Authentication Failed"
-          });
+          // return res.status(404).json({
+          //   error: "Authentication Failed"
+          // });
+          res.redirect("/vol/login");
+          return;
         }
-        res.json(result);
+        req.session["isLoggedIn"] = true;
+        req.session["volUser"] = result.username;
+        res.redirect("/");
       })
       .catch(err => {
         console.log(err);
@@ -84,10 +99,15 @@ router.post("/login", async (req, res) => {
 @access   PUBLIC
 */
 router.get("/registration", (req, res) => {
+  if (req.session.isLoggedIn) {
+    res.redirect("/");
+    return;
+  }
   res.render("volreg", {
     title: "eGurukul | Volunteer Registration",
     cssFile: "/css/volunteer.css",
-    logoLink: "../images/e.png"
+    logoLink: "../images/e.png",
+    jsFile: "/js/all.js"
   });
 });
 
@@ -97,91 +117,113 @@ router.get("/registration", (req, res) => {
 @desc     Create volunteers
 @access   PUBLIC
 */
-router.post("/registration", async (req, res) => {
-  const { error, value } = Joi.validate(req.body, volSchema);
-  if (error) {
-    return res.status(403).json({
-      error: error.message
-    });
-  }
-  // Encrypt password using bcrypt
-  const saltRounds = 10;
-  try {
-    const data = await Vol();
+router.post(
+  "/registration",
+  parser.single("profile_picture"),
+  async (req, res) => {
+    const { secure_url } = req.file;
 
-    const hash = await bcrypt.hash(value.password, saltRounds);
-
-    // change plain text password to hash password
-    value.password = hash;
-
-    // set secret token for email verification
-    value.secretToken = shortid.generate();
-
-    // flag for inactive
-    value.active = false;
-
-    data
-      .getDB()
-      .db()
-      .collection("volunteers")
-      .insertOne(value)
-      .then(result => {
-        const token = result.ops[0].secretToken;
-        // send verification code to user's mail
-        verifyEmail("ruhikhandaker@gmail.com", token);
-        res.json({
-          success: "Registerd. Now verify your account"
-        });
-      })
-      .catch(err => {
-        console.log(err);
-        res.status(400).json({
-          error: err.errmsg
-        });
+    const { error, value } = Joi.validate(req.body, volSchema);
+    if (error) {
+      return res.status(403).json({
+        error: error.message
       });
-  } catch (error) {
-    console.log(error);
-    res.status(500).json({
-      error: "Server Error"
-    });
+    }
+
+    // Encrypt password using bcrypt
+    const saltRounds = 10;
+    try {
+      const data = await Vol();
+
+      const hash = await bcrypt.hash(value.password, saltRounds);
+
+      // change plain text password to hash password
+      value.password = hash;
+
+      // set secret token for email verification
+      value.secretToken = shortid.generate();
+
+      // flag for inactive
+      value.active = false;
+
+      // add image url
+      value.profile_pic = secure_url;
+
+      data
+        .getDB()
+        .db()
+        .collection("volunteers")
+        .insertOne(value)
+        .then(result => {
+          const token = result.ops[0].secretToken;
+          // send verification code to user's mail
+          verifyEmail(result.ops[0].email, token);
+          res.redirect("/vol/verify");
+        })
+        .catch(err => {
+          console.log(err);
+          res.status(400).json({
+            error: err.errmsg
+          });
+        });
+    } catch (error) {
+      console.log(error);
+      res.status(500).json({
+        error: "Server Error"
+      });
+    }
   }
-});
+);
 
 /*
-@type     POST
+@type     GET and POST
 @route    /user/verify
 @desc     Verufy volunteer
 @access   PUBLIC
 */
-router.post("/verify", async (req, res) => {
-  const { secretToken } = req.body;
-  try {
-    const data = await Vol();
-
-    data
-      .getDB()
-      .db()
-      .collection("volunteers")
-      .updateOne({ secretToken }, { $set: { active: true, secretToken: "" } })
-      .then(result => {
-        // If secretToken doesn't matched
-        if (!result) {
-          return res.status(404).json({ error: "Can't be verified" });
-          // res.redirect("/user/login")
-        }
-        res.json(result);
-        // res.redirect("/user")
-      })
-      .catch(err => {
-        res.status(400).json({
-          error: err.errmsg
-        });
-      });
-  } catch (error) {
-    res.status(500).json({
-      error: "Server Error"
+router
+  .get("/verify", (req, res) => {
+    if (req.session.isLoggedIn) {
+      res.redirect("/");
+      return;
+    }
+    res.render("verify", {
+      action: "/vol/verify",
+      title: "eGurukul | Verification",
+      logoLink: "../images/e.png"
     });
-  }
-});
+  })
+  .post("/verify", async (req, res) => {
+    const { secretToken } = req.body;
+    try {
+      const data = await Vol();
+
+      data
+        .getDB()
+        .db()
+        .collection("volunteers")
+        .updateOne({ secretToken }, { $set: { active: true, secretToken: "" } })
+        .then(result => {
+          // If secretToken doesn't matched
+          if (!result.result.nModified) {
+            // return res.status(404).json({ error: "Can't be verified" });
+            res.redirect("/vol/verify");
+            return;
+          }
+          req.session["isLoggedIn"] = true;
+          req.session["volUser"] = result.username;
+          res.redirect("/");
+        })
+        .catch(err => {
+          res.status(400).json({
+            error: err.errmsg
+          });
+        });
+    } catch (error) {
+      res.status(500).json({
+        error: "Server Error"
+      });
+    }
+  });
 
 module.exports = router;

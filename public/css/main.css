@@ -147,3 +147,22 @@ a.h-donate-btn:hover {
     #bc3da4
   ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
+
+/* For input field */
+.anim.has-value ~ label {
+  top: -14px;
+  font-size: 12px;
+  color: #2196f3;
+}
+
+input {
+  font-size: 0.8rem !important;
+}
+
+/* Alert */
+.alert p {
+  font-size: 0.8rem;
+}
+.alert button {
+  padding-right: 5px !important;
+}

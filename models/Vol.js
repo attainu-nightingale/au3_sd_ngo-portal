@@ -7,7 +7,7 @@ const schema = {
     required: [
       "username",
       "email",
-      "name",
+      "fullname",
       "dob",
       "password",
       "occupation",
@@ -25,7 +25,7 @@ const schema = {
         bsonType: "string",
         description: "must be a email and is required"
       },
-      name: {
+      fullname: {
         bsonType: "string",
         description: "must be a string and is required"
       },

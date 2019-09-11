@@ -22,7 +22,7 @@
             <div class="col-md-7 ">
                 <div class="form-wrapper">
                     <h2 class=" text-center ">Sign <span class="pinks">Up</span></h2>
-                    <form>
+                    <form action="/vol/registration" method="post" enctype="multipart/form-data">
                         <div class="row">
                             <div class="col-md-6">
                                 {{> requiredInput type="text" name="username" className="input inline-input" label="User name"}}
@@ -47,7 +47,7 @@
                                     <label class="dob-label" for="dob">Date of Birth
                                         <sub class="text-danger float-right">*</sub></label>
 
-                                    <input type="date" class="dob-input" id="dob" required />
+                                    <input type="date" name="dob" class="dob-input" id="dob" required />
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -67,7 +67,8 @@
                             <div class="col-md-6">
                                 <div class="form-group position-relative my-4 mb-2r">
                                     <div class="custom-file">
-                                        <input type="file" class="custom-file-input" id="activity_img" />
+                                        <input type="file" name="profile_picture" class="custom-file-input"
+                                            id="activity_img" />
                                         <label class="custom-file-label label" for="activity_img">Profile Picture <sup
                                                 class="text-danger">*</sup></label>
                                     </div>
@@ -78,13 +79,14 @@
                                 <div class="row ">
                                     <group class="inline-radio">
                                         <div>
-                                            <input type="radio" name="gender" checked /><label>Female</label>
+                                            <input type="radio" name="gender" value="female"
+                                                checked /><label>Female</label>
                                         </div>
                                         <div>
-                                            <input type="radio" name="gender" /><label>Male</label>
+                                            <input type="radio" name="gender" value="male" /><label>Male</label>
                                         </div>
                                         <div>
-                                            <input type="radio" name="gender" /><label>Others</label>
+                                            <input type="radio" name="gender" value="others" /><label>Others</label>
                                         </div>
                                     </group>
                                 </div>
@@ -94,8 +96,8 @@
                         <div class="row">
                             <div class="col-12">
                                 <div class="form-group position-relative my-4">
-                                    <textarea type="textarea" class="textarea" rows="3"></textarea><span
-                                        class="highlight"></span><span class="bar"></span>
+                                    <textarea type="textarea" name="preExperience" class="textarea anim"
+                                        rows="3"></textarea><span class="highlight"></span><span class="bar"></span>
                                     <label class="label">Previous experience
                                     </label>
                                 </div>

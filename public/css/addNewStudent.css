@@ -1,0 +1,130 @@
+.input,
+.textarea {
+  background: none;
+  color: #c6c6c6;
+  font-size: 18px;
+  padding: 10px 10px 10px 5px;
+  display: block;
+  width: 100%;
+  min-width: 320px;
+  border: none;
+  border-radius: 0;
+  border-bottom: 1px solid #c6c6c6;
+}
+
+.input:focus,
+.textarea:focus {
+  outline: none;
+}
+
+.input:focus ~ label,
+.input:valid ~ label,
+.textarea:focus ~ label,
+.textarea:valid ~ label {
+  top: -14px;
+  font-size: 12px;
+  color: #2196f3;
+}
+
+.input:focus ~ .bar:before,
+.textarea:focus ~ .bar:before {
+  width: 100%;
+  min-width: 320px;
+}
+
+.input[type="password"] {
+  letter-spacing: 0.3em;
+}
+
+label {
+  color: #c6c6c6;
+  font-size: 16px;
+  font-weight: normal;
+  position: absolute;
+  pointer-events: none;
+  left: 5px;
+  top: 10px;
+  transition: 300ms ease all;
+}
+
+.main-wrapper {
+  background: rgb(255, 255, 255);
+  background: linear-gradient(-45deg, #f8f8ff 51%, #fe4e66 51%, #fc9d9a 100%);
+  background-attachment: fixed;
+}
+
+.form-wrapper {
+  background-color: #f5f5f5;
+  padding: 2rem;
+  box-shadow: 0 5px 10px rgba(252, 157, 154, 0.356);
+}
+
+.btn.btn-submit {
+  background: rgb(185, 184, 155);
+  background: linear-gradient(
+    45deg,
+    rgba(185, 184, 155, 1) 0%,
+    rgba(131, 174, 155, 1) 51%,
+    rgba(131, 174, 155, 1) 100%
+  );
+  color: #fff;
+}
+
+.btn.btn-submit:hover {
+  background: rgb(185, 184, 155);
+  background: linear-gradient(
+    -45deg,
+    rgba(185, 184, 155, 1) 0%,
+    rgba(131, 174, 155, 1) 51%,
+    rgba(131, 174, 155, 1) 100%
+  );
+  color: #deeffd;
+}
+
+.inline-radio {
+  width: 100%;
+  display: flex;
+  overflow: hidden;
+  border-bottom: 1px solid #b6b6b6;
+}
+.inline-radio div {
+  position: relative;
+  flex: 1;
+}
+.inline-radio input {
+  width: 100%;
+  height: 40px;
+  opacity: 0;
+  font-size: 12px;
+}
+.inline-radio label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: #525151ad;
+  width: 100%;
+  height: 100%;
+  background: inherit;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  font-size: 16px;
+}
+.inline-radio div:last-child label {
+  border-right: 0;
+}
+.inline-radio input:checked + label {
+  background: #fe4e66;
+  background: -webkit-linear-gradient(45deg, #fc9d9a, #fe4e66);
+  background: linear-gradient(45deg, #fc9d9a, #fe4e66);
+  font-weight: 500;
+  color: #fff;
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
+}
+
+.btn-box {
+  text-align: center;
+  margin: 1rem 0;
+}

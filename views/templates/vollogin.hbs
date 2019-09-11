@@ -24,7 +24,7 @@
                             <h2 class=" text-center ">
                                 Login to<span class="pinks">Your Account</span>
                             </h2>
-                            <form>
+                            <form action="/vol/login" method="POST">
                                 <div class="row">
                                     {{> requiredInput type="text" name="username" className="input" label="User name"}}
                                     {{> requiredInput type="password" name="password" className="input" label="Password"}}

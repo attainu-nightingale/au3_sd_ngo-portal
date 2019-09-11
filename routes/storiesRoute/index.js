@@ -12,7 +12,12 @@ const router = Router();
 @access   PUBLIC
 */
 router.get("/", async (req, res) => {
-  try {
+  res.render("stories_page", {
+    title: "eGurukul | Our Awesome stories",
+    logoLink: "./images/e.png",
+    jsFile: "/js/all.js"
+  });
+  /*   try {
     const data = await Stories();
 
     // TODO:- Do with same way
@@ -38,7 +43,7 @@ router.get("/", async (req, res) => {
     res.status(500).json({
       error: "Server Error"
     });
-  }
+  } */
 });
 
 /* 

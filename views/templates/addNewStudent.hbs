@@ -1,0 +1,49 @@
+<div class="container p-5">
+    <div class="row">
+        <div class="col-md-6 m-auto form-wrapper">
+            <h1 class="activities-title text-center mb-5">
+                New student entry
+            </h1>
+            <form class="activites">
+                {{> requiredInput name="fullname" type="text" label="Full Name" className="input inline-input"}}
+                {{> requiredInput name="guardian" type="text" label="Guardian name" className="input inline-input"}}
+                <div class="form-group position-relative my-4">
+
+                    <input type="text" class="input" for="dob" required="required" onfocus="(this.type='date')"
+                        onfocusout="(this.type='text')" /><span class="highlight"></span><span class="bar"></span>
+                    <label>Date of birth</label>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="row ">
+                        <group class="inline-radio">
+                            <div>
+                                <input type="radio" name="gender" value="female" checked /><label>Female</label>
+                            </div>
+                            <div>
+                                <input type="radio" name="gender" value="male" /><label>Male</label>
+                            </div>
+                            <div>
+                                <input type="radio" name="gender" value="others" /><label>Others</label>
+                            </div>
+                        </group>
+                    </div>
+                </div>
+
+                {{> requiredInput name="location" type="text" label="Location" className="input inline-input"}}
+                {{> requiredInput name="study" type="text" label="Study status" className="input inline-input"}}
+                {{> requiredInput name="email" type="email" label="Email" className="input inline-input"}}
+
+                <div class="form-group position-relative my-4">
+                    <input type="text" class="input" required="required" onfocus="(this.type='file')"
+                        onfocusout="(this.type='text')" /><span class="highlight"></span><span class="bar"></span>
+                    <label>Profile picture</label>
+                </div>
+
+                <div class="btn-box">
+                    <button class="btn btn-submit" type="submit">Create</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

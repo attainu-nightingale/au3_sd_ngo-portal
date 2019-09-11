@@ -6,6 +6,7 @@ const User = require("../../models/User");
 
 const { verifyEmail } = require("../../util/mailer");
 const { Joi, loginSchema, regSchema } = require("../../config/joiSchema");
+const { parser } = require("../../util/uploader");
 
 const router = Router();
 
@@ -16,10 +17,16 @@ const router = Router();
 @access   PUBLIC
 */
 router.get("/login", (req, res) => {
+  if (req.session.isLoggedIn) {
+    res.redirect("/");
+    return;
+  }
   res.render("userlogin", {
     title: "eGurukul | User Login",
     cssFile: "/css/users_login.css",
-    logoLink: "../images/e.png"
+    logoLink: "../images/e.png",
+    jsFile: "/js/all.js",
+    flash: req.flash()["errorMessage"]
   });
 });
 
@@ -32,9 +39,8 @@ router.get("/login", (req, res) => {
 router.post("/login", async (req, res) => {
   const { error, value } = Joi.validate(req.body, loginSchema);
   if (error) {
-    res.status(403).json({
-      error: "an error occured"
-    });
+    req.flash("errorMessage", error.message);
+    res.redirect("/user/login");
     return;
   }
   try {
@@ -48,32 +54,31 @@ router.post("/login", async (req, res) => {
       .then(async result => {
         // If username doesn't matched
         if (!result) {
-          return res.status(404).json({ error: "Authentication Failed" });
+          req.flash("errorMessage", "Authentication Failed");
+          res.redirect("/user/login");
+          return;
         }
         // if user not verified
         if (!result.active) {
-          return res.status(403).json({ error: "Email not verified" });
+          res.redirect("/user/verify");
+          return;
         }
 
         const isMatched = await bcrypt.compare(value.password, result.password);
 
         if (!isMatched) {
-          return res.status(404).json({
-            error: "Authentication Failed"
-          });
+          req.flash("errorMessage", "Authentication Failed");
+          res.redirect("/user/login");
+          return;
         }
-        res.json(result);
+        req.session["isLoggedIn"] = true;
+        res.redirect("/");
       })
       .catch(err => {
-        console.log(err);
-        res.status(400).json({
-          error: err.errmsg
-        });
+        req.flash("errorMessage", err.errmsg);
       });
   } catch (error) {
-    res.status(500).json({
-      error: "Server Error"
-    });
+    req.flash("errorMessage", "Server Error");
   }
 });
 
@@ -84,10 +89,16 @@ router.post("/login", async (req, res) => {
 @access   PUBLIC
 */
 router.get("/registration", (req, res) => {
+  if (req.session.isLoggedIn) {
+    res.redirect("/");
+    return;
+  }
   res.render("userreg", {
     title: "eGurukul | User Registration",
     cssFile: "/css/users_signup.css",
-    logoLink: "../images/e.png"
+    logoLink: "../images/e.png",
+    jsFile: "/js/all.js",
+    flash: req.flash()["errorMessage"]
   });
 });
 
@@ -97,91 +108,106 @@ router.get("/registration", (req, res) => {
 @desc     Just for testing
 @access   PUBLIC
 */
-router.post("/registration", async (req, res) => {
-  const { error, value } = Joi.validate(req.body, regSchema);
-  if (error) {
-    return res.status(403).json({
-      error: error.message
-    });
-  }
-  // Encrypt password using bcrypt
-  const saltRounds = 10;
-  try {
-    const data = await User();
+router.post(
+  "/registration",
+  parser.single("profile_picture"),
+  async (req, res) => {
+    if (!req.file) {
+      req.flash("errorMessage", "You need to upload profile picture");
+      res.redirect("/user/registration");
+      return;
+    }
+    const { secure_url } = req.file;
 
-    const hash = await bcrypt.hash(value.password, saltRounds);
+    const { error, value } = Joi.validate(req.body, regSchema);
+    if (error) {
+      req.flash("errorMessage", error.message);
+      res.redirect("/user/registration");
+      return;
+    }
+    // Encrypt password using bcrypt
+    const saltRounds = 10;
+    try {
+      const data = await User();
 
-    // change plain text password to hash password
-    value.password = hash;
+      const hash = await bcrypt.hash(value.password, saltRounds);
 
-    // set secret token for email verification
-    value.secretToken = shortid.generate();
+      // change plain text password to hash password
+      value.password = hash;
 
-    // flag for inactive
-    value.active = false;
+      // set secret token for email verification
+      value.secretToken = shortid.generate();
 
-    data
-      .getDB()
-      .db()
-      .collection("users")
-      .insertOne(value)
-      .then(result => {
-        const token = result.ops[0].secretToken;
-        // send verification code to user's mail
-        verifyEmail("ruhankhandaker@gmail.com", token);
-        res.json({
-          success: "Registerd. Now verify your account"
+      // flag for inactive
+      value.active = false;
+      // add image url
+      value.profile_pic = secure_url;
+
+      data
+        .getDB()
+        .db()
+        .collection("users")
+        .insertOne(value)
+        .then(result => {
+          const token = result.ops[0].secretToken;
+          // send verification code to user's mail
+          verifyEmail(result.ops[0].email, token);
+          res.redirect("/user/verify");
+        })
+        .catch(err => {
+          req.flash("errorMessage", err.errmsg);
         });
-      })
-      .catch(err => {
-        console.log(err);
-        res.status(400).json({
-          error: err.errmsg
-        });
-      });
-  } catch (error) {
-    console.log(error);
-    res.status(500).json({
-      error: "Server Error"
-    });
+    } catch (error) {
+      req.flash("errorMessage", "Server Error");
+    }
   }
-});
+);
 
 /*
-@type     POST
+@type     GET & POST
 @route    /user/verify
 @desc     Verufy user
 @access   PUBLIC
 */
-router.post("/verify", async (req, res) => {
-  const { secretToken } = req.body;
-  try {
-    const data = await User();
-
-    data
-      .getDB()
-      .db()
-      .collection("users")
-      .updateOne({ secretToken }, { $set: { active: true, secretToken: "" } })
-      .then(result => {
-        // If secretToken doesn't matched
-        if (!result) {
-          return res.status(404).json({ error: "Can't be verified" });
-          // res.redirect("/user/login")
-        }
-        res.json(result);
-        // res.redirect("/user")
-      })
-      .catch(err => {
-        res.status(400).json({
-          error: err.errmsg
-        });
-      });
-  } catch (error) {
-    res.status(500).json({
-      error: "Server Error"
+router
+  .get("/verify", (req, res) => {
+    if (req.session.isLoggedIn) {
+      res.redirect("/");
+      return;
+    }
+    res.render("verify", {
+      action: "/user/verify",
+      title: "eGurukul | Verification",
+      logoLink: "../images/e.png",
+      flash: req.flash()["errorMessage"]
     });
-  }
-});
+  })
+  .post("/verify", async (req, res) => {
+    const { secretToken } = req.body;
+    try {
+      const data = await User();
+
+      data
+        .getDB()
+        .db()
+        .collection("users")
+        .updateOne({ secretToken }, { $set: { active: true, secretToken: "" } })
+        .then(result => {
+          // If secretToken doesn't matched
+          if (!result.result.nModified) {
+            req.flash("errorMessage", "Verification failed");
+            res.redirect("/user/verify");
+            return;
+          }
+          req.session["isLoggedIn"] = true;
+          res.redirect("/");
+        })
+        .catch(err => {
+          req.flash("errorMessage", err.errmsg);
+        });
+    } catch (error) {
+      req.flash("errorMessage", "Server Error");
+    }
+  });
 
 module.exports = router;

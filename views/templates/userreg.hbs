@@ -21,8 +21,18 @@
             <!--right side -->
             <div class="col-md-7 ">
                 <div class="form-wrapper">
+                    {{#if flash}}
+                    <div class="alert alert-danger alert-dismissible fade show m-0 p-1" role="alert">
+                        <p class="m-0">
+                            {{ flash }}
+                        </p>
+                        <button type="button" class="close p-0" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    {{/if}}
                     <h2 class=" text-center "><b class="pinks">Users Sign Up</b></h2>
-                    <form action="/user/registration" method="POST">
+                    <form action="/user/registration" method="POST" enctype="multipart/form-data">
                         <div class="row">
                             <div class="col-md-6">
                                 {{> requiredInput type="text" className="input inline-input" name="username" label="User name"}}
@@ -63,7 +73,8 @@
                             <div class="col-md-6">
                                 <div class="form-group position-relative my-4 mb-2r">
                                     <div class="custom-file">
-                                        <input type="file" class="custom-file-input" id="activity_img" />
+                                        <input type="file" class="custom-file-input" name="profile_picture"
+                                            id="activity_img" />
                                         <label class="custom-file-label label" for="activity_img">Profile Picture <sup
                                                 class="text-danger">*</sup></label>
                                     </div>

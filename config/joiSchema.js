@@ -68,7 +68,9 @@ const regSchema = Joi.object().keys({
     ),
   location: Joi.string()
     .required()
-    .error(new Error("location is required"))
+    .error(new Error("location is required")),
+  gender: Joi.string().error(new Error("Must be string")),
+  profile_pic: Joi.string().error(new Error("Must be string"))
 });
 
 const volSchema = Joi.object().keys({
@@ -83,7 +85,7 @@ const volSchema = Joi.object().keys({
         "username is  required and must be greater than 3 and less than 20"
       )
     ),
-  name: Joi.string()
+  fullname: Joi.string()
     .min(3)
     .max(40)
     .required()
