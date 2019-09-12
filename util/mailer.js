@@ -28,4 +28,24 @@ const verifyEmail = (to, token) => {
   });
 };
 
-module.exports = { verifyEmail };
+const contactEmail = (from, data) => {
+  sgMail.send({
+    to: "egurukul01@gmail.com",
+    from: from,
+    subject: "Need Help",
+    html: `
+            <div style=" border: 1px solid #000;
+                width: 250px;
+                text-align: center;
+                padding: 1rem;">
+              <h3>${data.fullname}</h3>
+              <p style=" margin: 0;
+                padding-bottom: 1rem;">${data.phone}</p>
+              <p style=" margin: 0;
+                padding-bottom: 1rem;">${data.message}</p>
+            </div>
+          `
+  });
+};
+
+module.exports = { verifyEmail, contactEmail };

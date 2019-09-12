@@ -17,12 +17,32 @@
 
                     </div>
                     <div class="col-md-6 right">
+                        {{#if flash}}
+                        <div class="alert alert-danger alert-dismissible fade show m-0 p-1" role="alert">
+                            <p class="m-0">
+                                {{ flash }}
+                            </p>
+                            <button type="button" class="close p-0" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        {{/if}}
+                        {{#if flashTwo}}
+                        <div class="alert alert-success alert-dismissible fade show m-0 p-1" role="alert">
+                            <p class="m-0">
+                                {{ flashTwo }}
+                            </p>
+                            <button type="button" class="close p-0" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        {{/if}}
                         <div class="card-body">
-                            <form method="POST">
+                            <form method="POST" action="/contact" class="contact-form">
                                 {{> requiredInput name="fullname" type="text" label="Full Name" className="input inline-input"}}
 
                                 {{> requiredInput name="email" type="email" label="Email" className="input inline-input"}}
-                                {{> requiredInput name="phone" type="rexr" label="Phone number" className="input inline-input"}}
+                                {{> requiredInput name="phone" type="text" label="Phone number" className="input inline-input"}}
                                 <div class="form-group position-relative my-4">
                                     <textarea type="textarea" name="message" class="textarea anim"
                                         rows="3"></textarea><span class="highlight"></span><span class="bar"></span>

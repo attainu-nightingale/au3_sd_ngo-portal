@@ -18,6 +18,7 @@ const volRouter = require("./routes/volRoute");
 const studentRouter = require("./routes/studentRoute");
 // const storiesRouter = require("./routes/storiesRoute");
 const activitesRoute = require("./routes/activityRoute");
+const contactRoute = require("./routes/contact");
 
 // Paths
 const STATIC_PATH = path.join(__dirname, "/public");
@@ -117,7 +118,9 @@ app.get("/contactus", (req, res) => {
     cssFile: "css/contact.css",
     logoLink: "./images/e.png",
     jsFile: "/js/all.js",
-    routeName: "contactus"
+    routeName: "contactus",
+    flash: req.flash()["errorMessage"],
+    flashTwo: req.flash()["successMessage"]
   });
 });
 
@@ -127,6 +130,7 @@ app.get("/add-activity", (req, res) => {
     res.redirect("/vol/login");
     return;
   }
+
   res.render("add-activities", {
     title: "eGurukul | Add student activity",
     cssFile: "css/activites.css",
@@ -156,6 +160,7 @@ app.use("/vol", volRouter);
 app.use("/students", studentRouter);
 // app.use("/stories", storiesRouter);
 app.use("/activites", activitesRoute);
+app.use("/contact", contactRoute);
 
 app.get("*", (req, res) => {
   res.render("404", {

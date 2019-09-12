@@ -158,3 +158,8 @@ label {
   justify-content: center;
   align-items: center;
 }
+
+.contact-form .anim.has-value ~ label {
+  color: #333;
+  font-size: 0.8rem;
+}

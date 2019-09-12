@@ -129,9 +129,32 @@ const volSchema = Joi.object().keys({
   profile_pic: Joi.string().error(new Error("Must be string"))
 });
 
+const contactSchema = Joi.object().keys({
+  fullname: Joi.string()
+    .min(3)
+    .max(40)
+    .required()
+    .error(
+      new Error("name is required and must be greater than 6 and less than 40")
+    ),
+  email: Joi.string()
+    .email({ minDomainSegments: 2 })
+    .required()
+    .error(new Error("use valid email")),
+  phone: Joi.string()
+    .min(9)
+    .max(12)
+    .required()
+    .error(new Error("Should be valid phone number")),
+  message: Joi.string()
+    .required()
+    .error(new Error("Message field is required and string only"))
+});
+
 module.exports = {
   Joi,
   loginSchema,
   regSchema,
-  volSchema
+  volSchema,
+  contactSchema
 };
