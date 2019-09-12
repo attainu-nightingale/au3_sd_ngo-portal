@@ -184,7 +184,7 @@ input {
 .activity .media {
   border: 1px solid #333;
   padding: 1rem;
-  height: 200px;
+  min-height: 250px;
   display: flex;
   align-items: center;
 }
