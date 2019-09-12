@@ -7,7 +7,7 @@ sgMail.setApiKey(sendGridApiKey);
 const verifyEmail = (to, token) => {
   sgMail.send({
     to: to,
-    from: "ruhankhan25@gmail.com",
+    from: "egurukul01@gmail.com",
     subject: "Verify your email",
     html: `
             <div style=" border: 1px solid #000;
