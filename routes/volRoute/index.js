@@ -59,7 +59,8 @@ router.get("/profile", async (req, res) => {
             location: result.location,
             profile: result.profile_pic,
             id: result._id,
-            route: "vol"
+            route: "vol",
+            routeName: "profile"
           });
         })
         .catch(err => {

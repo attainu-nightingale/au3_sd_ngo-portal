@@ -30,7 +30,8 @@ router.get("/", async (req, res) => {
         res.render("students", {
           logoLink: "../images/e.png",
           jsFile: "/js/all.js",
-          data: result
+          data: result,
+          routeName: "students"
         });
       })
       .catch(err => {

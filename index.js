@@ -18,7 +18,7 @@ const { port, envt } = require("./config");
 const userRouter = require("./routes/userRoute");
 const volRouter = require("./routes/volRoute");
 const studentRouter = require("./routes/studentRoute");
-const storiesRouter = require("./routes/storiesRoute");
+// const storiesRouter = require("./routes/storiesRoute");
 const activitesRoute = require("./routes/activityRoute");
 
 // Paths
@@ -55,6 +55,15 @@ app.set("view engine", "hbs");
 app.set("views", VIEWS_PATH);
 hbs.registerPartials(PARTIALS_PATH);
 
+// Custom hbs helper
+hbs.registerHelper("is", function(parameter, string, options) {
+  if (parameter == string) {
+    return options.fn(this);
+  } else {
+    return options.inverse(this);
+  }
+});
+
 // express middleware
 app.use(express.static(STATIC_PATH));
 app.use(express.json());
@@ -74,7 +83,8 @@ app.get("/", (req, res) => {
   res.render("home", {
     home: true,
     title: "eGurukul | Made for Students and Helped by you",
-    logoLink: "./images/e.png"
+    logoLink: "./images/e.png",
+    routeName: "home"
   });
 });
 
@@ -84,7 +94,8 @@ app.get("/donate", (req, res) => {
     title: "eGurukul | Donate to poor students",
     cssFile: "css/donate.css",
     logoLink: "./images/e.png",
-    jsFile: "/js/all.js"
+    jsFile: "/js/all.js",
+    routeName: "donate"
   });
 });
 
@@ -93,7 +104,8 @@ app.get("/aboutus", (req, res) => {
   res.render("aboutus", {
     title: "eGurukul | Aboutus",
     logoLink: "./images/e.png",
-    jsFile: "/js/all.js"
+    jsFile: "/js/all.js",
+    routeName: "aboutus"
   });
 });
 
@@ -109,7 +121,8 @@ app.get("/contactus", (req, res) => {
     title: "eGurukul | Contact Us",
     cssFile: "css/contact.css",
     logoLink: "./images/e.png",
-    jsFile: "/js/all.js"
+    jsFile: "/js/all.js",
+    routeName: "contactus"
   });
 });
 

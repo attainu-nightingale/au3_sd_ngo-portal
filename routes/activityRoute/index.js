@@ -28,7 +28,8 @@ router.get("/", async (req, res) => {
           jsFile: "/js/all.js",
           cssFile: "css/activity.css",
           data: result,
-          volunteerLogged: req.session.volUser
+          volunteerLogged: req.session.volUser,
+          routeName: "activites"
         });
       })
       .catch(err => {
