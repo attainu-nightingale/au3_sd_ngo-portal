@@ -1,10 +1,8 @@
 const path = require("path");
-const http = require("http");
 
 const express = require("express");
 const session = require("express-session");
 const hbs = require("hbs");
-const reload = require("reload");
 const helmet = require("helmet");
 const flash = require("req-flash");
 
@@ -71,9 +69,6 @@ app.use(express.urlencoded({ extended: true }));
 
 // Flash Middleware
 app.use(flash());
-
-// set locals for using reload js inside of layout file
-app.locals.env = envt === "development";
 
 // Home route
 app.get("/", (req, res) => {
@@ -180,13 +175,6 @@ db.initDB((err, db) => {
   }
 });
 
-// Start Server
-if (envt === "development") {
-  const server = http.createServer(app);
-  server.listen(port, () => console.log(`Server Running at ${port}`));
-  reload(app);
-} else {
-  app.listen(port, () => {
-    console.log(`Heroku Server Running at ${port}`);
-  });
-}
+app.listen(port, () => {
+  console.log(`Server Running at ${port}`);
+});
