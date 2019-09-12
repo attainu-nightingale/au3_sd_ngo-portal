@@ -10,7 +10,7 @@ const flash = require("req-flash");
 const db = require("./db/db");
 
 // Config
-const { port, envt, sessionSecret } = require("./config");
+const { port, sessionSecret } = require("./config");
 
 // Router
 const userRouter = require("./routes/userRoute");
