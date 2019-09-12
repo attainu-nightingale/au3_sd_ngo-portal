@@ -146,8 +146,17 @@ app.get("/add-student", (req, res) => {
 app.use("/user", userRouter);
 app.use("/vol", volRouter);
 app.use("/students", studentRouter);
-app.use("/stories", storiesRouter);
+// app.use("/stories", storiesRouter);
 app.use("/activites", activitesRoute);
+
+app.get("*", (req, res) => {
+  res.render("404", {
+    title: "eGurukul | 404",
+    cssFile: "css/404.css",
+    logoLink: "./images/e.png",
+    jsFile: "/js/all.js"
+  });
+});
 
 // Initialize Database
 db.initDB((err, db) => {
