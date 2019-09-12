@@ -23,7 +23,7 @@
     <div class="row">
         {{#if volunteerLogged}}
         {{#each data }}
-        <div class="col-12 col-sm-6 col-md-4">
+        <div class="col-12 col-sm-6 col-md-4 my-3">
             <div class="media">
                 <img src="{{this.activity_image}}" width="100px" class="mr-3 img-fluid" alt="{{this.activity_name}}">
                 <div class="media-body">
@@ -40,7 +40,7 @@
         {{/each}}
         {{else}}
         {{#each data }}
-        <div class="col-12 col-sm-6 col-md-4">
+        <div class="col-12 col-sm-6 col-md-4 my-3">
             <div class="media">
                 <img src="{{this.activity_image}}" width="100px" class="mr-3 img-fluid" alt="{{this.activity_name}}">
                 <div class="media-body">
@@ -48,7 +48,8 @@
                     <p class="act-details"><strong>Type:</strong> <span
                             class="badge badge-info float-right">{{ this.activity_type }}</span>
                     </p>
-                    <p class="act-details">{{ this.activity_details }}</p>
+                    <p class="act-details"><a href="{{this.activity_link}}" class="link">{{ this.activity_details }}</a>
+                    </p>
 
                 </div>
             </div>
