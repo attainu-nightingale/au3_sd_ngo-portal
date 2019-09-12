@@ -12,7 +12,7 @@ const flash = require("req-flash");
 const db = require("./db/db");
 
 // Config
-const { port, envt } = require("./config");
+const { port, envt, sessionSecret } = require("./config");
 
 // Router
 const userRouter = require("./routes/userRoute");
@@ -35,7 +35,7 @@ app.use(helmet());
 // express-session middlewares
 app.use(
   session({
-    secret: "Yaa this is secret code, don't copy it", // 🤪
+    secret: sessionSecret, // 🤪
     resave: false,
     saveUninitialized: true
   })

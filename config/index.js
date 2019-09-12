@@ -5,5 +5,6 @@ module.exports = {
   sendGridApiKey: process.env.SEND_API,
   cloudName: process.env.CLOUD_NAME,
   apiKey: process.env.API_KEY,
-  apiSecret: process.env.API_SECRET
+  apiSecret: process.env.API_SECRET,
+  sessionSecret: process.env.sessionSecret
 };
