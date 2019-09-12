@@ -1,0 +1,295 @@
+/* sign up form*/
+.textarea {
+  background: none;
+  color: #525151ad;
+  font-size: 12px;
+  padding: 8px 8px 8px 5px;
+  display: block;
+  width: 100%;
+  min-width: 320px;
+  border: none;
+  border-radius: 0;
+  border-bottom: 1px solid #c6c6c6;
+}
+
+.textarea:focus {
+  outline: none;
+}
+
+.textarea:focus ~ .label {
+  top: -14px;
+  font-size: 12px;
+  color: #2196f3;
+}
+
+.textarea:focus ~ .bar:before {
+  width: 100%;
+  min-width: 320px;
+}
+
+.bar {
+  position: relative;
+  display: block;
+  min-width: 320px;
+}
+.bar:before {
+  content: "";
+  height: 2px;
+  width: 0;
+  min-width: 0;
+  bottom: 0px;
+  position: absolute;
+  background: #2196f3;
+  transition: 300ms ease all;
+  left: 0%;
+}
+
+.btn.btn-submit {
+  background: #6b0073;
+  background: -webkit-linear-gradient(to right bottom, #ec6ead, #6b0073);
+  background: linear-gradient(
+    to right bottom,
+    #ec6ead,
+    #6b0073
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+  color: #fff;
+  border: none;
+  padding: 0.8rem 3rem;
+  border-radius: 2rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-decoration: none;
+  outline: none;
+  box-shadow: 0 1px 3px rgba(236, 110, 173, 0.562),
+    0 1px 2px rgba(236, 110, 173, 0.575);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+.btn.btn-submit:hover {
+  background: #6b0073;
+  background: -webkit-linear-gradient(
+    to left top,
+    #ec6ead,
+    #6b0073
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to left top,
+    #ec6ead,
+    #6b0073
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+  color: #deeffd;
+  box-shadow: 0 7px 14px rgba(0, 0, 0, 0.18), 0 5px 5px rgba(0, 0, 0, 0.12);
+}
+.btn-box {
+  text-align: center;
+  margin: 1rem 0;
+}
+
+.form-body {
+  background-color: #fc9d9a;
+  background: linear-gradient(
+      to right bottom,
+      rgba(252, 157, 154, 0.527),
+      rgba(252, 157, 154, 0.479),
+      rgba(107, 0, 115, 0.555)
+    ),
+    url("../images/users/login_bg.png") center center / cover;
+  background-attachment: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.mb-2r {
+  margin-bottom: 2.1rem !important;
+}
+.omb-2 {
+  margin-bottom: 1.9rem !important;
+}
+
+.form-row {
+  box-shadow: 0 0px 45px 3px rgba(107, 0, 115, 0.555);
+}
+
+/*  assigning color*/
+.pinks {
+  color: #6b0073;
+}
+
+/* Left image */
+
+.left-img {
+  background: magenta;
+  background: linear-gradient(
+      to right,
+      rgba(62, 1, 66, 0.527),
+      rgba(60, 1, 65, 0.541)
+    ),
+    url("../images/users/login_bg1.png") no-repeat center center / cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.left-img .slogan-text {
+  font-size: 60px;
+  line-height: 60px;
+  color: #fff;
+  text-align: center;
+}
+.left-img .slogan-details {
+  font-size: 22px;
+  line-height: 30px;
+  color: #fff;
+  text-align: center;
+  margin-top: 2rem;
+}
+
+/* Main wrapper */
+.form-wrapper {
+  background-color: #f5f5f5;
+  padding: 4rem;
+  height: 450px;
+}
+.img {
+  width: 100px;
+  box-shadow: 0 5px 10px rgba(252, 154, 231, 0.87);
+}
+/* sign up form*/
+.input {
+  background: none;
+  color: #525151ad;
+  font-size: 10px;
+  padding: 8px 8px 15px 5px;
+  display: block;
+  width: 100%;
+  min-width: 320px;
+  border: none;
+  border-radius: 0;
+  border-bottom: 1px solid #c6c6c6;
+}
+.input:focus {
+  outline: none;
+}
+.input:focus ~ .label {
+  top: -14px;
+  font-size: 12px;
+  color: #2196f3;
+}
+
+.ac-link:focus ~ .label {
+  top: -14px;
+  font-size: 12px;
+  color: #2196f3;
+}
+.input:focus ~ .bar:before {
+  width: 100%;
+  min-width: 320px;
+}
+.label,
+.custom-file-input:lang(en) ~ .custom-file-label {
+  color: rgb(138, 136, 136);
+  font-size: 16px;
+  font-weight: normal;
+  position: absolute;
+  pointer-events: none;
+  left: 5px;
+  top: 10px;
+  transition: 300ms ease all;
+  padding: 0;
+}
+
+datalist option {
+  font-size: 13px;
+}
+
+.label.custom-file-label {
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  background-color: transparent;
+}
+.custom-file-input:lang(en) ~ .custom-file-label::after {
+  content: "\f1c5";
+  font-family: FontAwesome;
+  font-weight: normal;
+  font-style: normal;
+  margin: 0px 0px 0px 10px;
+  text-decoration: none;
+}
+.bar {
+  position: relative;
+  display: block;
+  min-width: 320px;
+}
+.bar:before {
+  content: "";
+  height: 2px;
+  width: 0;
+  min-width: 0;
+  bottom: 0px;
+  position: absolute;
+  background: #2196f3;
+  transition: 300ms ease all;
+  left: 0%;
+}
+
+.btn.btn-submit {
+  background: #6b0073;
+  background: -webkit-linear-gradient(to right bottom, #ec6ead, #6b0073);
+  background: linear-gradient(to right bottom, #ec6ead, #6b0073);
+
+  border: none;
+  padding: 0.8rem 3rem;
+  border-radius: 2rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-decoration: none;
+  outline: none;
+  box-shadow: 0 1px 3px rgba(236, 110, 173, 0.562),
+    0 1px 2px rgba(236, 110, 173, 0.575);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  color: #fff;
+}
+.btn.btn-submit:hover {
+  background: #6b0073;
+  background: -webkit-linear-gradient(to left top, #ec6ead, #6b0073);
+  background: linear-gradient(to left top, #ec6ead, #6b0073);
+  color: #deeffd;
+  box-shadow: 0 7px 14px rgba(0, 0, 0, 0.18), 0 5px 5px rgba(0, 0, 0, 0.12);
+}
+.btn-box {
+  text-align: center;
+  margin: 1rem 0;
+}
+.img {
+  display: flex;
+}
+/* inline input style*/
+.inline-input {
+  min-width: 100%;
+}
+
+.input:focus ~ .bar:before {
+  width: 100%;
+  min-width: 100%;
+}
+
+/* Date picker style */
+
+[type="date"] {
+  background: #f5f5f5
+    url(https://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/calendar_2.png)
+    97% 50% no-repeat;
+}
+[type="date"]::-webkit-inner-spin-button {
+  display: none;
+}
+[type="date"]::-webkit-calendar-picker-indicator {
+  opacity: 0;
+}
+.main-wrapper {
+  height: 100%;
+}

@@ -151,10 +151,21 @@ const contactSchema = Joi.object().keys({
     .error(new Error("Message field is required and string only"))
 });
 
+const reportSchema = Joi.object().keys({
+  email: Joi.string()
+    .email({ minDomainSegments: 2 })
+    .required()
+    .error(new Error("use valid email")),
+  report: Joi.string()
+    .required()
+    .error(new Error("Message field is required and string only"))
+});
+
 module.exports = {
   Joi,
   loginSchema,
   regSchema,
   volSchema,
-  contactSchema
+  contactSchema,
+  reportSchema
 };

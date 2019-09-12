@@ -1,0 +1,39 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 m-auto">
+            <div class="card-body">
+                <h1 class="text-center">Report Bug</h1>
+                {{#if flashTwo}}
+                <div class="alert alert-success alert-dismissible fade show m-0 p-1" role="alert">
+                    <p class="m-0">
+                        {{ flashTwo }}
+                    </p>
+                    <button type="button" class="close p-0" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                {{/if}}
+                {{#if flash}}
+                <div class="alert alert-danger alert-dismissible fade show m-0 p-1" role="alert">
+                    <p class="m-0">
+                        {{ flash }}
+                    </p>
+                    <button type="button" class="close p-0" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                {{/if}}
+                <form action="/bug" method="POST">
+                    {{> requiredInput type="email" name="email" className="input" label="Email"}}
+                    <div class="form-group position-relative my-4">
+                        <textarea type="textarea" name="report" required class="textarea anim" rows="3"
+                            placeholder="Report Bug"></textarea><span class="highlight"></span><span class="bar"></span>
+                    </div>
+                    <div class="btn-box">
+                        <button type="submit" class="btn btn-submit add-report-btn">Report</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

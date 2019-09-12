@@ -47,5 +47,21 @@ const contactEmail = (from, data) => {
           `
   });
 };
+const bugMail = (from, report) => {
+  sgMail.send({
+    to: "egurukul01@gmail.com",
+    from: from,
+    subject: "Bug Report",
+    html: `
+            <div style=" border: 1px solid #000;
+                width: 250px;
+                text-align: center;
+                padding: 1rem;">
+              <p style=" margin: 0;
+                padding-bottom: 1rem;">${report}</p>
+            </div>
+          `
+  });
+};
 
-module.exports = { verifyEmail, contactEmail };
+module.exports = { verifyEmail, contactEmail, bugMail };

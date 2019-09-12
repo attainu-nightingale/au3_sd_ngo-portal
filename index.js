@@ -11,6 +11,8 @@ const db = require("./db/db");
 
 // Config
 const { port, sessionSecret } = require("./config");
+const { bugMail } = require("./util/mailer");
+const { Joi, reportSchema } = require("./config/joiSchema");
 
 // Router
 const userRouter = require("./routes/userRoute");
@@ -152,6 +154,32 @@ app.get("/add-student", (req, res) => {
     logoLink: "./images/e.png",
     jsFile: "/js/all.js"
   });
+});
+
+app.get("/bug", (req, res) => {
+  res.render("bug", {
+    title: "eGurukul | Report Bug",
+    cssFile: "css/bug.css",
+    logoLink: "./images/e.png",
+    jsFile: "/js/all.js",
+    flashTwo: req.flash()["successMessage"],
+    flash: req.flash()["errorMessage"]
+  });
+});
+
+app.post("/bug", (req, res) => {
+  const { error, value } = Joi.validate(req.body, reportSchema);
+  if (error) {
+    req.flash("errorMessage", error.message);
+    res.redirect("/contactus");
+    return;
+  }
+  const { email, report } = value;
+  bugMail(email, report);
+  setTimeout(() => {
+    req.flash("successMessage", "Thank you for reporting");
+    res.redirect("/bug");
+  }, 2000);
 });
 
 // Routes
