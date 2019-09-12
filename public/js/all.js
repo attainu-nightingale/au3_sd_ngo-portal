@@ -130,4 +130,22 @@ $(document).ready(function() {
       });
     });
   }
+
+  // Delete actibity
+  if ($(".delete-act")) {
+    $(".delete-act").on("click", function() {
+      const id = $(this).attr("data-id");
+      $.ajax({
+        url: `/activites/${id}`,
+        type: "DELETE",
+        success: function(result) {
+          alert("Deleted successfully");
+          location.reload();
+        },
+        error: function(error) {
+          alert("An error occured");
+        }
+      });
+    });
+  }
 });

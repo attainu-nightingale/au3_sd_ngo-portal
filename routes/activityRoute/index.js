@@ -27,7 +27,8 @@ router.get("/", async (req, res) => {
           logoLink: "./images/e.png",
           jsFile: "/js/all.js",
           cssFile: "css/activity.css",
-          data: result
+          data: result,
+          volunteerLogged: req.session.volUser
         });
       })
       .catch(err => {

@@ -17,8 +17,11 @@
             </div>
         </div>
         {{/if}}
+
+
     </div>
     <div class="row">
+        {{#if volunteerLogged}}
         {{#each data }}
         <div class="col-12 col-sm-6 col-md-4">
             <div class="media">
@@ -29,13 +32,28 @@
                             class="badge badge-info float-right">{{ this.activity_type }}</span>
                     </p>
                     <p class="act-details">{{ this.activity_details }}</p>
-                    {{#if voLogged}}
-                    <button class="delete-act" type="button" class="btn btn-outline-danger float-right"><i
-                            class="fas fa-trash text-danger fa-2x"></i></button>
-                    {{/if}}
+                    <button type="button" class="btn btn-outline-danger delete-act float-right mb-2"
+                        data-id="{{this._id}}"><i class="fas fa-trash fa-2x"></i></button>
                 </div>
             </div>
         </div>
         {{/each}}
+        {{else}}
+        {{#each data }}
+        <div class="col-12 col-sm-6 col-md-4">
+            <div class="media">
+                <img src="{{this.activity_image}}" width="100px" class="mr-3 img-fluid" alt="{{this.activity_name}}">
+                <div class="media-body">
+                    <h5 class="mt-0 mb-1">{{this.activity_name}}</h5>
+                    <p class="act-details"><strong>Type:</strong> <span
+                            class="badge badge-info float-right">{{ this.activity_type }}</span>
+                    </p>
+                    <p class="act-details">{{ this.activity_details }}</p>
+
+                </div>
+            </div>
+        </div>
+        {{/each}}
+        {{/if}}
     </div>
 </div>
