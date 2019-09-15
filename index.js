@@ -18,7 +18,6 @@ const { Joi, reportSchema } = require("./config/joiSchema");
 const userRouter = require("./routes/userRoute");
 const volRouter = require("./routes/volRoute");
 const studentRouter = require("./routes/studentRoute");
-// const storiesRouter = require("./routes/storiesRoute");
 const activitesRoute = require("./routes/activityRoute");
 const contactRoute = require("./routes/contact");
 
