@@ -84,23 +84,30 @@
                         <a class="nav-link h-a" href="/user/profile">Profile</a>
                     </li>
                     {{/if}}
+
+                    <li class="nav-item {{#is routeName "contactus"}} active {{/is}}">
+                        <a class="nav-link h-a" href="/contactus">Contact Us </a>
+                    </li>
+                    <li class="nav-item {{#is routeName "aboutus"}} active {{/is}}">
+                        <a class="nav-link h-a" href="/aboutus">About Us</a>
+                    </li>
                     {{#if logged}}
                     <li class="nav-item">
                         <a class="nav-link h-a" href="/logout">Logout</a>
                     </li>
                     {{else}}
                     {{!--               <li class="nav-item dropdown">
-                        <div class="dropdown">
-                            <button class="btn dropdown-toggle" type="button" id="userDropDown" data-toggle="dropdown"
-                                aria-haspopup="true" aria-expanded="false">
-                                User
-                            </button>
-                            <div class="dropdown-menu" aria-labelledby="userDropDown">
-                                <a class="dropdown-item" href="/user/login">Log In</a>
-                                <a class="dropdown-item" href="/user/registration">Registration</a>
-                            </div>
-                        </div>
-                    </li> --}}
+                                            <div class="dropdown">
+                                                <button class="btn dropdown-toggle" type="button" id="userDropDown" data-toggle="dropdown"
+                                                    aria-haspopup="true" aria-expanded="false">
+                                                    User
+                                                </button>
+                                                <div class="dropdown-menu" aria-labelledby="userDropDown">
+                                                    <a class="dropdown-item" href="/user/login">Log In</a>
+                                                    <a class="dropdown-item" href="/user/registration">Registration</a>
+                                                </div>
+                                            </div>
+                                        </li> --}}
                     <li class="nav-item dropdown">
                         <div class="dropdown">
                             <button class="btn dropdown-toggle" type="button" id="userDropDown" data-toggle="dropdown"
@@ -114,12 +121,6 @@
                         </div>
                     </li>
                     {{/if}}
-                    <li class="nav-item {{#is routeName "contactus"}} active {{/is}}">
-                        <a class="nav-link h-a" href="/contactus">Contact Us </a>
-                    </li>
-                    <li class="nav-item {{#is routeName "aboutus"}} active {{/is}}">
-                        <a class="nav-link h-a" href="/aboutus">About Us</a>
-                    </li>
                     <li class="nav-item {{#is routeName "donate"}} active {{/is}}">
                         <a class=" h-a h-donate-btn" href="/donate">Donate</a>
                     </li>
