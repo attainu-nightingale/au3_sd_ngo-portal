@@ -45,9 +45,6 @@
                     <li class="nav-item {{#is routeName "home"}} active {{/is}}">
                         <a class="nav-link h-a" href="/">Home </a>
                     </li>
-                    <li class="nav-item {{#is routeName "aboutus"}} active {{/is}}">
-                        <a class="nav-link h-a" href="/aboutus">About Us</a>
-                    </li>
                     <li class="nav-item {{#is routeName "activites"}} active {{/is}}">
                         <a class="nav-link h-a" href="/activites">Activites</a>
                     </li>
@@ -92,7 +89,7 @@
                         <a class="nav-link h-a" href="/logout">Logout</a>
                     </li>
                     {{else}}
-                    <li class="nav-item dropdown">
+                    {{!--               <li class="nav-item dropdown">
                         <div class="dropdown">
                             <button class="btn dropdown-toggle" type="button" id="userDropDown" data-toggle="dropdown"
                                 aria-haspopup="true" aria-expanded="false">
@@ -103,7 +100,7 @@
                                 <a class="dropdown-item" href="/user/registration">Registration</a>
                             </div>
                         </div>
-                    </li>
+                    </li> --}}
                     <li class="nav-item dropdown">
                         <div class="dropdown">
                             <button class="btn dropdown-toggle" type="button" id="userDropDown" data-toggle="dropdown"
@@ -119,6 +116,9 @@
                     {{/if}}
                     <li class="nav-item {{#is routeName "contactus"}} active {{/is}}">
                         <a class="nav-link h-a" href="/contactus">Contact Us </a>
+                    </li>
+                    <li class="nav-item {{#is routeName "aboutus"}} active {{/is}}">
+                        <a class="nav-link h-a" href="/aboutus">About Us</a>
                     </li>
                     <li class="nav-item {{#is routeName "donate"}} active {{/is}}">
                         <a class=" h-a h-donate-btn" href="/donate">Donate</a>

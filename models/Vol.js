@@ -84,7 +84,7 @@ const Vol = async () => {
     .getDB()
     .db()
     .collection("volunteers")
-    .createIndex({ username: 1 }, { unique: true });
+    .createIndex({ username: -1, email: 1 }, { unique: true });
 
   return await db;
 };
