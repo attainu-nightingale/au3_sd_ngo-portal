@@ -1,5 +1,29 @@
 const Joi = require("@hapi/joi");
 
+const resetPassSchema = Joi.object().keys({
+  password: Joi.string()
+    .trim()
+    .regex(/^[a-zA-Z0-9]{3,30}$/)
+    .min(6)
+    .max(30)
+    .required()
+    .error(
+      new Error(
+        "password is required and must be greater than 6 and less than 30"
+      )
+    ),
+  confPassword: Joi.string()
+    .trim()
+    .regex(/^[a-zA-Z0-9]{3,30}$/)
+    .min(6)
+    .max(30)
+    .required()
+    .error(
+      new Error(
+        "password is required and must be greater than 6 and less than 30"
+      )
+    )
+});
 const loginSchema = Joi.object().keys({
   username: Joi.string()
     .trim()
@@ -167,5 +191,6 @@ module.exports = {
   regSchema,
   volSchema,
   contactSchema,
-  reportSchema
+  reportSchema,
+  resetPassSchema
 };

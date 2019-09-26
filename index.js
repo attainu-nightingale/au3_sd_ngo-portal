@@ -14,6 +14,9 @@ const { port, sessionSecret } = require("./config");
 const { bugMail } = require("./util/mailer");
 const { Joi, reportSchema } = require("./config/joiSchema");
 
+// Modal
+const Vol = require("./models/Vol");
+
 // Router
 const userRouter = require("./routes/userRoute");
 const volRouter = require("./routes/volRoute");
@@ -21,6 +24,7 @@ const studentRouter = require("./routes/studentRoute");
 // const storiesRouter = require("./routes/storiesRoute");
 const activitesRoute = require("./routes/activityRoute");
 const contactRoute = require("./routes/contact");
+const resetRoute = require("./routes/reset");
 
 // Paths
 const STATIC_PATH = path.join(__dirname, "/public");
@@ -189,6 +193,7 @@ app.use("/students", studentRouter);
 // app.use("/stories", storiesRouter);
 app.use("/activites", activitesRoute);
 app.use("/contact", contactRoute);
+app.use("/reset-pass", resetRoute);
 
 app.get("/not-found", (req, res) => {
   res.render("404", {

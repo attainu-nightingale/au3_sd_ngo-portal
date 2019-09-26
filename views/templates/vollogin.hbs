@@ -43,11 +43,37 @@
                                         <button class="btn btn-submit" type="submit">
                                             Log in
                                         </button>
+                                        <button class="btn btn-submit btn-reset" type="button" data-toggle="modal"
+                                            data-target="#resetModal">
+                                            Reset Password
+                                        </button>
                                     </div>
                                 </div>
                             </form>
                         </div>
                     </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="resetModal" tabindex="-1" role="dialog" aria-labelledby="resetModal" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="resetModal">Enter your Username</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form class="reset-form" action="/reset-pass" method="POST">
+                        <div class="form-group">
+                            <label for="usename" class="lead">Username</label>
+                            <input type="text" class="form-control" name="username" id="usename" required
+                                placeholder="Username">
+                        </div>
+                        <button type="submit" class="btn btn-success">Reset</button>
+                    </form>
                 </div>
             </div>
         </div>

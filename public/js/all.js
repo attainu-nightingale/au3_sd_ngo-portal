@@ -175,4 +175,42 @@ $(document).ready(function() {
       });
     });
   }
+
+  // Reset password
+  if ($(".reset-pass-form")) {
+    $(".reset-pass-form").submit(function(event) {
+      event.preventDefault();
+      const values = $(this).serializeArray();
+      const updatedForm = {};
+      values.forEach(element => {
+        updatedForm[element.name] = element.value;
+      });
+
+      const username = $(".reset-password").attr("data-id");
+      const { password, confPassword } = updatedForm;
+      if (password !== confPassword) {
+        alert("Password doesn't match");
+        return;
+      }
+
+      $.ajax({
+        url: `/reset-pass/${username}`,
+        type: "PUT",
+        data: JSON.stringify(updatedForm),
+        contentType: "application/json",
+        success: function(result) {
+          if (result.errorMessage) {
+            alert(result.errorMessage);
+            return;
+          }
+          alert("successfully updated");
+          location.replace("/vol/login");
+        },
+        error: function(err) {
+          console.log(err);
+          alert(err);
+        }
+      });
+    });
+  }
 });

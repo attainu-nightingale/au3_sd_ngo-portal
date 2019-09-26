@@ -220,3 +220,24 @@ datalist option {
 .main-wrapper {
   height: 100%;
 }
+
+.btn-box {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.btn-box .btn {
+  font-size: 1rem;
+  padding: 0.5rem 2rem;
+}
+
+.btn-box .btn.btn-reset {
+  background: #f8a56e;
+  background: -webkit-linear-gradient(to right bottom, #f8a56e, #da417d);
+  background: linear-gradient(
+    to right bottom,
+    #f8a56e,
+    #da417d
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
