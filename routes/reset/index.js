@@ -57,7 +57,7 @@ router.put("/:username", async (req, res) => {
         verifyEmail(req.session.userEmail, secretToken);
 
         const email = req.session.userEmail.split("@");
-        const someLastDigit = email[0].substring(email[0].length - 4);
+        const someLastDigit = email[0].substring(email[0].length - 5);
         let leftPart = email[0].substring(
           0,
           email[0].length - someLastDigit.length
