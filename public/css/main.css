@@ -176,11 +176,21 @@ input {
 
 /* Activity Details */
 .act-details,
-.delete-act {
+.delete-act,
+.edit-act {
   font-size: 0.8rem;
   color: rgb(71, 69, 69);
 }
 
+.edit-act {
+  background-color: #fff;
+}
+.edit-act .fas {
+  color: #000;
+}
+.edit-act:hover .fas {
+  color: #000;
+}
 .activity .media {
   border: 1px solid #333;
   padding: 1rem;

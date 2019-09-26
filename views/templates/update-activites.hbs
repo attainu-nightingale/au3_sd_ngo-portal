@@ -1,0 +1,58 @@
+<div class="container-fluid form-body">
+    <div class="container p-5">
+        <div class="row">
+            <div class="col-md-6 m-auto">
+                <div class="form-wrapper">
+                    {{#if flash}}
+                    <div class="alert alert-danger alert-dismissible fade show m-0 p-1" role="alert">
+                        <p class="m-0">
+                            {{ flash }}
+                        </p>
+                        <button type="button" class="close p-0" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    {{/if}}
+                    <h1 class="activities-title text-center mb-5">
+                        Update activity for students
+                    </h1>
+
+                    <form class="activites update-activity">
+                        {{> requiredInput type="text" name="activity_name" className="input inline-input anim has-value" value=data.activity_name
+                        label="Activites Name"}}
+                        <div class="form-group position-relative my-4">
+                            <input class="input anim" list="activity_type_datalist" type="text" name="activity_type"
+                                id="activity_type" required />
+                            <span class="highlight"></span>
+                            <span class="bar"></span>
+                            <label>Activites Type <sup class="text-danger">*</sup></label>
+                            <datalist id="activity_type_datalist">
+                                <option value="Environmental" selected>Environmental</option>
+                                <option value="Social">Social</option>
+                                <option value="Advocacy">Advocacy</option>
+                                <option value="Human Right Work">Human Right Work</option>
+                                <option value="General Studies">General Studies</option>
+                            </datalist>
+                        </div>
+
+                        {{> inputs type="text" name="activity_link" className="input inline-input ac-link has-value" value=data.activity_link
+                        label="Activites Link"}}
+
+                        <div class="form-group position-relative my-4">
+                            <textarea type="textarea" class="textarea anim has-value" name="activity_details" rows="3"
+                                required>
+                                {{data.activity_details}}
+                                </textarea><span class="highlight"></span><span class="bar"></span>
+                            <label>Activity Details <sup class="text-danger">*</sup></label>
+                        </div>
+                        <div class="btn-box">
+                            <button class="btn btn-submit act-update" type="submit"
+                                data-id="{{data._id}}">Update</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

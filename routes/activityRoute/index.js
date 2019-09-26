@@ -80,7 +80,43 @@ router.post("/", parser.single("activity_img"), async (req, res) => {
     res.redirect("/");
   }
 });
+/*
+@type     GET
+@route    /activity/:id
+@desc     Update activity page
+@access   Private (for volunteer)
+*/
+router.get("/:id", async (req, res) => {
+  if (!req.session.volUser) {
+    res.redirect("/vol/login");
+    return;
+  }
+  try {
+    const data = await Activites();
 
+    data
+      .getDB()
+      .db()
+      .collection("activities")
+      .findOne({ _id: ObjectID(req.params.id) })
+      .then(result => {
+        res.render("update-activites", {
+          logoLink: "../images/e.png",
+          jsFile: "../js/all.js",
+          cssFile: "../css/activites.css",
+          data: result,
+          routeName: "activites"
+        });
+      })
+      .catch(err => {
+        req.flash("errorMessage", err.errmsg);
+        res.redirect("/activites");
+      });
+  } catch (error) {
+    req.flash("errorMessage", "Server Error");
+    res.redirect("/");
+  }
+});
 /* 
 @type     PUT
 @route    /activity/:id
@@ -103,6 +139,7 @@ router.put("/:id", async (req, res) => {
           });
           return;
         }
+
         res.json({
           success: "Successfully updated"
         });

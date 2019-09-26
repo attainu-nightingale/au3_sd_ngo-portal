@@ -106,6 +106,33 @@ $(document).ready(function() {
     });
   }
 
+  // update form for activity
+  if ($(".update-activity")) {
+    $(".update-activity").submit(function(event) {
+      event.preventDefault();
+      const values = $(this).serializeArray();
+      const updatedForm = {};
+      values.forEach(element => {
+        updatedForm[element.name] = element.value;
+      });
+
+      const id = $(".act-update").attr("data-id");
+
+      $.ajax({
+        url: `/activites/${id}`,
+        type: "PUT",
+        data: JSON.stringify(updatedForm),
+        contentType: "application/json",
+        success: function(result) {
+          alert("successfully updated");
+          location.replace("/activites");
+        },
+        error: function(err) {
+          alert(err);
+        }
+      });
+    });
+  }
   // Report form
   if ($(".add-report")) {
     $(".add-report").submit(function(event) {
