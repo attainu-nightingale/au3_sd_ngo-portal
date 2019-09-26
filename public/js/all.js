@@ -203,8 +203,9 @@ $(document).ready(function() {
             alert(result.errorMessage);
             return;
           }
-          alert("successfully updated");
-          location.replace("/vol/login");
+
+          alert(result.msg);
+          location.replace("/reset-pass/verify");
         },
         error: function(err) {
           console.log(err);
