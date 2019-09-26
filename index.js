@@ -190,13 +190,16 @@ app.use("/students", studentRouter);
 app.use("/activites", activitesRoute);
 app.use("/contact", contactRoute);
 
-app.get("*", (req, res) => {
+app.get("/not-found", (req, res) => {
   res.render("404", {
     title: "eGurukul | 404",
     cssFile: "css/404.css",
     logoLink: "./images/e.png",
     jsFile: "/js/all.js"
   });
+});
+app.get("*", (req, res) => {
+  res.redirect("/not-found");
 });
 
 // Initialize Database
