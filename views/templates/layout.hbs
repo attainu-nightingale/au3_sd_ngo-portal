@@ -34,69 +34,70 @@
         <a class="navbar-brand" href="/">
             <img class="mb-1" src="{{logoLink}}" alt="eGurukul" width="200" />
         </a>
-        <div class="container">
-            <!--<a class="navbar-brand" href="#">Navbar</a>-->
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav  ml-auto d-flex align-items-center">
-                    <li class="nav-item {{#is routeName "home"}} active {{/is}}">
-                        <a class="nav-link h-a" href="/">Home </a>
-                    </li>
-                    <li class="nav-item {{#is routeName "activites"}} active {{/is}}">
-                        <a class="nav-link h-a" href="/activites">Activites</a>
-                    </li>
-                </ul>
 
-                <ul class="navbar-nav d-flex align-items-center">
-                    {{!-- <li class="nav-item">
+        <!--<a class="navbar-brand" href="#">Navbar</a>-->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            {{!-- <span class="navbar-toggler-icon"></span> --}}
+            <i class="fas fa-bars fa-2x"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav  ml-auto d-flex align-items-center">
+                <li class="nav-item {{#is routeName "home"}} active {{/is}}">
+                    <a class="nav-link h-a" href="/">Home </a>
+                </li>
+                <li class="nav-item {{#is routeName "activites"}} active {{/is}}">
+                    <a class="nav-link h-a" href="/activites">Activites</a>
+                </li>
+            </ul>
+
+            <ul class="navbar-nav d-flex align-items-center">
+                {{!-- <li class="nav-item">
                         <a class="nav-link h-a" href="/stories">Stories</a>
                     </li> --}}
-                    {{#if voLogged}}
-                    <li class="nav-item {{#is routeName "students"}} active {{/is}}">
-                        <a class="nav-link  h-a" href="/students">Students</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <div class="dropdown">
-                            <button class="btn dropdown-toggle" type="button" id="userDropDown" data-toggle="dropdown"
-                                aria-haspopup="true" aria-expanded="false">
-                                Add
-                            </button>
-                            <div class="dropdown-menu" aria-labelledby="userDropDown">
-                                <a class="nav-link h-a" href="/add-activity">Add activity</a>
-                                <a class="nav-link h-a" href="/add-student">Add Student</a>
-                            </div>
+                {{#if voLogged}}
+                <li class="nav-item {{#is routeName "students"}} active {{/is}}">
+                    <a class="nav-link  h-a" href="/students">Students</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <div class="dropdown">
+                        <button class="btn dropdown-toggle" type="button" id="userDropDown" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">
+                            Add
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="userDropDown">
+                            <a class="nav-link h-a" href="/add-activity">Add activity</a>
+                            <a class="nav-link h-a" href="/add-student">Add Student</a>
                         </div>
-                    </li>
-                    {{/if}}
+                    </div>
+                </li>
+                {{/if}}
 
 
 
-                    {{#if voLogged}}
-                    <li class="nav-item {{#is routeName "profile"}} active {{/is}}">
-                        <a class="nav-link h-a" href="/vol/profile">Profile</a>
-                    </li>
-                    {{/if}}
-                    {{#if userLogged}}
-                    <li class="nav-item {{#is routeName "profile"}} active {{/is}}">
-                        <a class="nav-link h-a" href="/user/profile">Profile</a>
-                    </li>
-                    {{/if}}
+                {{#if voLogged}}
+                <li class="nav-item {{#is routeName "profile"}} active {{/is}}">
+                    <a class="nav-link h-a" href="/vol/profile">Profile</a>
+                </li>
+                {{/if}}
+                {{#if userLogged}}
+                <li class="nav-item {{#is routeName "profile"}} active {{/is}}">
+                    <a class="nav-link h-a" href="/user/profile">Profile</a>
+                </li>
+                {{/if}}
 
-                    <li class="nav-item {{#is routeName "contactus"}} active {{/is}}">
-                        <a class="nav-link h-a" href="/contactus">Contact Us </a>
-                    </li>
-                    <li class="nav-item {{#is routeName "aboutus"}} active {{/is}}">
-                        <a class="nav-link h-a" href="/aboutus">About Us</a>
-                    </li>
-                    {{#if logged}}
-                    <li class="nav-item">
-                        <a class="nav-link h-a" href="/logout">Logout</a>
-                    </li>
-                    {{else}}
-                    {{!--               <li class="nav-item dropdown">
+                <li class="nav-item {{#is routeName "contactus"}} active {{/is}}">
+                    <a class="nav-link h-a" href="/contactus">Contact Us </a>
+                </li>
+                <li class="nav-item {{#is routeName "aboutus"}} active {{/is}}">
+                    <a class="nav-link h-a" href="/aboutus">About Us</a>
+                </li>
+                {{#if logged}}
+                <li class="nav-item">
+                    <a class="nav-link h-a" href="/logout">Logout</a>
+                </li>
+                {{else}}
+                {{!--               <li class="nav-item dropdown">
                                             <div class="dropdown">
                                                 <button class="btn dropdown-toggle" type="button" id="userDropDown" data-toggle="dropdown"
                                                     aria-haspopup="true" aria-expanded="false">
@@ -108,26 +109,26 @@
                                                 </div>
                                             </div>
                                         </li> --}}
-                    <li class="nav-item dropdown">
-                        <div class="dropdown">
-                            <button class="btn dropdown-toggle" type="button" id="userDropDown" data-toggle="dropdown"
-                                aria-haspopup="true" aria-expanded="false">
-                                Volunteer
-                            </button>
-                            <div class="dropdown-menu" aria-labelledby="userDropDown">
-                                <a class="dropdown-item" href="/vol/login">Log In</a>
-                                <a class="dropdown-item" href="/vol/registration">Registration</a>
-                            </div>
+                <li class="nav-item dropdown">
+                    <div class="dropdown">
+                        <button class="btn dropdown-toggle" type="button" id="userDropDown" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">
+                            Volunteer
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="userDropDown">
+                            <a class="dropdown-item" href="/vol/login">Log In</a>
+                            <a class="dropdown-item" href="/vol/registration">Registration</a>
                         </div>
-                    </li>
-                    {{/if}}
-                    <li class="nav-item {{#is routeName "donate"}} active {{/is}}">
-                        <a class=" h-a h-donate-btn" href="/donate">Donate</a>
-                    </li>
+                    </div>
+                </li>
+                {{/if}}
+                <li class="nav-item {{#is routeName "donate"}} active {{/is}}">
+                    <a class=" h-a h-donate-btn" href="/donate">Donate</a>
+                </li>
 
-                </ul>
-            </div>
+            </ul>
         </div>
+
     </nav>
     {{!-- Header End --}}
     <div class="main-wrapper">
