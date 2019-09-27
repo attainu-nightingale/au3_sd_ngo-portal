@@ -155,7 +155,7 @@ const volSchema = Joi.object().keys({
 
 const contactSchema = Joi.object().keys({
   fullname: Joi.string()
-    .min(3)
+    .min(6)
     .max(40)
     .required()
     .error(

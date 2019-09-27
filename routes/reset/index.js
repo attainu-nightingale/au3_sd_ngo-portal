@@ -41,13 +41,14 @@ router.put("/:username", async (req, res) => {
 
     // set secret token for email verification
     const secretToken = shortid.generate();
+    const active = false;
     data
       .getDB()
       .db()
       .collection("volunteers")
       .updateOne(
         { username: username },
-        { $set: { password: hash, secretToken } }
+        { $set: { password: hash, secretToken, active } }
       )
       .then(result => {
         if (!result.result.nModified) {
@@ -134,7 +135,7 @@ router
         .getDB()
         .db()
         .collection("volunteers")
-        .updateOne({ secretToken }, { $set: { secretToken: "" } })
+        .updateOne({ secretToken }, { $set: { secretToken: "", active: true } })
         .then(result => {
           // If secretToken doesn't matched
           if (!result.result.nModified) {

@@ -40,7 +40,7 @@ $(document).ready(function() {
             type: "DELETE",
             success: function(result) {
               alert("Deleted successfully");
-              location.replace("/");
+              location.replace("/logout");
 
               setTimeout(() => {
                 location.reload();

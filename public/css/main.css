@@ -218,6 +218,7 @@ input {
 @media (min-width: 992px) {
   nav.navbar.navbar-expand-lg {
     padding: 0 1rem;
+    height: 80px;
   }
 }
 
